@@ -61,8 +61,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Rotation: 0
-    - Split: 0
+    - Rotation: -1.9938236
+    - Split: 0.57493323
     - Vector1_2D3B5C13: 0.1
     - Vector1_608FCEB2: 0.904
     - _EnableExternalAlpha: 0
