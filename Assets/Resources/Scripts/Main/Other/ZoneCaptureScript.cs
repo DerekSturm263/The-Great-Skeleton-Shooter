@@ -6,6 +6,7 @@ public class ZoneCaptureScript : MonoBehaviour
 {
     public int PlayersIn = 0;
     public float capCount, capRate, capLimit, capPercent;
+    public GameObject zoneDoor;
     public bool capturing, captured;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class ZoneCaptureScript : MonoBehaviour
                 capCount = capLimit;
                 capturing = false;
                 captured = true;
+                Destroy(zoneDoor);
             }
         }
     }
