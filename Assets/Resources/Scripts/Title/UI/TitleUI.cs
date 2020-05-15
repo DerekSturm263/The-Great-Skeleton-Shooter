@@ -176,7 +176,7 @@ public class TitleUI : MonoBehaviour
     {
         buttons[0].GetComponent<CanvasGroup>().interactable = false;
 
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
 
         GameController.SetPlayerCount(1);
         SceneManager.LoadScene("Main");
@@ -187,7 +187,7 @@ public class TitleUI : MonoBehaviour
         StartCoroutine(EnablePopUp(multiplayerWarning));
         eventSystem.SetSelectedGameObject(multiplayerButtonYes);
 
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
     }
 
     private IEnumerator OptionsButton()
@@ -195,7 +195,7 @@ public class TitleUI : MonoBehaviour
         StartCoroutine(EnablePopUp(options));
         eventSystem.SetSelectedGameObject(optionsFullscreen);
 
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
     }
 
     private IEnumerator CreditsButton()
@@ -213,7 +213,7 @@ public class TitleUI : MonoBehaviour
         StartCoroutine(EnablePopUp(quitConfirm));
         eventSystem.SetSelectedGameObject(quitButtonYes);
 
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
     }
 
     #endregion
@@ -284,14 +284,14 @@ public class TitleUI : MonoBehaviour
 
     private IEnumerator MultiplayerButtonYes()
     {
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
         GameController.SetPlayerCount(2);
         SceneManager.LoadScene("Main");
     }
 
     private IEnumerator QuitButtonYes()
     {
-        yield return new WaitForSeconds(waitTime / 2f);
+        yield return new WaitForSeconds(waitTime / 3f);
         Application.Quit();
     }
 
