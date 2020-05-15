@@ -201,7 +201,7 @@ public class TitleUI : MonoBehaviour
     private IEnumerator CreditsButton()
     {
         buttons[3].GetComponent<CanvasGroup>().interactable = false;
-        //buttonLayoutAnimator.SetBool("endScene", true);
+        buttonLayoutAnimator.SetBool("endScene", true);
 
         yield return new WaitForSeconds(waitTime);
 

@@ -80,6 +80,21 @@ public class CreditsUI : MonoBehaviour
         eventSystem.SetSelectedGameObject(buttons[0]);
     }
 
+    public void OnBackButton()
+    {
+        StartCoroutine(BackButton());
+    }
+
+    private IEnumerator BackButton()
+    {
+        buttons[5].GetComponent<CanvasGroup>().interactable = false;
+        buttonLayoutAnimator.SetBool("endScene", true);
+
+        yield return new WaitForSeconds(waitTime / 3f);
+
+        SceneManager.LoadScene("Title");
+    }
+
     #region PopUp Methods
 
     private IEnumerator EnablePopUp(GameObject g)

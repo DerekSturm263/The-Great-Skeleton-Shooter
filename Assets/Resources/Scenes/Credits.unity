@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 160209733}
   - component: {fileID: 160209731}
   - component: {fileID: 160209732}
+  - component: {fileID: 160209736}
   m_Layer: 5
   m_Name: Back - Button
   m_TagString: Untagged
@@ -236,8 +237,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1041333107}
-        m_MethodName: 
+      - m_Target: {fileID: 1041333109}
+        m_MethodName: OnBackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -284,6 +285,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160209729}
   m_CullTransparentMesh: 0
+--- !u!223 &160209736
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160209729}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: -1284879581
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &160406236
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +477,7 @@ GameObject:
   - component: {fileID: 271784979}
   - component: {fileID: 271784980}
   m_Layer: 5
-  m_Name: Isaac Rodriguez - Button
+  m_Name: 4 Isaac Rodriguez - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,7 +640,7 @@ GameObject:
   - component: {fileID: 531828204}
   - component: {fileID: 531828205}
   m_Layer: 5
-  m_Name: Derek Sturm - Button
+  m_Name: 5 Derek Sturm - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +978,7 @@ GameObject:
   - component: {fileID: 603440648}
   - component: {fileID: 603440647}
   m_Layer: 5
-  m_Name: Title - TMP
+  m_Name: Credits - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1137,7 @@ GameObject:
   - component: {fileID: 695852755}
   - component: {fileID: 695852756}
   m_Layer: 5
-  m_Name: Derek Hilby - Button
+  m_Name: 3 Derek Hilby - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1276,7 +1298,7 @@ GameObject:
   - component: {fileID: 708254932}
   - component: {fileID: 708254934}
   m_Layer: 5
-  m_Name: Title Buttons - Layout
+  m_Name: Credits Buttons - Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1616,7 +1638,7 @@ GameObject:
   - component: {fileID: 983214730}
   - component: {fileID: 983214731}
   m_Layer: 5
-  m_Name: Ben Martinson - Button
+  m_Name: 2 Ben Martinson - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1912,7 +1934,7 @@ MonoBehaviour:
   - {fileID: 1303705257}
   - {fileID: 271784977}
   - {fileID: 160209729}
-  waitTime: 1
+  waitTime: 1.5
 --- !u!1 &1303705257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,7 +1950,7 @@ GameObject:
   - component: {fileID: 1303705260}
   - component: {fileID: 1303705261}
   m_Layer: 5
-  m_Name: Katelehn Kouri - Button
+  m_Name: 1 Katelehn Kouri - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
