@@ -32,7 +32,7 @@ public class ZoneCaptureScript : MonoBehaviour
                 capCount = capLimit;
                 capturing = false;
                 captured = true;
-                Destroy(zoneDoor);
+                Destroy(gameObject);
             }
         }
     }

@@ -43,7 +43,7 @@ public class PlayerActions : MonoBehaviour
 
         Vector2 aimingVect = new Vector2(Input.GetAxis(data.controls[3]), Input.GetAxis(data.controls[4]));
 
-        Aim(Input.mousePosition);
+        Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         Shoot(Input.GetButtonDown(data.controls[5]));
         SummonAlly(Input.GetButtonDown(data.controls[6]));
     }
@@ -57,10 +57,8 @@ public class PlayerActions : MonoBehaviour
         worldPos.y = input.y;
         worldPos.z = -Camera.main.transform.position.z;
 
-        mousePos = Camera.main.ScreenToWorldPoint(worldPos);
-
-        summonSpot.transform.position = mousePos;
-        armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(mousePos.y - armPivot.transform.position.y, mousePos.x - armPivot.transform.position.x));
+        summonSpot.transform.position = worldPos;
+        armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - armPivot.transform.position.y, worldPos.x - armPivot.transform.position.x));
     }
 
     // Called when the player presses the shoot button.
