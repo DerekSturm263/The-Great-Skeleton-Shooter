@@ -765,6 +765,7 @@ Transform:
   m_LocalScale: {x: 26.44612, y: 22.1034, z: 1}
   m_Children:
   - {fileID: 1027007868}
+  - {fileID: 1115554824}
   m_Father: {fileID: 1457176870}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -814,6 +815,8 @@ MonoBehaviour:
   zoneDoor: {fileID: 1027007867}
   capturing: 0
   captured: 0
+  playerForSpawner: {fileID: 0}
+  playersForSpawner: []
 --- !u!212 &259220119
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4932,6 +4935,56 @@ SpriteShapeRenderer:
   m_LocalAABB:
     m_Center: {x: 5.233059, y: 1.6919107, z: 0}
     m_Extent: {x: 36.54576, y: 13.226941, z: 0}
+--- !u!1 &1115554823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115554824}
+  - component: {fileID: 1115554825}
+  m_Layer: 0
+  m_Name: SpawnZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115554824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115554823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5066905, y: 0.73472863, z: -0.1}
+  m_LocalScale: {x: 0.03781273, y: 0.04524191, z: 1}
+  m_Children: []
+  m_Father: {fileID: 259220116}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1115554825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115554823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d959a13306bfbe469b46ea846166f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyPrefab: {fileID: 2130294785987538406, guid: ce618aa6c87b55f4397430b6e93f6854,
+    type: 3}
+  AssociatedCapZone: {fileID: 259220115}
+  spawnRate: 1.25
+  spawnTimer: 0
+  spawnTimerMax: 3
+  forceSpawn: 0
 --- !u!1001 &1145521304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6530,6 +6583,8 @@ MonoBehaviour:
   zoneDoor: {fileID: 1498693918}
   capturing: 0
   captured: 0
+  playerForSpawner: {fileID: 0}
+  playersForSpawner: []
 --- !u!212 &1371182640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7668,6 +7723,8 @@ MonoBehaviour:
   zoneDoor: {fileID: 2097305896}
   capturing: 0
   captured: 0
+  playerForSpawner: {fileID: 0}
+  playersForSpawner: []
 --- !u!212 &1746708035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7845,6 +7902,8 @@ MonoBehaviour:
   zoneDoor: {fileID: 1742113616}
   capturing: 0
   captured: 0
+  playerForSpawner: {fileID: 0}
+  playersForSpawner: []
 --- !u!212 &1780443203
 SpriteRenderer:
   m_ObjectHideFlags: 0

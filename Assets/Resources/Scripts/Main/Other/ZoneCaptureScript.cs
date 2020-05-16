@@ -8,6 +8,9 @@ public class ZoneCaptureScript : MonoBehaviour
     public float capCount, capRate, capLimit, capPercent;
     public GameObject zoneDoor;
     public bool capturing, captured;
+    public GameObject playerForSpawner;
+    public List<GameObject> playersForSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class ZoneCaptureScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayersIn++;
+            playerForSpawner = collision.gameObject;
+            playersForSpawner.Add(collision.gameObject);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -48,6 +53,8 @@ public class ZoneCaptureScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayersIn--;
+            playersForSpawner.Remove(collision.gameObject);
+            playerForSpawner = (playersForSpawner[0]);
         }
     }
 }
