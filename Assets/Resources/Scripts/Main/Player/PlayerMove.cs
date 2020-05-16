@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
         Idle, Walking, Running, Jumping, Falling, Landing, Stopping
     }
 
+    private bool Grounded;
     private Rigidbody2D rb2;
 
     [Range(0f, 10f)] public float walkSpeed;
@@ -56,12 +57,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (input)
         {
-            if (IsGrounded())
+            if (Grounded)
             {
                 jumpVel = jumpHeight;
                 rb2.velocity = new Vector2(rb2.velocity.x, jumpVel);
             }
-            else if (!IsGrounded() && jumpVel >= 8f)
+            else if (!Grounded && jumpVel >= 8f)
             {
                 jumpVel /= jumpSpeed;
                 rb2.velocity = new Vector2(rb2.velocity.x, jumpVel);
@@ -81,5 +82,20 @@ public class PlayerMove : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(transform.position - new Vector3(0f, 0.7f, 0f), new Vector2(0.1f, 0.1f), 0f, Vector2.down, 0f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Grounded = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Grounded = false;
+        }
     }
 }
