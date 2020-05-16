@@ -93,9 +93,9 @@ GameObject:
   - component: {fileID: 2002230249157991658}
   - component: {fileID: -346107518836450860}
   - component: {fileID: 5938868363238931945}
+  - component: {fileID: -5073083661570503189}
   - component: {fileID: -4541651819841946121}
   - component: {fileID: 9058322321010489414}
-  - component: {fileID: -5073083661570503189}
   - component: {fileID: 7148346820395834335}
   m_Layer: 0
   m_Name: Ally
@@ -214,8 +214,23 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &-5073083661570503189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187ee5a4a9dcbaa43a28afc54a3967ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
+  BonesMax: 10
+  BonesCurrent: 10
 --- !u!114 &-4541651819841946121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,26 +264,6 @@ MonoBehaviour:
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
   bulletLife: 1
   bulletForce: 10
---- !u!114 &-5073083661570503189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802259110253783445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 187ee5a4a9dcbaa43a28afc54a3967ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPMax: 20
-  HPCurrent: 20
-  bones:
-  - {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
-  - {fileID: 3835219977158006142, guid: b5ac7a04c74e4a445815c85d0fcd3775, type: 3}
-  - {fileID: 8138749552115407915, guid: 732035261b4d95846b7f58b7bb596bc0, type: 3}
-  - {fileID: 5691774978391124357, guid: cb1e0180eb8468f49af82ecd11f97392, type: 3}
-  - {fileID: 3521360544668342883, guid: 20fb7dbb0fe24554ea8a422d6819adad, type: 3}
 --- !u!58 &7148346820395834335
 CircleCollider2D:
   m_ObjectHideFlags: 0

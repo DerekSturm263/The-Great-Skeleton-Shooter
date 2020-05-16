@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6412212083283827704}
   - component: {fileID: 6412212083283827701}
   - component: {fileID: 6412212083283827705}
+  - component: {fileID: 7387992038329712745}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -227,8 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974ca1598cdd5eb40ab2dd559258694b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPMax: 20
-  HPCurrent: 20
+  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
+  BonesMax: 100
+  BonesCurrent: 100
+  playerNum: 0
   controls:
   - 
   - 
@@ -271,8 +274,18 @@ MonoBehaviour:
   bulletLife: 10
   bulletForce: 10
   ally: {fileID: 7802259110253783445, guid: fb1c41d7a6b17b945ae0139ab594e7a8, type: 3}
-  summonSpot: {fileID: 1613788012373643808, guid: 553288692f0d4164aaec30cffad40f9a,
-    type: 3}
+--- !u!114 &7387992038329712745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6412212083283827699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046f991dc6018cf4581dc94083f938d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6412212084942247607
 GameObject:
   m_ObjectHideFlags: 0

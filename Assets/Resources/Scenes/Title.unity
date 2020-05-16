@@ -1573,6 +1573,23 @@ Canvas:
   m_SortingLayerID: -1284879581
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &364585366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364585364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &385178788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4007,6 +4024,23 @@ Canvas:
   m_SortingLayerID: -1284879581
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1255854619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255854617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1290567533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,7 +5112,7 @@ PrefabInstance:
     - target: {fileID: 1452607581399910446, guid: 22fd861e7d71d6843aa489def5b8eae2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -39.799995
+      value: -39.80005
       objectReference: {fileID: 0}
     - target: {fileID: 1452607581399910446, guid: 22fd861e7d71d6843aa489def5b8eae2,
         type: 3}
@@ -5594,6 +5628,23 @@ Canvas:
   m_SortingLayerID: -1284879581
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1835530057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835530055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!224 &1835530060 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2210978768566347979, guid: 414aca7a911062248822326b73cee7e3,
@@ -5612,6 +5663,7 @@ GameObject:
   - component: {fileID: 1861099689}
   - component: {fileID: 1861099690}
   - component: {fileID: 1861099691}
+  - component: {fileID: 1861099692}
   m_Layer: 5
   m_Name: Title Buttons - Layout
   m_TagString: Untagged
@@ -5708,6 +5760,23 @@ Canvas:
   m_SortingLayerID: -1284879581
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &1861099692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861099687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &2004277609
 PrefabInstance:
   m_ObjectHideFlags: 0

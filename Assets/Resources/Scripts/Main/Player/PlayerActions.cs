@@ -57,7 +57,7 @@ public class PlayerActions : MonoBehaviour
         worldPos.y = input.y;
         worldPos.z = -Camera.main.transform.position.z;
 
-        summonSpot.transform.position = worldPos;
+        summonSpot.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
         armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - armPivot.transform.position.y, worldPos.x - armPivot.transform.position.x));
     }
 
@@ -88,7 +88,7 @@ public class PlayerActions : MonoBehaviour
             if (data.BonesCurrent <= 10)
                 return;
 
-            Instantiate(ally, transform.position, Quaternion.identity);
+            Instantiate(ally, summonSpot.transform.position, Quaternion.identity);
             data.RemoveBone(10);
         }
     }

@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class EnemyData : EntityData
 {
-    private void Awake()
-    {
-        BonesMax = 10;
-        BonesCurrent = BonesMax;
-    }
-
+    public uint boneDrops;
+    
     private void Update()
     {
         if (BonesCurrent <= 0)
@@ -18,8 +14,8 @@ public class EnemyData : EntityData
 
     private void Die()
     {
-        // Drops 5 bones.
-        for (int i = 0; i < 5; i++)
+        // Drops boneDrops bones.
+        for (int i = 0; i < boneDrops; i++)
         {
             Instantiate(bone, gameObject.transform.position, Quaternion.identity);
         }
