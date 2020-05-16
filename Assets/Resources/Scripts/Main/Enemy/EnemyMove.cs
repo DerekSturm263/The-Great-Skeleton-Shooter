@@ -14,15 +14,15 @@ public class EnemyMove : MonoBehaviour
 
     [Range(0f, 5f)] public float walkSpeed;
     [Range(0f, 10f)] public float runSpeed;
-    private float moveSpeed;
+    public float moveSpeed;
 
     [Range(0f, 100f)] public float jumpHeight;
     [Range(0f, 2f)] public float jumpSpeed;
     private float jumpVel;
 
-    private float playerDirection;
+    public float playerDirection;
 
-    private bool isLockedOn;
+    public bool isLockedOn;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class EnemyMove : MonoBehaviour
         Jump();
     }
 
-    private void Move(float input)
+    public void Move(float input)
     {
         if (!isLockedOn)
             return;
@@ -55,7 +55,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     // Called when the enemy tries to jump.
-    private void Jump()
+    public void Jump()
     {
         if (!isLockedOn)
             return;
