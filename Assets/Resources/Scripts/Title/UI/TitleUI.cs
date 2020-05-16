@@ -48,6 +48,9 @@ public class TitleUI : MonoBehaviour
             GameController.SetMusic(true);
             GameController.SetSoundEffects(true);
             GameController.SetGraphics(GameController.GraphicsType.Fancy);
+
+            MusicPlayer.Initialize();
+            SoundPlayer.Initialize();
         }
 
         optionsFullscreenTMP.text = (GameController.isFullscreen) ? "On" : "Off";
@@ -240,7 +243,6 @@ public class TitleUI : MonoBehaviour
     {
         GameController.SetFullscreen(!GameController.isFullscreen);
         optionsFullscreenTMP.text = (GameController.isFullscreen) ? "On" : "Off";
-        Screen.fullScreen = GameController.isFullscreen;
     }
 
     public void OnOptionsMusic()

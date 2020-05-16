@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GameController : MonoBehaviour
     public static void SetFullscreen(bool fullscreen)
     {
         isFullscreen = fullscreen;
+        Screen.fullScreen = isFullscreen;
     }
 
     public static void SetMusic(bool music)
