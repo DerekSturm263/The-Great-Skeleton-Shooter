@@ -9,6 +9,7 @@ public class ZoneCaptureScript : MonoBehaviour
     public GameObject zoneDoor;
     public bool capturing, captured;
     public GameObject playerForSpawner;
+    private GameObject[] Players;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +35,17 @@ public class ZoneCaptureScript : MonoBehaviour
                 capCount = capLimit;
                 capturing = false;
                 captured = true;
-                Destroy(gameObject);
+
+                Players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject player in Players)
+                {
+                    player.GetComponent<PlayerData>().BonesCurrent = player.GetComponent<PlayerData>().BonesMax;
+                }
             }
+        }
+        if (captured)
+        {
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

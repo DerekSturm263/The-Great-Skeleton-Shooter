@@ -19,7 +19,7 @@ public class EnemyData : EntityData
         {
             Instantiate(bone, gameObject.transform.position, Quaternion.identity);
         }
-
+        GameObject.Find("ActiveEnemyManager").GetComponent<ActiveEnemyManager>().ActiveEnemies -= 1;
         Destroy(gameObject);
     }
 }

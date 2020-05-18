@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class EnemySpawning : MonoBehaviour
 {
-    public GameObject EnemyPrefab, AssociatedCapZone;
+    public GameObject EnemyPrefab, AssociatedCapZone, ActiveEnemyManagement;
     public float spawnRate, spawnTimer, spawnTimerMax;
-    public bool forceSpawn;
+    public bool forceSpawn, spawnable;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ActiveEnemyManagement = GameObject.Find("ActiveEnemyManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (AssociatedCapZone.GetComponent<ZoneCaptureScript>().PlayersIn >= 1 || forceSpawn)
+        if (AssociatedCapZone.GetComponent<ZoneCaptureScript>().PlayersIn >= 1 && spawnable || forceSpawn && spawnable)
         {
             if (spawnTimer == 0)
             {
@@ -25,6 +25,7 @@ public class EnemySpawning : MonoBehaviour
                 newEnemy.GetComponent<EnemyMove>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                 newEnemy.GetComponent<EnemyMove>().isLockedOn = true;
                 spawnTimer += Time.deltaTime * spawnRate;
+                ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().ActiveEnemies++;
             }
             else if (spawnTimer < spawnTimerMax)
             {
@@ -33,6 +34,13 @@ public class EnemySpawning : MonoBehaviour
             {
                 spawnTimer = 0;
             }
+        }
+        if (ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().ActiveEnemies >= ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().SceneEnemyMax)
+        {
+            spawnable = false;
+        }else if (ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().ActiveEnemies < ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().SceneEnemyMax)
+        {
+            spawnable = true;
         }
     }
 }
