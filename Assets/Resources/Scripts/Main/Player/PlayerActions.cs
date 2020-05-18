@@ -16,12 +16,12 @@ public class PlayerActions : MonoBehaviour
     [Header("Ally Summon")]
     public GameObject ally;
     private GameObject summonSpot;
-
     private Vector2 mousePos;
-
     private void Awake()
     {
         data = GetComponent<PlayerData>();
+       
+       
     }
 
     private void Start()
@@ -31,6 +31,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Update()
     {
+        
         // controls[3] is aimingX.
         // controls[4] is aimingY.
         // controls[5] is shooting.
@@ -52,11 +53,11 @@ public class PlayerActions : MonoBehaviour
     private void Aim(Vector2 input)
     {
         Vector3 worldPos;
-
+        
         worldPos.x = input.x;
-        worldPos.y = input.y;
+        worldPos.y = input.y;       
         worldPos.z = -Camera.main.transform.position.z;
-
+        //worldPos.z = -10;
         summonSpot.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
         armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - armPivot.transform.position.y, worldPos.x - armPivot.transform.position.x));
     }

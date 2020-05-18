@@ -13,6 +13,7 @@ public class VoronoiSplitScreen : MonoBehaviour
     [Header("Camera Locations")]
     public Camera Cam1;
     public Camera Cam2;
+    public Camera MainCamera;
     [Header("Temporary,remove later")]
     //public Camera Cam3;
     [Header("Camera Options/Controls")]
@@ -47,6 +48,7 @@ public class VoronoiSplitScreen : MonoBehaviour
         else
         {
             player2 = player1;
+            MainCamera = Camera.main;
         }
     }
     
@@ -88,7 +90,10 @@ public class VoronoiSplitScreen : MonoBehaviour
         Cam2.transform.position = Vector3.Lerp(ConvergedPos, P2SplitPos, distRange);
         // sets opacity in the shader 
         mat.SetFloat("Split", Mathf.Clamp(distRange, 0, 1));
-        
+        if(GameController.playerCount != GameController.PlayerCount.Multiplayer)
+        {
+            MainCamera.transform.position = Cam1.transform.position;
+        }
         
         //Changes Resolution when screen is resized basically
         if (camRT1.width != Screen.width || camRT1.height != Screen.height)
@@ -101,8 +106,8 @@ public class VoronoiSplitScreen : MonoBehaviour
     public void ChangeRes()
     {
         //camRT1.width = 520;
-        camRT1 = new RenderTexture(Screen.width, Screen.height, 16);
-        camRT2 = new RenderTexture(Screen.width, Screen.height, 16);
+        camRT1 = new RenderTexture(Screen.width, Screen.height, 1,RenderTextureFormat.DefaultHDR);
+        camRT2 = new RenderTexture(Screen.width, Screen.height, 1,RenderTextureFormat.DefaultHDR);
         mat.SetTexture("Cam1", camRT1);
         mat.SetTexture("Cam2", camRT2);
         Cam1.targetTexture = camRT1;

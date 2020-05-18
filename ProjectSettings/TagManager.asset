@@ -14,6 +14,7 @@ TagManager:
   - HealthbarFill
   - HealthbarMask
   - SummonSpot
+  - P1Aim
   layers:
   - Default
   - TransparentFX
@@ -59,4 +60,16 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3010087715
+    locked: 0
+  - name: Layer1
+    uniqueID: 1547973463
+    locked: 0
+  - name: Layer2
+    uniqueID: 392221141
+    locked: 0
+  - name: Layer3
+    uniqueID: 3516849713
+    locked: 0
+  - name: Layer4
+    uniqueID: 3175320873
     locked: 0
