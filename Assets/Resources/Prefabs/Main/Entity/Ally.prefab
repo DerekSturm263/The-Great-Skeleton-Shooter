@@ -91,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7802259110253783446}
   - component: {fileID: 2002230249157991658}
-  - component: {fileID: -346107518836450860}
   - component: {fileID: 5938868363238931945}
+  - component: {fileID: -346107518836450860}
+  - component: {fileID: 7148346820395834335}
   - component: {fileID: -5073083661570503189}
   - component: {fileID: -4541651819841946121}
-  - component: {fileID: 9058322321010489414}
-  - component: {fileID: 7148346820395834335}
+  - component: {fileID: 8245169514632867495}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Player
@@ -169,6 +169,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &5938868363238931945
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 3
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!61 &-346107518836450860
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,75 +216,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &5938868363238931945
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802259110253783445}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 3
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!114 &-5073083661570503189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802259110253783445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 187ee5a4a9dcbaa43a28afc54a3967ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
-  BonesMax: 10
-  BonesCurrent: 10
---- !u!114 &-4541651819841946121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802259110253783445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a5bad95946254c41a9bbdbab6b5588d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  walkSpeed: 2.5
-  runSpeed: 5
-  jumpHeight: 5
-  jumpSpeed: 2
---- !u!114 &9058322321010489414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7802259110253783445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9342b4cdcb22fda489c90df5ad205364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armPivot: {fileID: 8001809446861778181}
-  bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 1
-  bulletForce: 10
 --- !u!58 &7148346820395834335
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -280,6 +232,57 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &-5073083661570503189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187ee5a4a9dcbaa43a28afc54a3967ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2: {fileID: 0}
+  BonesMax: 10
+  BonesCurrent: 10
+  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
+  target: {fileID: 0}
+  isLockedOn: 0
+--- !u!114 &-4541651819841946121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a5bad95946254c41a9bbdbab6b5588d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyState: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  isLockedOn: 0
+--- !u!114 &8245169514632867495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a41f078097af840982e38b340d647b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armState: 0
+  arm: {fileID: 7802259109972593769}
+  armPivot: {fileID: 8001809446861778181}
+  bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
 --- !u!1 &8001809446861778181
 GameObject:
   m_ObjectHideFlags: 0

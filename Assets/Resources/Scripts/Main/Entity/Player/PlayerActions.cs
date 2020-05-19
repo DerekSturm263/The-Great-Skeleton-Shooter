@@ -2,51 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : EntityActions
 {
-    private PlayerData data;
-
-    [Header("Shooting")]
-    public GameObject arm;
-    public GameObject armPivot;
-    public GameObject bullet;
-    [Range(1f, 10f)] public float bulletLife;
-    [Range(1f, 10f)] public float bulletForce;
-
-    [Header("Ally Summon")]
-    public GameObject ally;
     private GameObject summonSpot;
-    private Vector2 mousePos;
+
     private void Awake()
     {
         data = GetComponent<PlayerData>();
-       
-       
-    }
-
-    private void Start()
-    {
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
     }
-
+    
     private void Update()
     {
-        
         // controls[3] is aimingX.
         // controls[4] is aimingY.
         // controls[5] is shooting.
         // controls[6] is summoning.
 
-        //disabled these debugs so I could focus on testing Multiplayer
+        // Disabled these debugs so I could focus on testing multiplayer.
 
         //Debug.Log(Input.GetAxis(data.controls[3]));
         //Debug.Log(Input.GetAxis(data.controls[4]));
 
-        Vector2 aimingVect = new Vector2(Input.GetAxis(data.controls[3]), Input.GetAxis(data.controls[4]));
+        Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
 
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        Shoot(Input.GetButtonDown(data.controls[5]));
-        SummonAlly(Input.GetButtonDown(data.controls[6]));
+        Shoot(Input.GetButtonDown((data as PlayerData).controls[5]));
+        SummonAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
     }
 
     // Called when the player moves the mouse or reticle.
@@ -57,7 +39,7 @@ public class PlayerActions : MonoBehaviour
         worldPos.x = input.x;
         worldPos.y = input.y;       
         worldPos.z = -Camera.main.transform.position.z;
-        //worldPos.z = -10;
+
         summonSpot.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
         armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - armPivot.transform.position.y, worldPos.x - armPivot.transform.position.x));
     }
@@ -89,12 +71,12 @@ public class PlayerActions : MonoBehaviour
             if (data.BonesCurrent <= 10)
                 return;
 
-            Instantiate(ally, summonSpot.transform.position, Quaternion.identity);
+            Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
             data.RemoveBone(10);
         }
     }
 
-    // Called when the player touches a bone
+    // Called when the player touches a bone.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bone"))

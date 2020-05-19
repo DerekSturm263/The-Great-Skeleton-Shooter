@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityData : MonoBehaviour
 {
-    public GameObject bone;
+    [HideInInspector] public Rigidbody2D rb2;
 
     [Header("Stats")]
     public uint BonesMax;

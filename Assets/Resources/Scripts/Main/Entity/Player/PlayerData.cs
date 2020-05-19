@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerData : EntityData
 {
-    public uint playerNum;
+    [HideInInspector] public uint playerNum;
     public static uint totalPlayerCount = 1;
 
+    [Space(10f)]
     public string[] controls = new string[7];
 
     // controls[0] is horizontal movement.
@@ -17,6 +18,9 @@ public class PlayerData : EntityData
     // controls[4] is aimingY.
     // controls[5] is shooting.
     // controls[6] is summoning.
+
+    [Space(10f)]
+    public GameObject ally;
 
     private void Awake()
     {

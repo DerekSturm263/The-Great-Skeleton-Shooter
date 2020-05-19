@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EnemyData : EntityData
 {
+    [Space(10f)]
+    public GameObject bone;
     public uint boneDrops;
-    
+
+    [HideInInspector] public GameObject target;
+    [HideInInspector] public bool isLockedOn;
+
     private void Update()
     {
         if (BonesCurrent <= 0)
@@ -19,6 +24,7 @@ public class EnemyData : EntityData
         {
             Instantiate(bone, gameObject.transform.position, Quaternion.identity);
         }
+
         GameObject.Find("ActiveEnemyManager").GetComponent<ActiveEnemyManager>().ActiveEnemies -= 1;
         Destroy(gameObject);
     }
