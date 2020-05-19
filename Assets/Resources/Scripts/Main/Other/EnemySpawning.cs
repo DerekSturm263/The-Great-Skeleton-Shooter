@@ -24,6 +24,7 @@ public class EnemySpawning : MonoBehaviour
                 GameObject newEnemy = GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
                 newEnemy.GetComponent<EnemyData>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                 newEnemy.GetComponent<EnemyData>().isLockedOn = true;
+                newEnemy.GetComponent<EnemyMove>().isLockedOn = true;
                 spawnTimer += Time.deltaTime * spawnRate;
                 ActiveEnemyManagement.GetComponent<ActiveEnemyManager>().ActiveEnemies++;
             }

@@ -16,7 +16,7 @@ public class PlayerMove : EntityMove
         // controls[1] is running.
         // controls[2] is jumping.
 
-        Move(Input.GetAxis((data as PlayerData).controls[0]));
+        Move(Input.GetAxis((data as PlayerData).controls[0]), false);
         Run(Input.GetButton((data as PlayerData).controls[1]));
         Jump(Input.GetButton((data as PlayerData).controls[2]));
     }

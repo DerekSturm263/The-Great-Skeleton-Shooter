@@ -24,7 +24,7 @@ public class AllyMove : EntityMove
                 targetDirection = 1f;
 
             // Move towards target.
-            Move(targetDirection);
+            Move(targetDirection, true);
             Run(false);
             Jump((data as AllyData).target.transform.position.y - 0.25f > transform.position.y);
         }
