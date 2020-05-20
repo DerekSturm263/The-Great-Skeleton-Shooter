@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerActions : EntityActions
 {
     private GameObject summonSpot;
+    public float fireTimer, fireTimeMax;
+    public bool fireActive = false, fullAuto = false;
 
     private void Awake()
     {
@@ -27,7 +29,19 @@ public class PlayerActions : EntityActions
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
 
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        Shoot(Input.GetButtonDown((data as PlayerData).controls[5]));
+        if (fullAuto)
+        {
+            float shotRate = bulletRate;
+            float shotForce = bulletForce;
+            float shotLife = bulletLife;
+            ShootAuto(Input.GetButton((data as PlayerData).controls[5]), shotRate, shotForce, shotLife, false);
+        }else
+        {
+            float shotRate = bulletRate;
+            float shotForce = bulletForce;
+            float shotLife = bulletLife;
+            ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), shotForce, shotLife * 3, true);
+        }
         SummonAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
     }
 
@@ -45,7 +59,48 @@ public class PlayerActions : EntityActions
     }
 
     // Called when the player presses the shoot button.
-    private void Shoot(bool input)
+    private void ShootAuto(bool input, float firingRate, float fireForce, float fireLife, bool gravEffect)
+    {
+        if (input)
+        {
+            if (!fireActive)
+            {
+                fireActive = true;
+                if (data.BonesCurrent <= 1)
+                    return;
+
+                GameObject newBullet = Instantiate(bullet, arm.transform.position + arm.transform.right * 0.25f, Quaternion.identity);
+
+                newBullet.GetComponent<Rigidbody2D>().AddForce(arm.transform.right * fireForce);
+
+                if (gravEffect)
+                {
+                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
+                }else if (!gravEffect)
+                {
+                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+                }
+
+                newBullet.GetComponent<Bullet>().SetBulletOwner(0);
+                newBullet.transform.rotation = armPivot.transform.rotation;
+
+                Destroy(newBullet, fireLife);
+                data.RemoveBone(1);
+            }else if (fireActive)
+            {
+                if (fireTimer < fireTimeMax)
+                {
+                    fireTimer += Time.deltaTime;
+                }else if (fireTimer >= fireTimeMax)
+                {
+                    fireTimer = 0;
+                    fireActive = false;
+                }
+            }
+        }
+    }
+
+    private void ShootSemiAuto(bool input, float fireForce, float fireLife, bool gravEffect)
     {
         if (input)
         {
@@ -54,11 +109,21 @@ public class PlayerActions : EntityActions
 
             GameObject newBullet = Instantiate(bullet, arm.transform.position + arm.transform.right * 0.25f, Quaternion.identity);
 
-            newBullet.GetComponent<Rigidbody2D>().AddForce(arm.transform.right * bulletForce);
+            newBullet.GetComponent<Rigidbody2D>().AddForce(arm.transform.right * fireForce);
+
+            if (gravEffect)
+            {
+                newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale;
+            }
+            else if (!gravEffect)
+            {
+                newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+            }
+
             newBullet.GetComponent<Bullet>().SetBulletOwner(0);
             newBullet.transform.rotation = armPivot.transform.rotation;
 
-            Destroy(newBullet, bulletLife);
+            Destroy(newBullet, fireLife);
             data.RemoveBone(1);
         }
     }

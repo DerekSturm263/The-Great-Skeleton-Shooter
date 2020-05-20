@@ -17,7 +17,7 @@ public class EntityActions : MonoBehaviour
     [SerializeField] protected GameObject arm;
     [SerializeField] protected GameObject armPivot;
     [SerializeField] protected GameObject bullet;
-
-    public static float bulletLife = 2.5f;
-    public static float bulletForce = 10f;
+    public float bulletLife = 2.5f;
+    public float bulletForce = 10f;
+    public float bulletRate = 1f;
 }
