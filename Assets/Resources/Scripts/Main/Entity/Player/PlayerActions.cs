@@ -122,7 +122,7 @@ public class PlayerActions : EntityActions
 
                 if (gravEffect)
                 {
-                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
+                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale;
                 }
                 else if (!gravEffect)
                 {
