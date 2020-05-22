@@ -55,7 +55,10 @@ public class PlayerActions : EntityActions
         worldPos.z = -Camera.main.transform.position.z;
 
         summonSpot.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
-        armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - armPivot.transform.position.y, worldPos.x - armPivot.transform.position.x));
+        foreach (GameObject pivot in armPivot)
+        {
+            pivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - pivot.transform.position.y, worldPos.x - pivot.transform.position.x));
+        }
     }
 
     // Called when the player presses the shoot button.
@@ -68,24 +71,30 @@ public class PlayerActions : EntityActions
                 fireActive = true;
                 if (data.BonesCurrent <= 1)
                     return;
-
-                GameObject newBullet = Instantiate(bullet, arm.transform.position + arm.transform.right * 0.25f, Quaternion.identity);
-
-                newBullet.GetComponent<Rigidbody2D>().AddForce(arm.transform.right * fireForce);
-
-                if (gravEffect)
+                foreach (GameObject gun in arm)
                 {
-                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
-                }else if (!gravEffect)
-                {
-                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+                    GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                    newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
+
+                    if (gravEffect)
+                    {
+                        newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
+                    }
+                    else if (!gravEffect)
+                    {
+                        newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+                    }
+
+                    newBullet.GetComponent<Bullet>().SetBulletOwner(0);
+
+                    foreach (GameObject pivot in armPivot)
+                    {
+                        newBullet.transform.rotation = pivot.transform.rotation;
+                    }
+
+                    Destroy(newBullet, fireLife);
+                    data.RemoveBone(1);
                 }
-
-                newBullet.GetComponent<Bullet>().SetBulletOwner(0);
-                newBullet.transform.rotation = armPivot.transform.rotation;
-
-                Destroy(newBullet, fireLife);
-                data.RemoveBone(1);
             }else if (fireActive)
             {
                 if (fireTimer < fireTimeMax)
@@ -106,25 +115,30 @@ public class PlayerActions : EntityActions
         {
             if (data.BonesCurrent <= 1)
                 return;
-
-            GameObject newBullet = Instantiate(bullet, arm.transform.position + arm.transform.right * 0.25f, Quaternion.identity);
-
-            newBullet.GetComponent<Rigidbody2D>().AddForce(arm.transform.right * fireForce);
-
-            if (gravEffect)
+            foreach (GameObject gun in arm)
             {
-                newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale;
-            }
-            else if (!gravEffect)
-            {
-                newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
-            }
+                GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 
-            newBullet.GetComponent<Bullet>().SetBulletOwner(0);
-            newBullet.transform.rotation = armPivot.transform.rotation;
+                if (gravEffect)
+                {
+                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
+                }
+                else if (!gravEffect)
+                {
+                    newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+                }
 
-            Destroy(newBullet, fireLife);
-            data.RemoveBone(1);
+                newBullet.GetComponent<Bullet>().SetBulletOwner(0);
+
+                foreach (GameObject pivot in armPivot)
+                {
+                    newBullet.transform.rotation = pivot.transform.rotation;
+                }
+
+                Destroy(newBullet, fireLife);
+                data.RemoveBone(1);
+            }
         }
     }
 

@@ -31,7 +31,10 @@ public class EnemyActions : EntityActions
         pos.y = target.transform.position.y;
         pos.z = 0f;
 
-        armPivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(pos.y - armPivot.transform.position.y, pos.x - armPivot.transform.position.x));
+        foreach (GameObject pivot in armPivot)
+        {
+            pivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(pos.y - pivot.transform.position.y, pos.x - pivot.transform.position.x));
+        }
     }
 
     // Called twice every second to try and fire at the player
@@ -40,12 +43,12 @@ public class EnemyActions : EntityActions
         if (!(data as EnemyData).isLockedOn)
             return;
 
-        GameObject newBullet = Instantiate(bullet, armPivot.transform.position + armPivot.transform.right * 0.5f, Quaternion.identity);
-
-        newBullet.GetComponent<Rigidbody2D>().AddForce(armPivot.transform.right * bulletForce);
-        newBullet.GetComponent<Bullet>().SetBulletOwner(1);
-        newBullet.transform.rotation = armPivot.transform.rotation;
-
-        Destroy(newBullet, bulletLife);
+        foreach (GameObject gun in arm)
+        {
+            GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+            newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
+            Destroy(newBullet, bulletLife);
+            data.RemoveBone(1);
+        }
     }
 }
