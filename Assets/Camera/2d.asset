@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RendererFeatures: []
   m_RendererFeatureMap: 
-  m_TransparencySortMode: 0
+  m_TransparencySortMode: 1
   m_TransparencySortAxis: {x: 0, y: 1, z: 0}
-  m_HDREmulationScale: 1
+  m_HDREmulationScale: 2
   m_LightBlendStyles:
   - enabled: 0
     name: Default
     maskTextureChannel: 1
-    renderTextureScale: 0.25
+    renderTextureScale: 0.75
     blendMode: 1
     customBlendFactors:
       multiplicative: 1.94
