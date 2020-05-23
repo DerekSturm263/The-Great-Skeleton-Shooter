@@ -62,7 +62,7 @@ MonoBehaviour:
   - {x: 0.23494126, y: 0.7488851, z: 0}
   m_ShapePathHash: -1046160183
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67854
+  m_InstanceId: 47722
 --- !u!1 &776657712266198807
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,13 +87,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776657712266198807}
-  m_LocalRotation: {x: -0, y: -0, z: 0.14924918, w: 0.9887997}
+  m_LocalRotation: {x: -0, y: -0, z: -0.018288849, w: 0.99983275}
   m_LocalPosition: {x: 1.9933321, y: 0.00000029404202, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 776657712886301648}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 17.167002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.0960002}
 --- !u!114 &3822269918094836546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   - {x: 0.44322124, y: -0.59260285, z: 0}
   m_ShapePathHash: -1269105906
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67848
+  m_InstanceId: 47716
 --- !u!1 &776657712492215004
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   - {x: -0.051995955, y: 0.04925757, z: 0}
   m_ShapePathHash: 590712499
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67852
+  m_InstanceId: 47720
 --- !u!1 &776657712690176789
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,14 +314,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776657712737243899}
-  m_LocalRotation: {x: -0, y: -0, z: 0.78139114, w: 0.62404156}
+  m_LocalRotation: {x: -0, y: -0, z: -0.61348593, w: 0.78970563}
   m_LocalPosition: {x: -0.6387817, y: 1.7630106, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 776657713621589402}
   m_Father: {fileID: 776657712971296007}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 102.77601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -75.684006}
 --- !u!114 &8536677133313576383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   - {x: -0.16924173, y: 0.49478304, z: 0}
   m_ShapePathHash: -1105196366
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67858
+  m_InstanceId: 47726
 --- !u!1 &776657712886301655
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,14 +376,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776657712886301655}
-  m_LocalRotation: {x: -0, y: -0, z: -0.77397656, w: 0.63321435}
+  m_LocalRotation: {x: -0, y: -0, z: -0.67765915, w: 0.7353761}
   m_LocalPosition: {x: -0.64, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 776657712266198800}
   m_Father: {fileID: 776657713621589402}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -101.425}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -85.32201}
 --- !u!114 &7607886743460563849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   - {x: -0.4060279, y: 0.056830604, z: 0}
   m_ShapePathHash: -103598218
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67856
+  m_InstanceId: 47724
 --- !u!1 &776657712971296006
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,8 +511,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 776657712737243892}
   m_Bounds:
-    m_Center: {x: -1.2755345, y: 3.5192428, z: 0}
-    m_Extent: {x: 0.90671074, y: 2.156075, z: 0}
+    m_Center: {x: 0.048091114, y: 0.015753746, z: 0}
+    m_Extent: {x: 0.95121944, y: 2.1473913, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &776657713249883191
@@ -577,7 +577,7 @@ MonoBehaviour:
   - {x: -0.25872722, y: -0.1332001, z: 0}
   m_ShapePathHash: 1472026047
   m_Mesh: {fileID: 0}
-  m_InstanceId: 67846
+  m_InstanceId: 47714
 --- !u!1 &776657713535413362
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,8 +784,8 @@ MonoBehaviour:
   - {fileID: 776657712886301648}
   - {fileID: 776657712266198800}
   m_Bounds:
-    m_Center: {x: -0.9181657, y: -0.5702882, z: 0}
-    m_Extent: {x: 0.91373646, y: 2.1984587, z: 0}
+    m_Center: {x: -0.5663146, y: -0.6361904, z: 0}
+    m_Extent: {x: 0.87440574, y: 2.1728506, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8664422768445023756

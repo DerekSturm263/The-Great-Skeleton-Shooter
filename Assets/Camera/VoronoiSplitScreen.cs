@@ -17,7 +17,7 @@ public class VoronoiSplitScreen : MonoBehaviour
     [Header("Temporary,remove later")]
     //public Camera Cam3;
     [Header("Camera Options/Controls")]
-
+    public float cameraDistance = 10;
     [Header("Split Camera Offset")]
 
     [Range(3, 9)]
@@ -81,9 +81,9 @@ public class VoronoiSplitScreen : MonoBehaviour
 
             //gets the different positions the cameras can be in, 
             //converged pos is the very center one basically when the players are both in range
-            Vector3 P1SplitPos = new Vector3(player1.transform.position.x - fx1, player1.transform.position.y + fy1, -10);
-            Vector3 P2SplitPos = new Vector3(player2.transform.position.x + fx2, player2.transform.position.y - fy2, -10);
-            Vector3 ConvergedPos = new Vector3((player1.transform.position.x + player2.transform.position.x) / 2, (player1.transform.position.y + player2.transform.position.y) / 2, -10);
+            Vector3 P1SplitPos = new Vector3(player1.transform.position.x - fx1, player1.transform.position.y + fy1, -cameraDistance);
+            Vector3 P2SplitPos = new Vector3(player2.transform.position.x + fx2, player2.transform.position.y - fy2, -cameraDistance);
+            Vector3 ConvergedPos = new Vector3((player1.transform.position.x + player2.transform.position.x) / 2, (player1.transform.position.y + player2.transform.position.y) / 2, -cameraDistance);
 
         // Blends the two transforms so it doesnt feel trash    
         Cam1.transform.position = Vector3.Lerp(ConvergedPos, P1SplitPos, distRange);
