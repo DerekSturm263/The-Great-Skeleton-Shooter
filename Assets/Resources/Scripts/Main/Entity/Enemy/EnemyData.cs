@@ -8,7 +8,7 @@ public class EnemyData : EntityData
     public GameObject bone;
     public uint boneDrops;
 
-    [HideInInspector] public GameObject target;
+    public GameObject target;
     [HideInInspector] public bool isLockedOn;
 
     private void Update()

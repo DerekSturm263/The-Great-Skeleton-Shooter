@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyActions : EntityActions
 {
+    public bool shoot;
     private void Awake()
     {
         data = GetComponent<EnemyData>();
@@ -16,7 +17,7 @@ public class EnemyActions : EntityActions
 
     private void Update()
     {
-        if ((data as EnemyData).isLockedOn)
+        if ((data as EnemyData).target != null)
         {
             Aim((data as EnemyData).target);
         }
@@ -35,20 +36,23 @@ public class EnemyActions : EntityActions
         {
             pivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(pos.y - pivot.transform.position.y, pos.x - pivot.transform.position.x));
         }
+
+        shoot = true;
     }
 
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (!(data as EnemyData).isLockedOn)
-            return;
-
-        foreach (GameObject gun in arm)
+        if (shoot)
         {
-            GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
-            newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
-            Destroy(newBullet, bulletLife);
-            data.RemoveBone(1);
+            foreach (GameObject gun in arm)
+            {
+                GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
+                Destroy(newBullet, bulletLife);
+                data.RemoveBone(1);
+            }
+            shoot = false;
         }
     }
 }
