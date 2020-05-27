@@ -19,7 +19,10 @@ public class EnemyActions : EntityActions
     {
         if ((data as EnemyData).target != null)
         {
-            Aim((data as EnemyData).target);
+            if ((data as EnemyData).BonesCurrent != 0)
+            {
+                Aim((data as EnemyData).target);
+            }
         }
     }
 

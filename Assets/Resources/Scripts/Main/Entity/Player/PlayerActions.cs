@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerActions : EntityActions
 {
     private GameObject summonSpot;
-    public float fireTimer, fireTimeMax;
+    public float fireTimer, fireTimeMax, boneFadeSpeed;
     public bool fireActive = false, fullAuto = false;
+    public Image boneUI;
 
     private void Awake()
     {
+        boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
         data = GetComponent<PlayerData>();
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
     }
@@ -27,7 +31,15 @@ public class PlayerActions : EntityActions
         //Debug.Log(Input.GetAxis(data.controls[4]));
 
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
-
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            fullAuto = !fullAuto;
+            boneUI.rectTransform.localScale = new Vector3(-boneUI.rectTransform.localScale.x, boneUI.rectTransform.localScale.y, boneUI.rectTransform.localScale.z);
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Title");
+        }
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (fullAuto)
         {
