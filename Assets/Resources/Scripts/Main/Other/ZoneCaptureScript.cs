@@ -13,26 +13,26 @@ public class ZoneCaptureScript : MonoBehaviour
     private GameObject[] Players;
     public bool loadTitleOnCap;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Players = GameObject.FindGameObjectsWithTag("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (PlayersIn > 0)
         {
             capturing = true;
             capPercent = (capCount / capLimit);
         }
+
         if (capturing && !captured)
         {
             if (capCount < capLimit)
             {
                 capCount += Time.deltaTime * capRate * PlayersIn;
-            }else if (capCount >= capLimit)
+            }
+            else if (capCount >= capLimit)
             {
                 if (loadTitleOnCap)
                 {
@@ -42,7 +42,6 @@ public class ZoneCaptureScript : MonoBehaviour
                 capturing = false;
                 captured = true;
 
-                Players = GameObject.FindGameObjectsWithTag("Player");
                 foreach (GameObject player in Players)
                 {
                     player.GetComponent<PlayerData>().BonesCurrent = player.GetComponent<PlayerData>().BonesMax;
@@ -51,7 +50,7 @@ public class ZoneCaptureScript : MonoBehaviour
         }
         if (captured)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

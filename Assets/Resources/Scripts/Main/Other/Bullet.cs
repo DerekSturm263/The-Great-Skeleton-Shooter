@@ -25,10 +25,7 @@ public class Bullet : MonoBehaviour
         else if (bulletOwner == BulletOwner.Player && collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<EnemyData>().RemoveBone(1);
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
-        {
+            Instantiate(collision.gameObject.GetComponent<EnemyData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
             Destroy(gameObject);
         }
     }

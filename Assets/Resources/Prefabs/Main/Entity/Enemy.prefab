@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1767651259416096274}
   - component: {fileID: 7912269010350114910}
   - component: {fileID: 3038728390320637049}
+  - component: {fileID: 5341930157792484451}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -170,6 +171,10 @@ MonoBehaviour:
   boneDrops: 5
   target: {fileID: 0}
   isLockedOn: 0
+  deathParticles: {fileID: 9069963587402409237, guid: ad72fe1682472d847a30a5bbdf7095ef,
+    type: 3}
+  loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
+    type: 3}
 --- !u!114 &7912269010350114910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,9 +210,24 @@ MonoBehaviour:
   armPivot:
   - {fileID: 9121418895949509868}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 2.5
+  bulletLife: 0.33
   bulletForce: 10
   bulletRate: 1
+  shoot: 0
+--- !u!114 &5341930157792484451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130294785987538406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3b6d6bcff03aa40a4d273e8951d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 7736766607071438211, guid: 6eafef6a467754848841e5c5a8c279a7,
+    type: 3}
 --- !u!1 &2130294786488361267
 GameObject:
   m_ObjectHideFlags: 0

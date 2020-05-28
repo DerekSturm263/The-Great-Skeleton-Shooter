@@ -285,7 +285,7 @@ MonoBehaviour:
   armPivot:
   - {fileID: 8001809446861778181}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 2.5
+  bulletLife: 0.33
   bulletForce: 10
   bulletRate: 1
 --- !u!1 &8001809446861778181

@@ -11,23 +11,29 @@ public class EnemyData : EntityData
     public GameObject target;
     [HideInInspector] public bool isLockedOn;
 
+    public GameObject deathParticles;
+    public GameObject loseBoneParticle;
+
     private void Update()
     {
-        if (BonesCurrent <= 0)
+        if (BonesCurrent <= 0 || BonesCurrent > BonesMax)
             Die();
-        if (BonesCurrent > BonesMax)
-            BonesCurrent = 0;
     }
 
     private void Die()
     {
-        // Drops boneDrops bones.
+        Destroy(gameObject);
+        Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        SpawnBones();
+        ActiveEnemyManager.activeEnemies--;
+    }
+
+    private void SpawnBones()
+    {
         for (int i = 0; i < boneDrops; i++)
         {
-            Instantiate(bone, gameObject.transform.position, Quaternion.identity);
+            GameObject newBone = Instantiate(bone, gameObject.transform.position, gameObject.transform.rotation);
+            newBone.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-4, 4), 4));
         }
-
-        GameObject.Find("ActiveEnemyManager").GetComponent<ActiveEnemyManager>().ActiveEnemies -= 1;
-        Destroy(gameObject);
     }
 }
