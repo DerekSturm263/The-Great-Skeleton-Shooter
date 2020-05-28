@@ -48,7 +48,6 @@ public class VoronoiSplitScreen : MonoBehaviour
         else
         {
             player2 = player1;
-            MainCamera = Camera.main;
         }
     }
     

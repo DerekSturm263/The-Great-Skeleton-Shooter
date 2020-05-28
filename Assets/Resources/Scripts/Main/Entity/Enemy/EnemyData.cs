@@ -15,6 +15,8 @@ public class EnemyData : EntityData
     {
         if (BonesCurrent <= 0)
             Die();
+        if (BonesCurrent > BonesMax)
+            BonesCurrent = 0;
     }
 
     private void Die()

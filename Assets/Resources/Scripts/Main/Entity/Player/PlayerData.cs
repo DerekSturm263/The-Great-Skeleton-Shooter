@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerData : EntityData
 {
-    [HideInInspector] public uint playerNum;
+    [HideInInspector] public uint playerNum = 0;
     public static uint totalPlayerCount = 1;
 
     [Space(10f)]
