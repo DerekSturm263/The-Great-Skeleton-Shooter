@@ -15,6 +15,7 @@ TagManager:
   - HealthbarMask
   - SummonSpot
   - P1Aim
+  - capzone
   layers:
   - Default
   - TransparentFX

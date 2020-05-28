@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZoneCaptureScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ZoneCaptureScript : MonoBehaviour
     public bool capturing, captured;
     public GameObject playerForSpawner;
     private GameObject[] Players;
+    public bool loadTitleOnCap;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,10 @@ public class ZoneCaptureScript : MonoBehaviour
                 capCount += Time.deltaTime * capRate * PlayersIn;
             }else if (capCount >= capLimit)
             {
+                if (loadTitleOnCap)
+                {
+                    SceneManager.LoadScene("Title");
+                }
                 capCount = capLimit;
                 capturing = false;
                 captured = true;

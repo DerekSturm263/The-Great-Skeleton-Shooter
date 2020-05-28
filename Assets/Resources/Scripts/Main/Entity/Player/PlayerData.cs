@@ -8,6 +8,7 @@ public class PlayerData : EntityData
 {
     [HideInInspector] public uint playerNum = 0;
     public static uint totalPlayerCount = 1;
+    
 
     [Space(10f)]
     public string[] controls = new string[7];
