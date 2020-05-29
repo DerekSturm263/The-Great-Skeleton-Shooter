@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-
+using System.Security.Cryptography.X509Certificates;
 
 public class CreditsUI : MonoBehaviour
 {
@@ -28,6 +28,8 @@ public class CreditsUI : MonoBehaviour
     {
         eventSystem = EventSystem.current;
         none = new GameObject();
+
+        oldSelectedCredit = creditsImages[0];
     }
 
     private void Start()
@@ -46,7 +48,9 @@ public class CreditsUI : MonoBehaviour
         UpdateSelectionPosition();
 
         // Select the correct credit.
-        creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)].SetActive(true);
+        foreach (GameObject g in creditsImages)
+            if (Array.IndexOf(buttons, eventSystem.currentSelectedGameObject) < 5)
+                g.SetActive(creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)] == g);
     }
 
     private void UpdateSelectionPosition()
@@ -74,7 +78,6 @@ public class CreditsUI : MonoBehaviour
         {
             buttonSelectionHighlight.GetComponent<CanvasGroup>().alpha = buttonParent.alpha;
         }
-        oldSelectedCredit = creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)].SetActive(true);
     }
 
     private void EnableAnimators()
