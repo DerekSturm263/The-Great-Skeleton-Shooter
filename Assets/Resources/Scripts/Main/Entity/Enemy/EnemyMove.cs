@@ -26,7 +26,7 @@ public class EnemyMove : EntityMove
             // Move towards target.
             Move(targetDirection, true);
             Run(false);
-            Jump((data as EnemyData).target.transform.position.y - 0.25f > transform.position.y);
+            Jump((data as EnemyData).target.transform.position.y - 1f > transform.position.y);
         }
     }
 

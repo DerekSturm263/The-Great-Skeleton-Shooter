@@ -19,6 +19,9 @@ public class CreditsUI : MonoBehaviour
     private GameObject lastSelected;
     public float waitTime;
 
+    public GameObject oldSelectedCredit;
+    public GameObject[] creditsImages;
+
     private GameObject none;
 
     private void Awake()
@@ -41,6 +44,9 @@ public class CreditsUI : MonoBehaviour
             eventSystem.SetSelectedGameObject(lastSelected);
 
         UpdateSelectionPosition();
+
+        // Select the correct credit.
+        creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)].SetActive(true);
     }
 
     private void UpdateSelectionPosition()
@@ -68,6 +74,7 @@ public class CreditsUI : MonoBehaviour
         {
             buttonSelectionHighlight.GetComponent<CanvasGroup>().alpha = buttonParent.alpha;
         }
+        oldSelectedCredit = creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)].SetActive(true);
     }
 
     private void EnableAnimators()

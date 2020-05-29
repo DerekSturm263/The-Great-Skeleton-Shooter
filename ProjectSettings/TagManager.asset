@@ -16,6 +16,7 @@ TagManager:
   - SummonSpot
   - P1Aim
   - capzone
+  - Credit
   layers:
   - Default
   - TransparentFX
