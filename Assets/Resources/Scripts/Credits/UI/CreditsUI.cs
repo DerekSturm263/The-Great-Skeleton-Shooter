@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-
+using System.Security.Cryptography.X509Certificates;
 
 public class CreditsUI : MonoBehaviour
 {
@@ -19,12 +19,17 @@ public class CreditsUI : MonoBehaviour
     private GameObject lastSelected;
     public float waitTime;
 
+    public GameObject oldSelectedCredit;
+    public GameObject[] creditsImages;
+
     private GameObject none;
 
     private void Awake()
     {
         eventSystem = EventSystem.current;
         none = new GameObject();
+
+        oldSelectedCredit = creditsImages[0];
     }
 
     private void Start()
@@ -41,6 +46,11 @@ public class CreditsUI : MonoBehaviour
             eventSystem.SetSelectedGameObject(lastSelected);
 
         UpdateSelectionPosition();
+
+        // Select the correct credit.
+        foreach (GameObject g in creditsImages)
+            if (Array.IndexOf(buttons, eventSystem.currentSelectedGameObject) < 5)
+                g.SetActive(creditsImages[Array.IndexOf(buttons, eventSystem.currentSelectedGameObject)] == g);
     }
 
     private void UpdateSelectionPosition()
