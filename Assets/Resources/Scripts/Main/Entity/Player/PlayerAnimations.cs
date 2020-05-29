@@ -21,7 +21,7 @@ public class PlayerAnimations : MonoBehaviour
         RaycastHit2D hitInfo;
         Vector2 boxSize = new Vector2(0.5f, 0.01f);
         hitInfo = Physics2D.BoxCast((Vector2)transform.position - new Vector2(0f, boxSize.y + 0.51f), boxSize, 0f, Vector2.down, boxSize.y, groundLayer);
-        
+        anim.SetFloat("SprintSpeed",Mathf.Abs(rb.velocity.x / 14)  +1);
         if (rb.velocity.x <= -0.3)
         {
             //player.transform.localScale = new Vector2(-1,player.transform.localScale.y);

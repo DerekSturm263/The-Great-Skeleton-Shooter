@@ -12,14 +12,19 @@ public class ZoneCaptureScript : MonoBehaviour
     public GameObject playerForSpawner;
     private GameObject[] Players;
     public bool loadTitleOnCap;
+    public Material zoneCaptureMaterial;
+    SpriteRenderer getMat;
 
     private void Start()
     {
         Players = GameObject.FindGameObjectsWithTag("Player");
+        getMat = GetComponent<SpriteRenderer>();
+        //Material = getMat.material.;
     }
 
     private void Update()
     {
+        getMat.material.SetFloat("Fill", capPercent);
         if (PlayersIn > 0)
         {
             capturing = true;
