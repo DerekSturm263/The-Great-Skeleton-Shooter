@@ -15,7 +15,7 @@ public class SetupGame : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
             Instantiate(gameController);
-
+        PlayerData.totalPlayerCount = 1;
         #region Create Players
 
         // Creates player one.

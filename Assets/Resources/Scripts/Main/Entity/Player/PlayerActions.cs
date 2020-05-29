@@ -10,12 +10,14 @@ public class PlayerActions : EntityActions
     public float fireTimer, fireTimeMax, boneFadeSpeed;
     public bool fireActive = false, fullAuto = false;
     public Image boneUI;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
         boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
         data = GetComponent<PlayerData>();
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
+        rb = GetComponent<Rigidbody2D>();
     }
     
     private void Update()
@@ -69,8 +71,10 @@ public class PlayerActions : EntityActions
         summonSpot.transform.position = new Vector3(worldPos.x, worldPos.y, 0);
         foreach (GameObject pivot in armPivot)
         {
-            pivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - pivot.transform.position.y, worldPos.x - pivot.transform.position.x));
-           // pivot.transform.right = summonSpot.transform.position - pivot.transform.position;
+         
+                pivot.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(worldPos.y - pivot.transform.position.y, worldPos.x - pivot.transform.position.x));
+          
+            // pivot.transform.right = summonSpot.transform.position - pivot.transform.position;
             //pivot.transform.LookAt(summonSpot.transform.position);
         }
     }
