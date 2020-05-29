@@ -16,7 +16,11 @@ TagManager:
   - SummonSpot
   - P1Aim
   - capzone
+<<<<<<< HEAD
   - Credit
+=======
+  - Ally
+>>>>>>> 195d0a2dfcc680fda1c7731256e34dc9b78ca1f7
   layers:
   - Default
   - TransparentFX
