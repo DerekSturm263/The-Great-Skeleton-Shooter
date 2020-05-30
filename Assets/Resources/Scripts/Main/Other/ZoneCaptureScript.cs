@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ZoneCaptureScript : MonoBehaviour
 {
+    public static GameObject currentZone;
+
     public int PlayersIn = 0;
     public float capCount, capRate, capLimit, capPercent;
     public GameObject zoneDoor;
@@ -27,6 +29,7 @@ public class ZoneCaptureScript : MonoBehaviour
         getMat.material.SetFloat("Fill", capPercent);
         if (PlayersIn > 0)
         {
+            currentZone = this.gameObject;
             capturing = true;
             capPercent = (capCount / capLimit);
         }
