@@ -19,7 +19,7 @@ public class ZoneCaptureScript : MonoBehaviour
     {
         Players = GameObject.FindGameObjectsWithTag("Player");
         getMat = GetComponent<SpriteRenderer>();
-        //Material = getMat.material.;
+        // Material = getMat.material.;
     }
 
     private void Update()

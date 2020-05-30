@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7912269010350114910}
   - component: {fileID: 3038728390320637049}
   - component: {fileID: 5341930157792484451}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1076743331
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 501170d9bb295d440b573a622d5e5ea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,14 +167,14 @@ MonoBehaviour:
   rb2: {fileID: 0}
   BonesMax: 10
   BonesCurrent: 10
-  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
-  boneDrops: 5
-  target: {fileID: 0}
-  isLockedOn: 0
   deathParticles: {fileID: 9069963587402409237, guid: ad72fe1682472d847a30a5bbdf7095ef,
     type: 3}
   loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
     type: 3}
+  bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
+  boneDrops: 5
+  target: {fileID: 0}
+  isLockedOn: 0
 --- !u!114 &7912269010350114910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2130294786488361266}
   - component: {fileID: 2130294786488361271}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Arm
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1076743331
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 501170d9bb295d440b573a622d5e5ea7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -318,7 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359492955593913876}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Arm Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

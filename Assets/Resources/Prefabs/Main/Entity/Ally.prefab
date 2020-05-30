@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1076743331
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 501170d9bb295d440b573a622d5e5ea7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: -5073083661570503189}
   - component: {fileID: -4541651819841946121}
   - component: {fileID: 8245169514632867495}
+  - component: {fileID: 7868018041115285867}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Ally
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1076743331
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 501170d9bb295d440b573a622d5e5ea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -247,6 +248,10 @@ MonoBehaviour:
   rb2: {fileID: 0}
   BonesMax: 10
   BonesCurrent: 10
+  deathParticles: {fileID: 9069963587402409237, guid: ad72fe1682472d847a30a5bbdf7095ef,
+    type: 3}
+  loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
+    type: 3}
   bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
   target: {fileID: 0}
   isLockedOn: 0
@@ -288,6 +293,20 @@ MonoBehaviour:
   bulletLife: 0.33
   bulletForce: 10
   bulletRate: 1
+--- !u!114 &7868018041115285867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7802259110253783445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3b6d6bcff03aa40a4d273e8951d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 7736766607071438211, guid: 6eafef6a467754848841e5c5a8c279a7,
+    type: 3}
 --- !u!1 &8001809446861778181
 GameObject:
   m_ObjectHideFlags: 0

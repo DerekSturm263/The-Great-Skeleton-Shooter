@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 486974903116046352}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6412212083283827705}
   - component: {fileID: 1105765326088254904}
   - component: {fileID: 7387992038329712745}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -121,6 +121,10 @@ MonoBehaviour:
   rb2: {fileID: 0}
   BonesMax: 100
   BonesCurrent: 100
+  deathParticles: {fileID: 9069963587402409237, guid: ad72fe1682472d847a30a5bbdf7095ef,
+    type: 3}
+  loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
+    type: 3}
   playerNum: 0
   controls:
   - 
@@ -261,6 +265,11 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -404710
       objectReference: {fileID: 0}
+    - target: {fileID: 2766197936268548182, guid: 21a3e5d8425a28f4fa006d2af323c4a9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282730849955357509, guid: 21a3e5d8425a28f4fa006d2af323c4a9,
         type: 3}
       propertyPath: m_Mesh
@@ -320,6 +329,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InstanceId
       value: -404722
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412212082973312767, guid: 21a3e5d8425a28f4fa006d2af323c4a9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412212084942247607, guid: 21a3e5d8425a28f4fa006d2af323c4a9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6870508690714852982, guid: 21a3e5d8425a28f4fa006d2af323c4a9,
         type: 3}

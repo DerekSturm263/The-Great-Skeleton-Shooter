@@ -12,12 +12,13 @@ public class AllyData : EntityData
 
     private void Update()
     {
-        if (BonesCurrent <= 0)
+        if (BonesCurrent <= 0 || BonesCurrent > BonesMax)
             Die();
     }
 
     private void Die()
     {
         Destroy(gameObject);
+        Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
     }
 }

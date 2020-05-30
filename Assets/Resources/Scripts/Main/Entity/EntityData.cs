@@ -10,6 +10,9 @@ public class EntityData : MonoBehaviour
     public uint BonesMax;
     public uint BonesCurrent;
 
+    public GameObject deathParticles;
+    public GameObject loseBoneParticle;
+
     public void AddBone(uint amount)
     {
         BonesCurrent += amount;

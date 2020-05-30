@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public enum BulletOwner
     {
-        Player, Enemy
+        Player, Enemy, Ally
     }
     public BulletOwner bulletOwner;
 
@@ -17,16 +17,43 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (bulletOwner == BulletOwner.Enemy && collision.gameObject.CompareTag("Player"))
+        Debug.Log("Hit " + collision.gameObject.name);
+
+        switch (bulletOwner)
         {
-            collision.gameObject.GetComponent<PlayerData>().RemoveBone(1);
-            Destroy(gameObject);
-        }
-        else if (bulletOwner == BulletOwner.Player && collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<EnemyData>().RemoveBone(1);
-            Instantiate(collision.gameObject.GetComponent<EnemyData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-            Destroy(gameObject);
+            case BulletOwner.Enemy:
+                if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
+                {
+                    collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
+                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    Destroy(gameObject);
+                }
+
+                break;
+
+            case BulletOwner.Player:
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
+                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    Destroy(gameObject);
+                }
+
+                break;
+
+            case BulletOwner.Ally:
+                if (collision.gameObject.CompareTag("Enemy"))
+                {
+                    collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
+                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    Destroy(gameObject);
+                }
+
+                break;
+
+            default:
+                Debug.Log("Something went wrong.");
+                break;
         }
     }
 }

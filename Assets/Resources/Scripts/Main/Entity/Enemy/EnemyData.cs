@@ -11,9 +11,6 @@ public class EnemyData : EntityData
     public GameObject target;
     [HideInInspector] public bool isLockedOn;
 
-    public GameObject deathParticles;
-    public GameObject loseBoneParticle;
-
     private void Update()
     {
         if (BonesCurrent <= 0 || BonesCurrent > BonesMax)

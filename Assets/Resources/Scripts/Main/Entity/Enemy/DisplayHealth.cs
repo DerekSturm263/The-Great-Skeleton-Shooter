@@ -5,18 +5,19 @@ using UnityEngine;
 public class DisplayHealth : MonoBehaviour
 {
     public GameObject healthBar;
-    private GameObject enemyHealthBar;
+    private GameObject entityHealthBar;
 
     private void OnEnable()
     {
-        enemyHealthBar = Instantiate(healthBar, gameObject.transform);
+        entityHealthBar = Instantiate(healthBar, gameObject.transform);
+        entityHealthBar.transform.localPosition += new Vector3(0f, 1f);
     }
 
     private void Update()
     {
-        enemyHealthBar.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.green, Color.red, GetComponent<EnemyData>().BonesCurrent / GetComponent<EnemyData>().BonesMax);
-        enemyHealthBar.transform.localScale = new Vector2(GetComponent<EnemyData>().BonesCurrent / GetComponent<EnemyData>().BonesMax * 2f, 0.25f);
+        EntityData data = GetComponent<EntityData>();
 
-        transform.position = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        entityHealthBar.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.green, Color.red, data.BonesCurrent / data.BonesMax);
+        entityHealthBar.transform.localScale = new Vector2(data.BonesCurrent / data.BonesMax * 2f, 0.25f);
     }
 }

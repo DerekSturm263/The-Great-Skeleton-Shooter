@@ -43,7 +43,7 @@ public class AllyActions : EntityActions
         GameObject newBullet = Instantiate(bullet, armPivot[0].transform.position + armPivot[0].transform.right * 0.5f, Quaternion.identity);
 
         newBullet.GetComponent<Rigidbody2D>().AddForce(armPivot[0].transform.right * bulletForce);
-        newBullet.GetComponent<Bullet>().SetBulletOwner(1);
+        newBullet.GetComponent<Bullet>().SetBulletOwner(2);
         newBullet.transform.rotation = armPivot[0].transform.rotation;
 
         Destroy(newBullet, bulletLife);
