@@ -40,12 +40,12 @@ public class AllyActions : EntityActions
         if (!(data as AllyData).isLockedOn)
             return;
 
-        GameObject newBullet = Instantiate(bullet, armPivot[0].transform.position + armPivot[0].transform.right * 0.5f, Quaternion.identity);
-
-        newBullet.GetComponent<Rigidbody2D>().AddForce(armPivot[0].transform.right * bulletForce);
-        newBullet.GetComponent<Bullet>().SetBulletOwner(2);
-        newBullet.transform.rotation = armPivot[0].transform.rotation;
-
-        Destroy(newBullet, bulletLife);
+        foreach (GameObject gun in arm)
+        {
+            GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
+            newBullet.GetComponent<Bullet>().SetBulletOwner(1);
+            newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
+            Destroy(newBullet, bulletLife);
+        }
     }
 }

@@ -18,7 +18,7 @@ public class AllyMove : EntityMove
         if (isLockedOn)
         {
             // Determines whether the target is to the left or right.
-            if ((data as AllyData).transform.position.x < transform.position.x)
+            if ((data as AllyData).target.transform.position.x < transform.position.x)
                 targetDirection = -1f;
             else
                 targetDirection = 1f;
