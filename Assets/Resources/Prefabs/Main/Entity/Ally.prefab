@@ -233,6 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7736766607071438211, guid: 6eafef6a467754848841e5c5a8c279a7,
     type: 3}
+  colorRed: {r: 0.8, g: 0.2, b: 0, a: 1}
+  colorGreen: {r: 0.4666666, g: 1, b: 0.19999999, a: 1}
 --- !u!70 &4856316955731729740
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7736766607071438211, guid: 6eafef6a467754848841e5c5a8c279a7,
     type: 3}
+  colorRed: {r: 0.801, g: 0.19571412, b: 0, a: 1}
+  colorGreen: {r: 0.46093073, g: 1, b: 0.199, a: 1}
 --- !u!114 &3357600731477218600
 MonoBehaviour:
   m_ObjectHideFlags: 0

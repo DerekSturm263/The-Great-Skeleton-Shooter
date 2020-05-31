@@ -194,6 +194,8 @@ MonoBehaviour:
     type: 3}
   boneCollecting: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
     type: 3}
+  canSummonParticles: {fileID: 8691121080366760900, guid: a39025ea4fab87e43ae6ea72fa7082a1,
+    type: 3}
 --- !u!114 &1105765326088254904
 MonoBehaviour:
   m_ObjectHideFlags: 0

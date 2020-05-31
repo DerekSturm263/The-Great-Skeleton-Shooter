@@ -22,11 +22,11 @@ public class PlayerActions : EntityActions
     public uint summoningBones;
     public bool summoning;
     public GameObject summoningParticles;
-    private GameObject thisSummoningParticles;
-
     public GameObject summonedParticles;
-
     public GameObject boneCollecting;
+    public GameObject canSummonParticles;
+
+    private GameObject thisSummoningParticles;
 
     private void Awake()
     {
@@ -48,11 +48,11 @@ public class PlayerActions : EntityActions
         //Debug.Log(Input.GetAxis(data.controls[3]));
         //Debug.Log(Input.GetAxis(data.controls[4]));
 
-        activeWeaponshotRate = carriedWeapon.GetComponent<WeaponTemplateScript>().shotRate;
+        /*activeWeaponshotRate = carriedWeapon.GetComponent<WeaponTemplateScript>().shotRate;
         activeWeaponShotForce = carriedWeapon.GetComponent<WeaponTemplateScript>().shotForce;
         activeWeaponShotLife = carriedWeapon.GetComponent<WeaponTemplateScript>().shotLife;
         activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
-        activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
+        activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;*/
 
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
         if (Input.GetKeyDown(KeyCode.B))
@@ -186,7 +186,7 @@ public class PlayerActions : EntityActions
         {
             newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
             newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            summoningBones = 0;
+            summoningBones = 1;
             thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);
         }
     }
@@ -194,13 +194,17 @@ public class PlayerActions : EntityActions
     // Called when the player holds the summon button.
     private void SummonAlly(bool input)
     {
-        if (input && (data as PlayerData).BonesCurrent > 1)
+        if (input && (data as PlayerData).BonesCurrent > 1 && summoningBones <= 50)
         {
             if (Time.frameCount % 5 == 0)
             {
                 data.RemoveBone(1);
                 summoningBones++;
+
+                if (summoningBones == 21)
+                    Instantiate(canSummonParticles, newAlly.transform.position, Quaternion.identity);
             }
+
 
             newAlly.transform.position = summonSpot.transform.position;
             newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 50f;
@@ -214,14 +218,24 @@ public class PlayerActions : EntityActions
             {
                 summoning = false;
 
-                newAlly.GetComponent<AllyData>().canMove = true;
-                newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
-                newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
+                if (summoningBones > 20)
+                {
+                    newAlly.GetComponent<AllyData>().canMove = true;
+                    newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
+                    newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
+                    newAlly.GetComponent<AllyMove>().summoner = gameObject;
 
-                Destroy(thisSummoningParticles);
+                    Destroy(thisSummoningParticles);
 
-                Instantiate(summonedParticles, newAlly.transform.position, Quaternion.identity);
+                    Instantiate(summonedParticles, newAlly.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Destroy(newAlly);
+                    Destroy(thisSummoningParticles);
+                    (data as PlayerData).BonesCurrent += summoningBones - 1;
+                }
             }
         }
     }

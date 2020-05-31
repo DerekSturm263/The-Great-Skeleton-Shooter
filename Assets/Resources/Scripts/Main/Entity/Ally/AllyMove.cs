@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AllyMove : EntityMove
 {
+    public GameObject summoner;
     public bool isLockedOn;
     private float targetDirection;
 
@@ -15,18 +16,34 @@ public class AllyMove : EntityMove
 
     private void Update()
     {
-        if (isLockedOn && (data as AllyData).canMove)
+        if ((data as AllyData).canMove)
         {
-            // Determines whether the target is to the left or right.
-            if ((data as AllyData).target.transform.position.x < transform.position.x)
-                targetDirection = -1f;
-            else
-                targetDirection = 1f;
+            if (isLockedOn)
+            {
+                // Determines whether the target is to the left or right.
+                if ((data as AllyData).target.transform.position.x < transform.position.x)
+                    targetDirection = -1f;
+                else
+                    targetDirection = 1f;
 
-            // Move towards target.
-            Move(targetDirection, true);
-            Run(false);
-            Jump((data as AllyData).target.transform.position.y - 1f > transform.position.y);
+                // Move towards target.
+                Move(targetDirection, true);
+                Run(false);
+                Jump((data as AllyData).target.transform.position.y - 1f > transform.position.y);
+            }
+            else
+            {
+                // Determines whether the summoner is to the left or right.
+                if (summoner.transform.position.x < transform.position.x)
+                    targetDirection = -1f;
+                else
+                    targetDirection = 1f;
+
+                // Move towards target.
+                Move(targetDirection, true);
+                Run(false);
+                Jump(summoner.transform.position.y - 1f > transform.position.y);
+            }
         }
     }
 
