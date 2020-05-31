@@ -11,6 +11,11 @@ TagManager:
   - Bullet
   - Enemy
   - Bone
+  - capzone
+  - Ground
+  - SummonSpot
+  - P1Aim
+  - ZoneCaptureUI
   layers:
   - Default
   - TransparentFX

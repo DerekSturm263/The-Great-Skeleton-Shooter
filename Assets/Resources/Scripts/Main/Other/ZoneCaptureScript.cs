@@ -7,6 +7,7 @@ public class ZoneCaptureScript : MonoBehaviour
 {
     public static GameObject currentZone;
 
+    private Animator zoneCaptureUI;
     public int PlayersIn = 0;
     public float capCount, capRate, capLimit, capPercent;
     public GameObject zoneDoor;
@@ -21,6 +22,7 @@ public class ZoneCaptureScript : MonoBehaviour
     {
         Players = GameObject.FindGameObjectsWithTag("Player");
         getMat = GetComponent<SpriteRenderer>();
+        zoneCaptureUI = GameObject.FindGameObjectWithTag("ZoneCaptureUI").GetComponent<Animator>();
         // Material = getMat.material.;
     }
 
@@ -36,6 +38,7 @@ public class ZoneCaptureScript : MonoBehaviour
 
         if (capturing && !captured)
         {
+            zoneCaptureUI.SetBool("Disappear", false);
             if (capCount < capLimit)
             {
                 capCount += Time.deltaTime * capRate * PlayersIn;
@@ -59,6 +62,7 @@ public class ZoneCaptureScript : MonoBehaviour
         if (captured)
         {
             gameObject.SetActive(false);
+            zoneCaptureUI.SetBool("Disappear", true);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
