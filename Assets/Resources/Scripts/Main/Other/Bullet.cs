@@ -25,7 +25,8 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    bones.transform.localScale = collision.gameObject.transform.localScale;
                     Destroy(gameObject);
                 }
 
@@ -35,7 +36,8 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    bones.transform.localScale = collision.gameObject.transform.localScale;
                     Destroy(gameObject);
                 }
 
@@ -45,7 +47,8 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+                    bones.transform.localScale = collision.gameObject.transform.localScale;
                     Destroy(gameObject);
                 }
 

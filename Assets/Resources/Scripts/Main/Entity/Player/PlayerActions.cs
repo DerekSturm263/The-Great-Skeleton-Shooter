@@ -15,6 +15,10 @@ public class PlayerActions : EntityActions
     public GameObject newAlly;
     public uint summoningBones;
     public bool summoning;
+    public GameObject summoningParticles;
+    private GameObject thisSummoningParticles;
+
+    public GameObject summonedParticles;
 
     private void Awake()
     {
@@ -171,8 +175,9 @@ public class PlayerActions : EntityActions
         if (input)
         {
             newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
-            newAlly.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             summoningBones = 0;
+            thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);
         }
     }
 
@@ -187,7 +192,9 @@ public class PlayerActions : EntityActions
                 summoningBones++;
             }
 
+            newAlly.transform.position = summonSpot.transform.position;
             newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 15f;
+            thisSummoningParticles.transform.position = newAlly.transform.position;
 
             summoning = true;
         }
@@ -196,10 +203,15 @@ public class PlayerActions : EntityActions
             if (summoning)
             {
                 summoning = false;
+
                 newAlly.GetComponent<AllyData>().canMove = true;
-                newAlly.GetComponent<Rigidbody2D>().gravityScale = 1f;
+                newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
-                newAlly.GetComponent<AllyData>().BonesCurrent = summoningBones / 5;
+                newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
+
+                Destroy(thisSummoningParticles);
+
+                Instantiate(summonedParticles, newAlly.transform.position, Quaternion.identity);
             }
         }
     }
