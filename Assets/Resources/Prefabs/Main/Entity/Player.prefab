@@ -169,7 +169,7 @@ MonoBehaviour:
   armPivot:
   - {fileID: 4621691907783205438}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 0.333
+  bulletLife: 0.5
   bulletForce: 10
   bulletRate: 1
   fireTimer: 0
