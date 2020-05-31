@@ -27,8 +27,8 @@ public class AllyMove : EntityMove
                     targetDirection = 1f;
 
                 // Move towards target.
-                if (Mathf.Abs((data as AllyData).target.transform.position.x) - 2.5f > Mathf.Abs(transform.position.x) ||
-                    Mathf.Abs((data as AllyData).target.transform.position.x) + 2.5f < Mathf.Abs(transform.position.x))
+                if (Mathf.Abs((data as AllyData).target.transform.position.x) - 5f > Mathf.Abs(transform.position.x) ||
+                    Mathf.Abs((data as AllyData).target.transform.position.x) + 5f < Mathf.Abs(transform.position.x))
 
                     Move(targetDirection, true);
 

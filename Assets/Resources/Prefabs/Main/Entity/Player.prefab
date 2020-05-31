@@ -180,11 +180,11 @@ MonoBehaviour:
   boneUI: {fileID: 0}
   pocketWeapons: []
   carriedWeapon: {fileID: 0}
-  activeWeaponshotRate: 0
-  activeWeaponShotForce: 0
-  activeWeaponShotLife: 0
+  activeWeaponshotRate: 1
+  activeWeaponShotForce: 10
+  activeWeaponShotLife: 0.5
   activeWeaponAutoBool: 0
-  activeWeaponGravEffect: 0
+  activeWeaponGravEffect: 1
   newAlly: {fileID: 0}
   summoningBones: 0
   summoning: 0

@@ -73,13 +73,7 @@ public class PlayerData : EntityData
         Debug.Log(playerNum);
         gameObject.name = playerNum.ToString();
     }
-    private void Update()
-    {
-        if (BonesCurrent <= 0)
-        {
-            SceneManager.LoadScene("Title");
-        }
-    }
+
     public static GameObject Player(uint num)
     {
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))

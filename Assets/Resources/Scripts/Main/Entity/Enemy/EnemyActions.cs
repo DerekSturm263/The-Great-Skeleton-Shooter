@@ -13,7 +13,7 @@ public class EnemyActions : EntityActions
 
     private void Start()
     {
-        InvokeRepeating("Shoot", 1f, 1f);
+        InvokeRepeating("Shoot", 0.5f, 0.5f);
     }
 
     private void Update()

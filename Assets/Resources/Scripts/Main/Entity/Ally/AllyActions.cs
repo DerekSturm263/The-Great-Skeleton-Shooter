@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class AllyActions : EntityActions
 {
+    private AllyMove move;
+
     private void Awake()
     {
         data = GetComponent<AllyData>();
+        move = GetComponent<AllyMove>();
     }
 
     private void Start()
     {
-        InvokeRepeating("Shoot", 1f, 1f);
+        InvokeRepeating("Shoot", 0.5f, 0.5f);
     }
 
     private void Update()
     {
-        if ((data as AllyData).isLockedOn && (data as AllyData).canMove)
+        if ((data as AllyData).canMove && move.isLockedOn)
         {
             Aim((data as AllyData).target);
         }
     }
 
-    // Called when the player moves the mouse or reticle.
     private void Aim(GameObject target)
     {
         Vector3 pos;
@@ -34,10 +36,9 @@ public class AllyActions : EntityActions
         armPivot[0].transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(pos.y - armPivot[0].transform.position.y, pos.x - armPivot[0].transform.position.x));
     }
 
-    // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (!(data as AllyData).isLockedOn || (data as AllyData).canMove)
+        if (!move.isLockedOn || !(data as AllyData).canMove)
             return;
 
         foreach (GameObject gun in arm)

@@ -45,18 +45,9 @@ public class ZoneCaptureScript : MonoBehaviour
             }
             else if (capCount >= capLimit)
             {
-                if (loadTitleOnCap)
-                {
-                    SceneManager.LoadScene("Title");
-                }
                 capCount = capLimit;
                 capturing = false;
                 captured = true;
-
-                foreach (GameObject player in Players)
-                {
-                    player.GetComponent<PlayerData>().BonesCurrent = player.GetComponent<PlayerData>().BonesMax;
-                }
             }
         }
         if (captured)
