@@ -10,6 +10,7 @@ public class PlayerHUD : MonoBehaviour
 
     public Image bonesFill;
     public TMPro.TMP_Text bonesCount;
+    public TMPro.TMP_Text percentCaptured;
 
     private void Start()
     {
@@ -28,5 +29,7 @@ public class PlayerHUD : MonoBehaviour
     {
         bonesCount.text = player1Data.BonesCurrent.ToString();
         bonesFill.fillAmount = (float) player1Data.BonesCurrent / (float) player1Data.BonesMax;
+
+        percentCaptured.text = Mathf.Round(ZoneCaptureScript.percentCaptured).ToString() + "% Captured Total";
     }
 }
