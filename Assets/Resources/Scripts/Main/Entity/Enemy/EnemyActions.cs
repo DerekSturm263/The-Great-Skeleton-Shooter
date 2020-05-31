@@ -52,6 +52,7 @@ public class EnemyActions : EntityActions
             foreach (GameObject gun in arm)
             {
                 GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
+                newBullet.transform.localScale = this.gameObject.transform.localScale;
                 newBullet.GetComponent<Bullet>().SetBulletOwner(1);
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
                 Destroy(newBullet, bulletLife);
