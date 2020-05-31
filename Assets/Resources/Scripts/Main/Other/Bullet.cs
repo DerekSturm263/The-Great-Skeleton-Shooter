@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-                    bones.transform.localScale = collision.gameObject.transform.localScale;
+                    bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
                 }
 
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-                    bones.transform.localScale = collision.gameObject.transform.localScale;
+                    bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
                 }
 
@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-                    bones.transform.localScale = collision.gameObject.transform.localScale;
+                    bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
                 }
 

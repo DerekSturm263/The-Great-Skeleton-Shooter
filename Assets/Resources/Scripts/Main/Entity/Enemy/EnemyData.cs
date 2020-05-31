@@ -20,10 +20,11 @@ public class EnemyData : EntityData
     private void Die()
     {
         Destroy(gameObject);
-        Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
         SpawnBones();
         ActiveEnemyManager.activeEnemies--;
         ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().capCount += 0.75f;
+        bones.transform.localScale = gameObject.transform.localScale / 2f;
     }
 
     private void SpawnBones()

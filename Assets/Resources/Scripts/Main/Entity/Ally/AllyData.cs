@@ -21,6 +21,7 @@ public class AllyData : EntityData
     private void Die()
     {
         Destroy(gameObject);
-        Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        bones.transform.localScale = gameObject.transform.localScale / 2f;
     }
 }
