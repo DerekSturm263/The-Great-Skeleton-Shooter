@@ -20,6 +20,8 @@ public class PlayerActions : EntityActions
 
     public GameObject summonedParticles;
 
+    public GameObject boneCollecting;
+
     private void Awake()
     {
         boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
@@ -224,6 +226,7 @@ public class PlayerActions : EntityActions
             data.AddBone(1);
 
             Destroy(collision.gameObject);
+            Instantiate(boneCollecting, collision.gameObject.transform.position, Quaternion.identity);
         }
     }
 }
