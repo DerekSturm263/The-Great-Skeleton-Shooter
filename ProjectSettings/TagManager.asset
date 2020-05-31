@@ -53,3 +53,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1862327009
+    locked: 0
+  - name: Capture Zone
+    uniqueID: 245296503
+    locked: 0
+  - name: Particles
+    uniqueID: 3671384683
+    locked: 0
+  - name: Entity
+    uniqueID: 3634157043
+    locked: 0
+  - name: Foreground
+    uniqueID: 4096853819
+    locked: 0
+  - name: UI
+    uniqueID: 989745275
+    locked: 0
