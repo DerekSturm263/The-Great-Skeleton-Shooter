@@ -27,7 +27,11 @@ public class AllyMove : EntityMove
                     targetDirection = 1f;
 
                 // Move towards target.
-                Move(targetDirection, true);
+                if (Mathf.Abs((data as AllyData).target.transform.position.x) - 2.5f > Mathf.Abs(transform.position.x) ||
+                    Mathf.Abs((data as AllyData).target.transform.position.x) + 2.5f < Mathf.Abs(transform.position.x))
+
+                    Move(targetDirection, true);
+
                 Run(false);
                 Jump((data as AllyData).target.transform.position.y - 1f > transform.position.y);
             }
@@ -40,7 +44,11 @@ public class AllyMove : EntityMove
                     targetDirection = 1f;
 
                 // Move towards target.
-                Move(targetDirection, true);
+                if (Mathf.Abs(summoner.transform.position.x) - 2.5f > Mathf.Abs(transform.position.x) ||
+                    Mathf.Abs(summoner.transform.position.x) + 2.5f < Mathf.Abs(transform.position.x))
+
+                    Move(targetDirection, true);
+
                 Run(false);
                 Jump(summoner.transform.position.y - 1f > transform.position.y);
             }

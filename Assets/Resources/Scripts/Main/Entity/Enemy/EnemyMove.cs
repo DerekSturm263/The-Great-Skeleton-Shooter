@@ -24,7 +24,11 @@ public class EnemyMove : EntityMove
                 targetDirection = 1f;
 
             // Move towards target.
-            Move(targetDirection, true);
+            if (Mathf.Abs((data as EnemyData).target.transform.position.x) - 7.5f > Mathf.Abs(transform.position.x) ||
+                Mathf.Abs((data as EnemyData).target.transform.position.x) + 7.5f < Mathf.Abs(transform.position.x))
+
+                Move(targetDirection, true);
+
             Run(false);
             Jump((data as EnemyData).target.transform.position.y - 1f > transform.position.y);
         }
