@@ -23,7 +23,7 @@ public class EnemyData : EntityData
         Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
         SpawnBones();
         ActiveEnemyManager.activeEnemies--;
-        ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().capCount += 1f;
+        ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().capCount += 0.75f;
     }
 
     private void SpawnBones()

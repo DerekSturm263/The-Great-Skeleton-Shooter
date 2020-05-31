@@ -7,8 +7,10 @@ public class AllyData : EntityData
     [Space(10f)]
     public GameObject bone;
 
-    [HideInInspector] public GameObject target;
+    public GameObject target;
     [HideInInspector] public bool isLockedOn;
+
+    public bool canMove = false;
 
     private void Update()
     {

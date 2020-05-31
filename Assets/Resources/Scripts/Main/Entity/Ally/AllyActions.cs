@@ -16,7 +16,7 @@ public class AllyActions : EntityActions
 
     private void Update()
     {
-        if ((data as AllyData).isLockedOn)
+        if ((data as AllyData).isLockedOn && (data as AllyData).canMove)
         {
             Aim((data as AllyData).target);
         }
@@ -37,7 +37,7 @@ public class AllyActions : EntityActions
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (!(data as AllyData).isLockedOn)
+        if (!(data as AllyData).isLockedOn && (data as AllyData).canMove)
             return;
 
         foreach (GameObject gun in arm)

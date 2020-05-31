@@ -12,6 +12,10 @@ public class PlayerActions : EntityActions
     public Image boneUI;
     private Rigidbody2D rb;
 
+    public GameObject newAlly;
+    public uint summoningBones;
+    public bool summoning;
+
     private void Awake()
     {
         boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
@@ -56,7 +60,8 @@ public class PlayerActions : EntityActions
             float shotLife = bulletLife;
             ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), shotForce, shotLife * 3, true);
         }
-        SummonAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
+        StartSummoningAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
+        SummonAlly(Input.GetButton((data as PlayerData).controls[6]));
     }
 
     // Called when the player moves the mouse or reticle.
@@ -161,15 +166,41 @@ public class PlayerActions : EntityActions
     }
 
     // Called when the player presses the summon button.
+    private void StartSummoningAlly(bool input)
+    {
+        if (input)
+        {
+            newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
+            newAlly.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            summoningBones = 0;
+        }
+    }
+
+    // Called when the player holds the summon button.
     private void SummonAlly(bool input)
     {
         if (input)
         {
-            if (data.BonesCurrent <= 10)
-                return;
+            if (Time.frameCount % 5 == 0)
+            {
+                data.RemoveBone(1);
+                summoningBones++;
+            }
 
-            Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
-            data.RemoveBone(10);
+            newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 10f;
+
+            summoning = true;
+        }
+        else
+        {
+            if (summoning)
+            {
+                summoning = false;
+                newAlly.GetComponent<AllyData>().canMove = true;
+                newAlly.GetComponent<Rigidbody2D>().gravityScale = 1f;
+                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 5;
+                newAlly.GetComponent<AllyData>().BonesCurrent = summoningBones / 5;
+            }
         }
     }
 

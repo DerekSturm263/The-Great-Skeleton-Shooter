@@ -38,7 +38,6 @@ public class ZoneCaptureScript : MonoBehaviour
 
         if (capturing && !captured)
         {
-            zoneCaptureUI.SetBool("Disappear", false);
             if (capCount < capLimit)
             {
                 capCount += Time.deltaTime * capRate * PlayersIn;
@@ -61,12 +60,15 @@ public class ZoneCaptureScript : MonoBehaviour
         }
         if (captured)
         {
+            zoneCaptureUI.SetBool("disappear", true);
             gameObject.SetActive(false);
-            zoneCaptureUI.SetBool("Disappear", true);
+            Debug.Log("Captured!");
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        zoneCaptureUI.SetBool("disappear", false);
+
         if (collision.gameObject.tag == "Player")
         {
             PlayersIn++;
