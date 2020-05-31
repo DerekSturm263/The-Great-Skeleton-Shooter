@@ -28,10 +28,10 @@ TagManager:
   - Bone
   - Bullet
   - Wall
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Ally
+  - Ground
   - 
   - 
   - 
