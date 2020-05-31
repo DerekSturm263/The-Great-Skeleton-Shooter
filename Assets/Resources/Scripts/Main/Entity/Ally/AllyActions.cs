@@ -16,7 +16,7 @@ public class AllyActions : EntityActions
 
     private void Update()
     {
-        if ((data as AllyData).isLockedOn)
+        if ((data as AllyData).isLockedOn && (data as AllyData).canMove)
         {
             Aim((data as AllyData).target);
         }
@@ -37,15 +37,15 @@ public class AllyActions : EntityActions
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (!(data as AllyData).isLockedOn)
+        if (!(data as AllyData).isLockedOn || (data as AllyData).canMove)
             return;
 
-        GameObject newBullet = Instantiate(bullet, armPivot[0].transform.position + armPivot[0].transform.right * 0.5f, Quaternion.identity);
-
-        newBullet.GetComponent<Rigidbody2D>().AddForce(armPivot[0].transform.right * bulletForce);
-        newBullet.GetComponent<Bullet>().SetBulletOwner(2);
-        newBullet.transform.rotation = armPivot[0].transform.rotation;
-
-        Destroy(newBullet, bulletLife);
+        foreach (GameObject gun in arm)
+        {
+            GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
+            newBullet.GetComponent<Bullet>().SetBulletOwner(2);
+            newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
+            Destroy(newBullet, bulletLife);
+        }
     }
 }

@@ -169,7 +169,7 @@ MonoBehaviour:
   armPivot:
   - {fileID: 4621691907783205438}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 0.333
+  bulletLife: 0.5
   bulletForce: 10
   bulletRate: 1
   fireTimer: 0
@@ -178,6 +178,15 @@ MonoBehaviour:
   fireActive: 0
   fullAuto: 0
   boneUI: {fileID: 0}
+  newAlly: {fileID: 0}
+  summoningBones: 0
+  summoning: 0
+  summoningParticles: {fileID: 1580511675738393696, guid: 8fd3136162ca4d843bf32dccd04e8acb,
+    type: 3}
+  summonedParticles: {fileID: 5903494923392067270, guid: 533c1fdfc9aa1df4b986552a3e6d064f,
+    type: 3}
+  boneCollecting: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
+    type: 3}
 --- !u!114 &1105765326088254904
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -88,10 +88,9 @@ public class PlayerData : EntityData
             {
                 Debug.Log(player.GetComponent<PlayerData>().playerNum);
                 Debug.Log(num);
-                return player;
-                
-            }
 
+                return player;
+            }
         }
         
         return null;

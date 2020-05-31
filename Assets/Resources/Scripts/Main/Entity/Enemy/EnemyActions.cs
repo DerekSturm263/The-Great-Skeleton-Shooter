@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyActions : EntityActions
 {
     public bool shoot;
+
     private void Awake()
     {
         data = GetComponent<EnemyData>();

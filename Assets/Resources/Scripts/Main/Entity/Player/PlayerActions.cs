@@ -12,6 +12,16 @@ public class PlayerActions : EntityActions
     public Image boneUI;
     private Rigidbody2D rb;
 
+    public GameObject newAlly;
+    public uint summoningBones;
+    public bool summoning;
+    public GameObject summoningParticles;
+    private GameObject thisSummoningParticles;
+
+    public GameObject summonedParticles;
+
+    public GameObject boneCollecting;
+
     private void Awake()
     {
         boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
@@ -56,7 +66,8 @@ public class PlayerActions : EntityActions
             float shotLife = bulletLife;
             ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), shotForce, shotLife * 3, true);
         }
-        SummonAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
+        StartSummoningAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
+        SummonAlly(Input.GetButton((data as PlayerData).controls[6]));
     }
 
     // Called when the player moves the mouse or reticle.
@@ -161,15 +172,49 @@ public class PlayerActions : EntityActions
     }
 
     // Called when the player presses the summon button.
-    private void SummonAlly(bool input)
+    private void StartSummoningAlly(bool input)
     {
         if (input)
         {
-            if (data.BonesCurrent <= 10)
-                return;
+            newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
+            newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            summoningBones = 0;
+            thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);
+        }
+    }
 
-            Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
-            data.RemoveBone(10);
+    // Called when the player holds the summon button.
+    private void SummonAlly(bool input)
+    {
+        if (input && (data as PlayerData).BonesCurrent > 1)
+        {
+            if (Time.frameCount % 5 == 0)
+            {
+                data.RemoveBone(1);
+                summoningBones++;
+            }
+
+            newAlly.transform.position = summonSpot.transform.position;
+            newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 15f;
+            thisSummoningParticles.transform.position = newAlly.transform.position;
+
+            summoning = true;
+        }
+        else
+        {
+            if (summoning)
+            {
+                summoning = false;
+
+                newAlly.GetComponent<AllyData>().canMove = true;
+                newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
+                newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
+
+                Destroy(thisSummoningParticles);
+
+                Instantiate(summonedParticles, newAlly.transform.position, Quaternion.identity);
+            }
         }
     }
 
@@ -181,6 +226,7 @@ public class PlayerActions : EntityActions
             data.AddBone(1);
 
             Destroy(collision.gameObject);
+            Instantiate(boneCollecting, collision.gameObject.transform.position, Quaternion.identity);
         }
     }
 }
