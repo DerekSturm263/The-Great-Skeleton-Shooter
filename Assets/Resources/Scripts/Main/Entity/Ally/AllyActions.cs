@@ -37,13 +37,13 @@ public class AllyActions : EntityActions
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (!(data as AllyData).isLockedOn && (data as AllyData).canMove)
+        if (!(data as AllyData).isLockedOn || (data as AllyData).canMove)
             return;
 
         foreach (GameObject gun in arm)
         {
             GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
-            newBullet.GetComponent<Bullet>().SetBulletOwner(1);
+            newBullet.GetComponent<Bullet>().SetBulletOwner(2);
             newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
             Destroy(newBullet, bulletLife);
         }

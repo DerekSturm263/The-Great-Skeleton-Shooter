@@ -179,7 +179,7 @@ public class PlayerActions : EntityActions
     // Called when the player holds the summon button.
     private void SummonAlly(bool input)
     {
-        if (input)
+        if (input && (data as PlayerData).BonesCurrent > 1)
         {
             if (Time.frameCount % 5 == 0)
             {
@@ -187,7 +187,7 @@ public class PlayerActions : EntityActions
                 summoningBones++;
             }
 
-            newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 10f;
+            newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 15f;
 
             summoning = true;
         }
@@ -198,7 +198,7 @@ public class PlayerActions : EntityActions
                 summoning = false;
                 newAlly.GetComponent<AllyData>().canMove = true;
                 newAlly.GetComponent<Rigidbody2D>().gravityScale = 1f;
-                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 5;
+                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
                 newAlly.GetComponent<AllyData>().BonesCurrent = summoningBones / 5;
             }
         }
