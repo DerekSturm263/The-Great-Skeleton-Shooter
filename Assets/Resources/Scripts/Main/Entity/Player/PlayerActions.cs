@@ -12,6 +12,12 @@ public class PlayerActions : EntityActions
     public Image boneUI;
     private Rigidbody2D rb;
 
+    public List<GameObject> pocketWeapons;
+    public GameObject carriedWeapon;
+
+    public float activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife;
+    public bool activeWeaponAutoBool, activeWeaponGravEffect;
+
     public GameObject newAlly;
     public uint summoningBones;
     public bool summoning;
@@ -42,29 +48,31 @@ public class PlayerActions : EntityActions
         //Debug.Log(Input.GetAxis(data.controls[3]));
         //Debug.Log(Input.GetAxis(data.controls[4]));
 
+        activeWeaponshotRate = carriedWeapon.GetComponent<WeaponTemplateScript>().shotRate;
+        activeWeaponShotForce = carriedWeapon.GetComponent<WeaponTemplateScript>().shotForce;
+        activeWeaponShotLife = carriedWeapon.GetComponent<WeaponTemplateScript>().shotLife;
+        activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
+        activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
+
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
         if (Input.GetKeyDown(KeyCode.B))
         {
-            fullAuto = !fullAuto;
-            boneUI.rectTransform.localScale = new Vector3(-boneUI.rectTransform.localScale.x, boneUI.rectTransform.localScale.y, boneUI.rectTransform.localScale.z);
+            if (pocketWeapons.Contains(carriedWeapon))
+            {
+                
+            }
         }
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("Title");
         }
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if (fullAuto)
+        if (activeWeaponAutoBool)
         {
-            float shotRate = bulletRate;
-            float shotForce = bulletForce;
-            float shotLife = bulletLife;
-            ShootAuto(Input.GetButton((data as PlayerData).controls[5]), shotRate, shotForce, shotLife, false);
+            ShootAuto(Input.GetButton((data as PlayerData).controls[5]), activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
         }else
         {
-            float shotRate = bulletRate;
-            float shotForce = bulletForce;
-            float shotLife = bulletLife;
-            ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), shotForce, shotLife * 3, true);
+            ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
         }
         StartSummoningAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
         SummonAlly(Input.GetButton((data as PlayerData).controls[6]));
