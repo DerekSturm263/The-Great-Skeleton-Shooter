@@ -208,7 +208,7 @@ public class PlayerActions : EntityActions
 
                 newAlly.GetComponent<AllyData>().canMove = true;
                 newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 2;
+                newAlly.GetComponent<AllyData>().BonesMax = summoningBones / 5;
                 newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
 
                 Destroy(thisSummoningParticles);

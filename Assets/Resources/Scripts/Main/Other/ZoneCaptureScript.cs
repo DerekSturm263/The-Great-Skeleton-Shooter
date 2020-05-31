@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ZoneCaptureScript : MonoBehaviour
 {
     public static GameObject currentZone;
+    public static float percentCaptured;
 
     private Animator zoneCaptureUI;
     public int PlayersIn = 0;
@@ -63,6 +64,7 @@ public class ZoneCaptureScript : MonoBehaviour
             zoneCaptureUI.SetBool("disappear", true);
             gameObject.SetActive(false);
             Debug.Log("Captured!");
+            percentCaptured += 1f / 6f * 100f;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
