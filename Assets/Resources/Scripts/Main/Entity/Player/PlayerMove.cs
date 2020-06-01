@@ -8,6 +8,7 @@ public class PlayerMove : EntityMove
     {
         data = GetComponent<PlayerData>();
         (data as PlayerData).rb2 = GetComponent<Rigidbody2D>();
+        dustParticles = GetComponent<ParticleSystem>();
     }
 
     private void Update()

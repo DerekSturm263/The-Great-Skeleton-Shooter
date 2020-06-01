@@ -24,7 +24,6 @@ public class EnemyData : EntityData
         SpawnBones();
         ActiveEnemyManager.activeEnemies--;
         ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().capCount += 0.75f;
-        bones.transform.localScale = gameObject.transform.localScale / 2f;
     }
 
     private void SpawnBones()

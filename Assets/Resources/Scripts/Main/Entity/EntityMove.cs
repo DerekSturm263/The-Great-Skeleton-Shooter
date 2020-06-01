@@ -28,6 +28,8 @@ public abstract class EntityMove : MonoBehaviour
     [Space(10f)]
     [SerializeField] protected LayerMask groundLayer;
 
+    protected ParticleSystem dustParticles;
+
     #region Movement
 
     // Used to make the GameObject move in a direction based on moveSpeed.
@@ -43,6 +45,8 @@ public abstract class EntityMove : MonoBehaviour
             float movementX = Mathf.Lerp(0f, moveSpeed * input, Mathf.Abs(input));
             data.rb2.velocity = new Vector2(movementX / 2, data.rb2.velocity.y);
         }
+
+        dustParticles.Play();
     }
 
     // Used to determine the GameObject's moveSpeed.

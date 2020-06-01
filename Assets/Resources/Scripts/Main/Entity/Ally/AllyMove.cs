@@ -12,6 +12,7 @@ public class AllyMove : EntityMove
     {
         data = GetComponent<AllyData>();
         (data as AllyData).rb2 = GetComponent<Rigidbody2D>();
+        dustParticles = GetComponent<ParticleSystem>();
     }
 
     private void Update()
