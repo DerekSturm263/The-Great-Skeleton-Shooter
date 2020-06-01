@@ -30,6 +30,6 @@ public class PlayerHUD : MonoBehaviour
         bonesCount.text = player1Data.BonesCurrent.ToString();
         bonesFill.fillAmount = (float) player1Data.BonesCurrent / (float) player1Data.BonesMax;
 
-        percentCaptured.text = Mathf.Round(ZoneCaptureScript.percentCaptured).ToString() + "% Captured Total";
+        percentCaptured.text = Mathf.Round(ZoneCaptureScript.numCaptured).ToString() + "/8 Zones Captured";
     }
 }

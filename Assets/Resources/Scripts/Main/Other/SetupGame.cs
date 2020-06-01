@@ -7,7 +7,7 @@ public class SetupGame : MonoBehaviour
     public GameObject gameController;
 
     public GameObject player;
-
+    public Vector2 playerStartPos;
     public GameObject fancyGraphics;
     public GameObject fastGraphics;
 
@@ -16,15 +16,16 @@ public class SetupGame : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
             Instantiate(gameController);
         PlayerData.totalPlayerCount = 1;
+
         #region Create Players
 
         // Creates player one.
-        Instantiate(player);
+        Instantiate(player, playerStartPos, Quaternion.identity);
 
         if (GameController.playerCount == GameController.PlayerCount.Multiplayer)
         {
             // Creates player two.
-            Instantiate(player);
+            Instantiate(player, playerStartPos, Quaternion.identity);
         }
 
         #endregion
