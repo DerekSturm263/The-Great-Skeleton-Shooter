@@ -60,7 +60,6 @@ public class PlayerActions : EntityActions
         if (Input.GetKeyDown(KeyCode.B))
         {
             carriedWeapon.SetActive(false);
-            carriedWeapon = null;
             activeWeaponFromList++;
             if (activeWeaponFromList >= pocketWeapons.Count)
             {
@@ -75,6 +74,7 @@ public class PlayerActions : EntityActions
             activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
             activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
         }
+
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("Title");
