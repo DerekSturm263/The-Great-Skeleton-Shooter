@@ -13,6 +13,13 @@ public class EntityData : MonoBehaviour
     public GameObject deathParticles;
     public GameObject loseBoneParticle;
 
+    public SpriteRenderer[] childrenSpriteRenderers;
+
+    public void OnEnable()
+    {
+        childrenSpriteRenderers = GetComponentsInChildren(typeof(SpriteRenderer)) as SpriteRenderer[];
+    }
+
     public void AddBone(uint amount)
     {
         BonesCurrent += amount;
@@ -21,5 +28,13 @@ public class EntityData : MonoBehaviour
     public void RemoveBone(uint amount)
     {
         BonesCurrent -= amount;
+    }
+
+    public void FlashRed()
+    {
+        foreach (SpriteRenderer sprtRndr in childrenSpriteRenderers)
+        {
+            sprtRndr.color = Color.Lerp(Color.white, Color.red, 1f);
+        }
     }
 }

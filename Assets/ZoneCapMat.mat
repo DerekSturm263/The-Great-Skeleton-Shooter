@@ -38,11 +38,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Fill: 0.684
-    - Vector1_1ACF399F: 2.3
+    - Vector1_1ACF399F: 11.9
     - Vector1_282926D9: 0.904
     - Vector1_962618F9: 59.4
-    - Vector1_9EBCD68F: 15
+    - Vector1_9EBCD68F: 8.8
     - Vector1_CAE083B4: 0.827
+    - Vector1_F12B6087: 15
     - Vector1_F3E803F5: 3.21
     - _EnableExternalAlpha: 0
     - _MainTex: 0.607

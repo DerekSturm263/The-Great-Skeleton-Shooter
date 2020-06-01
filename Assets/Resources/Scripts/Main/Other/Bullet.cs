@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    // This is where the player or ally should flash red.
+                    collision.gameObject.GetComponent<EntityData>().FlashRed();
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    // This is where the enemy should flash red.
+                    collision.gameObject.GetComponent<EntityData>().FlashRed();
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(1);
-                    // This is where the enemy should flash red.
+                    collision.gameObject.GetComponent<EntityData>().FlashRed();
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
