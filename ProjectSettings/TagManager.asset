@@ -16,6 +16,7 @@ TagManager:
   - SummonSpot
   - P1Aim
   - ZoneCaptureUI
+  - Crate
   layers:
   - Default
   - TransparentFX

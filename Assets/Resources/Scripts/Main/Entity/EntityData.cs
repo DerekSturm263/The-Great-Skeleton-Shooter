@@ -22,12 +22,18 @@ public class EntityData : MonoBehaviour
 
     public void AddBone(uint amount)
     {
-        BonesCurrent += amount;
+        if (BonesCurrent + amount <= BonesMax)
+            BonesCurrent += amount;
+        else
+            BonesCurrent = BonesMax;
     }
 
     public void RemoveBone(uint amount)
     {
-        BonesCurrent -= amount;
+        if ((int) BonesCurrent - amount > 0)
+            BonesCurrent -= amount;
+        else
+            BonesCurrent = 0;
     }
 
     public void FlashRed()
