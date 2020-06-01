@@ -49,6 +49,7 @@ public class VoronoiSplitScreen : MonoBehaviour
         {
             player2 = player1;
         }
+        ChangeRes();
     }
     
     void Update()

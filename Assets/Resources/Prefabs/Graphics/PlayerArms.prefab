@@ -62,7 +62,7 @@ MonoBehaviour:
   - {x: 0.23494126, y: 0.7488851, z: 0}
   m_ShapePathHash: -1046160183
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47722
+  m_InstanceId: 38742
 --- !u!1 &776657712266198807
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   - {x: 0.44322124, y: -0.59260285, z: 0}
   m_ShapePathHash: -1269105906
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47716
+  m_InstanceId: 38736
 --- !u!1 &776657712492215004
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   - {x: -0.051995955, y: 0.04925757, z: 0}
   m_ShapePathHash: 590712499
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47720
+  m_InstanceId: 38740
 --- !u!1 &776657712690176789
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a17ecf27744b61f4aaa4b01561e1b0a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   - {x: -0.16924173, y: 0.49478304, z: 0}
   m_ShapePathHash: -1105196366
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47726
+  m_InstanceId: 38746
 --- !u!1 &776657712886301655
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   - {x: -0.4060279, y: 0.056830604, z: 0}
   m_ShapePathHash: -103598218
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47724
+  m_InstanceId: 38744
 --- !u!1 &776657712971296006
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +463,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a17ecf27744b61f4aaa4b01561e1b0a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -577,7 +577,7 @@ MonoBehaviour:
   - {x: -0.25872722, y: -0.1332001, z: 0}
   m_ShapePathHash: 1472026047
   m_Mesh: {fileID: 0}
-  m_InstanceId: 47714
+  m_InstanceId: 38734
 --- !u!1 &776657713535413362
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a17ecf27744b61f4aaa4b01561e1b0a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -734,7 +734,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a17ecf27744b61f4aaa4b01561e1b0a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 8664422768445023759}
   - component: {fileID: 4184494995937308182}
   m_Layer: 0
-  m_Name: Arms
+  m_Name: PlayerArms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
