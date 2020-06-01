@@ -11,6 +11,7 @@ public class EnemyMove : EntityMove
     {
         data = GetComponent<EnemyData>();
         (data as EnemyData).rb2 = GetComponent<Rigidbody2D>();
+        dustParticles = GetComponent<ParticleSystem>();
     }
 
     private void Update()
