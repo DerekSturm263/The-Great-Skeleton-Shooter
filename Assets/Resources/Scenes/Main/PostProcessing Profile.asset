@@ -16,15 +16,15 @@ MonoBehaviour:
   m_AdvancedMode: 0
   threshold:
     m_OverrideState: 1
-    m_Value: 0.325
+    m_Value: 0.45
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.4
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.625
     min: 0
     max: 1
   clamp:
@@ -121,10 +121,10 @@ MonoBehaviour:
     m_Value: {x: 0.9749112, y: 0.9827783, z: 1, w: -0.041950706}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.9783699, y: 0.9999038, z: 1, w: -0.08002942}
+    m_Value: {x: 0.9783699, y: 0.9999038, z: 1, w: -0.44642857}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.8441811, y: 0.9062394, z: 1, w: 0.9071843}
+    m_Value: {x: 0.8441811, y: 0.9062394, z: 1, w: 0.7196843}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,8 +141,8 @@ MonoBehaviour:
   - {fileID: -5934641667189400576}
   - {fileID: -8186608478052306758}
   - {fileID: -4996377550617463424}
-  - {fileID: -8261223414711093818}
   - {fileID: 4069815915427799762}
+  - {fileID: -8261223414711093818}
 --- !u!114 &4069815915427799762
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -159,26 +159,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.93370306, y: 0.9519001, z: 1, w: -0.026723672}
+    m_Value: {x: 0.93370306, y: 0.9519001, z: 1, w: -0.1875}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.96146023, z: 0.94751126, w: 0.010689472}
+    m_Value: {x: 1, y: 0.96146023, z: 0.94751126, w: 0.0625}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9999839, z: 0.8029614, w: 0.05879207}
+    m_Value: {x: 1, y: 0.9999839, z: 0.8029614, w: 0.25}
   shadowsStart:
     m_OverrideState: 1
-    m_Value: 0.09
+    m_Value: 0.1
     min: 0
   shadowsEnd:
     m_OverrideState: 1
-    m_Value: 0.22
+    m_Value: 0.41
     min: 0
   highlightsStart:
     m_OverrideState: 1
-    m_Value: 0.42
+    m_Value: 0.46
     min: 0
   highlightsEnd:
     m_OverrideState: 1
-    m_Value: 0.64
+    m_Value: 0.89
     min: 0

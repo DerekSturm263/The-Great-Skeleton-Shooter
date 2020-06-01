@@ -170,7 +170,7 @@ public class PlayerActions : EntityActions
 
                 foreach (GameObject pivot in armPivot)
                 {
-                    newBullet.transform.rotation = pivot.transform.rotation;
+                    //newBullet.transform.rotation = pivot.transform.rotation;
                 }
 
                 Destroy(newBullet, fireLife);
