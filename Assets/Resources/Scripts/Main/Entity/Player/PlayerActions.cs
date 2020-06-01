@@ -12,11 +12,16 @@ public class PlayerActions : EntityActions
     public Image boneUI;
     private Rigidbody2D rb;
 
+    //Weapon Rework Stuff
     public List<GameObject> pocketWeapons;
     public GameObject carriedWeapon;
+    //This is used only for setting weapon positions
+    public GameObject armPivotForWeaponPlacement;
 
     public float activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife;
     public bool activeWeaponAutoBool, activeWeaponGravEffect;
+
+    public int activeWeaponFromList = 0;
 
     public GameObject newAlly;
     public uint summoningBones;
@@ -30,6 +35,8 @@ public class PlayerActions : EntityActions
 
     private void Awake()
     {
+        carriedWeapon.SetActive(false);
+        carriedWeapon = null;
         boneUI = GameObject.Find("Bones - Icon").GetComponent<UnityEngine.UI.Image>();
         data = GetComponent<PlayerData>();
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
@@ -48,31 +55,45 @@ public class PlayerActions : EntityActions
         //Debug.Log(Input.GetAxis(data.controls[3]));
         //Debug.Log(Input.GetAxis(data.controls[4]));
 
-        /*activeWeaponshotRate = carriedWeapon.GetComponent<WeaponTemplateScript>().shotRate;
-        activeWeaponShotForce = carriedWeapon.GetComponent<WeaponTemplateScript>().shotForce;
-        activeWeaponShotLife = carriedWeapon.GetComponent<WeaponTemplateScript>().shotLife;
-        activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
-        activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;*/
 
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
         if (Input.GetKeyDown(KeyCode.B))
         {
-            if (pocketWeapons.Contains(carriedWeapon))
+            carriedWeapon.SetActive(false);
+            carriedWeapon = null;
+            activeWeaponFromList++;
+            if (activeWeaponFromList >= pocketWeapons.Count)
             {
-                
+                activeWeaponFromList = 0;
             }
+            carriedWeapon = pocketWeapons[activeWeaponFromList];
+            carriedWeapon.SetActive(true);
+
+            activeWeaponshotRate = carriedWeapon.GetComponent<WeaponTemplateScript>().shotRate;
+            activeWeaponShotForce = carriedWeapon.GetComponent<WeaponTemplateScript>().shotForce;
+            activeWeaponShotLife = carriedWeapon.GetComponent<WeaponTemplateScript>().shotLife;
+            activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
+            activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
         }
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene("Title");
         }
+        if ((data as PlayerData).BonesCurrent <= 0)
+        {
+            SceneManager.LoadScene("Title");
+        }
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if (activeWeaponAutoBool)
+        if (carriedWeapon != null)
         {
-            ShootAuto(Input.GetButton((data as PlayerData).controls[5]), activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
-        }else
-        {
-            ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
+            if (activeWeaponAutoBool)
+            {
+                ShootAuto(Input.GetButton((data as PlayerData).controls[5]), activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
+            }
+            else
+            {
+                ShootSemiAuto(Input.GetButtonDown((data as PlayerData).controls[5]), activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
+            }
         }
         StartSummoningAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
         SummonAlly(Input.GetButton((data as PlayerData).controls[6]));
