@@ -30,6 +30,7 @@ public class PlayerActions : EntityActions
     public GameObject summonedParticles;
     public GameObject boneCollecting;
     public GameObject canSummonParticles;
+    public bool canSummon;
 
     private GameObject thisSummoningParticles;
 
@@ -205,6 +206,7 @@ public class PlayerActions : EntityActions
     {
         if (input)
         {
+            canSummon = true;
             newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
             newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             summoningBones = 1;
@@ -215,9 +217,9 @@ public class PlayerActions : EntityActions
     // Called when the player holds the summon button.
     private void SummonAlly(bool input)
     {
-        if (input && (data as PlayerData).BonesCurrent > 1 && summoningBones <= 50)
+        if (input && (data as PlayerData).BonesCurrent > 1 && summoningBones <= 50 && canSummon)
         {
-            if (Time.frameCount % 5 == 0)
+            if (Mathf.Floor(Time.time * 3) % 1 == 0)
             {
                 data.RemoveBone(1);
                 summoningBones++;
@@ -226,16 +228,24 @@ public class PlayerActions : EntityActions
                     Instantiate(canSummonParticles, newAlly.transform.position, Quaternion.identity);
             }
 
-
             newAlly.transform.position = summonSpot.transform.position;
             newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 50f;
             thisSummoningParticles.transform.position = newAlly.transform.position;
 
             summoning = true;
         }
+        else if (input && (data as PlayerData).BonesCurrent == 1)
+        {
+            summoning = false;
+            canSummon = false;
+
+            Destroy(newAlly);
+            Destroy(thisSummoningParticles);
+            (data as PlayerData).BonesCurrent += summoningBones - 1;
+        }
         else
         {
-            if (summoning)
+            if (summoning && canSummon)
             {
                 summoning = false;
 

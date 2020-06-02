@@ -46,7 +46,11 @@ public abstract class EntityMove : MonoBehaviour
             data.rb2.velocity = new Vector2(movementX / 2, data.rb2.velocity.y);
         }
 
-        dustParticles.Play();
+        if (IsGrounded() && input != 0f)
+        {
+            if (Mathf.Floor(Time.time * 3) % 1 == 0) dustParticles.Play();
+            else dustParticles.Stop();
+        }
     }
 
     // Used to determine the GameObject's moveSpeed.

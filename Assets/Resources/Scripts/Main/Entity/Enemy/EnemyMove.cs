@@ -43,6 +43,7 @@ public class EnemyMove : EntityMove
         if (collision.gameObject.CompareTag("Player"))
         {
             isLockedOn = true;
+            (data as EnemyData).isLockedOn = true;
             (data as EnemyData).target = collision.gameObject;
         }
     }
@@ -53,6 +54,7 @@ public class EnemyMove : EntityMove
         if (collision.gameObject.CompareTag("Player"))
         {
             isLockedOn = false;
+            (data as EnemyData).isLockedOn = false;
             (data as EnemyData).target = null;
         }
     }
