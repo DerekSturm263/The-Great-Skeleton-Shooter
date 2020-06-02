@@ -23,7 +23,7 @@ public class EnemyMove : EntityMove
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 25f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 15f)
         {
             isLockedOn = true;
             (data as EnemyData).isLockedOn = true;

@@ -50,7 +50,7 @@ public abstract class EntityMove : MonoBehaviour
 
         if (IsGrounded() && Mathf.Abs(data.rb2.velocity.x) > 0.1f)
         {
-            if (Mathf.Floor(Time.time * 4) % 1 == 0) dustParticles.Play(false);
+            if (Mathf.Floor(Time.time * 5) % 1 == 0) dustParticles.Play(false);
             else dustParticles.Stop(false);
         }
     }

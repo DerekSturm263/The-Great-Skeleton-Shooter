@@ -42,7 +42,6 @@ public class TitleUI : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
         {
             GameObject gC = Instantiate(gameController);
-            DontDestroyOnLoad(gC);
 
             GameController.SetFullscreen(Screen.fullScreen);
             GameController.SetMusic(true);
@@ -51,6 +50,10 @@ public class TitleUI : MonoBehaviour
 
             MusicPlayer.Initialize();
             SoundPlayer.Initialize();
+
+            DontDestroyOnLoad(gC);
+            DontDestroyOnLoad(GameObject.Find("Music Player"));
+            DontDestroyOnLoad(GameObject.Find("Sound Player"));
         }
 
         optionsFullscreenTMP.text = (GameController.isFullscreen) ? "On" : "Off";

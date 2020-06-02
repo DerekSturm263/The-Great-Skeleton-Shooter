@@ -20,7 +20,7 @@ public class EnemySpawning : MonoBehaviour
                     newEnemy.GetComponent<EnemyData>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                     newEnemy.GetComponent<EnemyData>().isLockedOn = true;
                     newEnemy.GetComponent<EnemyMove>().isLockedOn = true;
-                    AssociatedCapZone.GetComponent<ZoneCaptureScript>().AssociatedEnemies.Add(newEnemy.GetComponent<EnemyData>());
+                    AssociatedCapZone.GetComponent<ZoneCaptureScript>().AssociatedEnemies.Add(newEnemy);
                     spawnTimer += Time.deltaTime * spawnRate;
                     ActiveEnemyManager.activeEnemies++;
                 }

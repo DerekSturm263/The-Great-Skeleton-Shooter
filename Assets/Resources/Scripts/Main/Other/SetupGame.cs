@@ -44,5 +44,8 @@ public class SetupGame : MonoBehaviour
         }
 
         #endregion
+
+        ZoneCaptureScript.currentZone = null;
+        ZoneCaptureScript.numCaptured = 0;
     }
 }

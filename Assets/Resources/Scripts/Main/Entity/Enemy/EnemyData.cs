@@ -33,7 +33,7 @@ public class EnemyData : EntityData
         {
             GameObject newBone = Instantiate(bone, gameObject.transform.position, gameObject.transform.rotation);
             newBone.GetComponent<Rigidbody2D>().SetRotation(Random.Range(0f, 360f));
-            newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-5f, 5f), 5f);
+            newBone.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2.5f, 2.5f), 5f);
         }
     }
 }

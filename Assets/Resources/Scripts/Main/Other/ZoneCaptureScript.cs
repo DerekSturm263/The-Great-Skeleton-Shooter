@@ -15,7 +15,7 @@ public class ZoneCaptureScript : MonoBehaviour
     public bool capturing, captured;
     public GameObject playerForSpawner;
     private GameObject[] Players;
-    public List<EnemyData> AssociatedEnemies;
+    public List<GameObject> AssociatedEnemies;
     public bool loadTitleOnCap;
     public Material zoneCaptureMaterial;
     SpriteRenderer getMat;
@@ -49,14 +49,17 @@ public class ZoneCaptureScript : MonoBehaviour
                 capCount = capLimit;
                 capturing = false;
                 captured = true;
-                foreach (EnemyData enemy in AssociatedEnemies)
-                {
-                    enemy.Die();
-                }
             }
         }
         if (captured)
         {
+            AssociatedEnemies.RemoveAll((x) => x == null);
+
+            foreach (GameObject enemy in AssociatedEnemies)
+            {
+                enemy.GetComponent<EnemyData>().Die();
+            }
+
             foreach (GameObject player in Players)
             {
                 uint newHealths = player.GetComponent<PlayerData>().BonesCurrent + (player.GetComponent<PlayerData>().BonesMax / 2);
