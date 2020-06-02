@@ -26,7 +26,6 @@ public class PlayerData : EntityData
 
     private void Awake()
     {
-        BonesMax = 100;
         BonesCurrent = BonesMax;
 
         if (GameController.playerCount == GameController.PlayerCount.Singleplayer)

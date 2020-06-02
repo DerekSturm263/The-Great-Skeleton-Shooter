@@ -17,7 +17,7 @@ public class EnemyData : EntityData
             Die();
     }
 
-    private void Die()
+    public void Die()
     {
         Destroy(gameObject);
         GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
