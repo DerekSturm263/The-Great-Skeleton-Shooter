@@ -6,6 +6,7 @@ public class EnemyMove : EntityMove
 {
     public bool isLockedOn;
     private float targetDirection;
+    private GameObject player;
 
     private void Awake()
     {
@@ -14,8 +15,20 @@ public class EnemyMove : EntityMove
         dustParticles = GetComponent<ParticleSystem>();
     }
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        (data as EnemyData).target = player;
+    }
+
     private void Update()
     {
+        if (Vector2.Distance(transform.position, player.transform.position) < 25f)
+        {
+            isLockedOn = true;
+            (data as EnemyData).isLockedOn = true;
+        }
+
         if (isLockedOn)
         {
             // Determines whether the target is to the left or right.
@@ -34,30 +47,4 @@ public class EnemyMove : EntityMove
             Jump((data as EnemyData).target.transform.position.y - 1f > transform.position.y);
         }
     }
-
-    #region Locking On
-
-    // If a player enters the trigger area, this GameObject will lock onto it.
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isLockedOn = true;
-            (data as EnemyData).isLockedOn = true;
-            (data as EnemyData).target = collision.gameObject;
-        }
-    }
-
-    // If a player exits the trigger area, this GameObject will forget about it.
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isLockedOn = false;
-            (data as EnemyData).isLockedOn = false;
-            (data as EnemyData).target = null;
-        }
-    }
-
-    #endregion
 }

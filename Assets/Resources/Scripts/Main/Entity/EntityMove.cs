@@ -35,21 +35,23 @@ public abstract class EntityMove : MonoBehaviour
     // Used to make the GameObject move in a direction based on moveSpeed.
     protected void Move(float input, bool isenemy)
     {
+        float movementX;
+
         if (!isenemy)
         {
-            float movementX = Mathf.Lerp(0f, moveSpeed * input, Mathf.Abs(input));
+            movementX = Mathf.Lerp(0f, moveSpeed * input, Mathf.Abs(input));
             data.rb2.velocity = new Vector2(movementX, data.rb2.velocity.y);
         }
         else
         {
-            float movementX = Mathf.Lerp(0f, moveSpeed * input, Mathf.Abs(input));
+            movementX = Mathf.Lerp(0f, moveSpeed * input, Mathf.Abs(input));
             data.rb2.velocity = new Vector2(movementX / 2, data.rb2.velocity.y);
         }
 
-        if (IsGrounded() && input != 0f)
+        if (IsGrounded() && Mathf.Abs(data.rb2.velocity.x) > 0.1f)
         {
-            if (Mathf.Floor(Time.time * 3) % 1 == 0) dustParticles.Play();
-            else dustParticles.Stop();
+            if (Mathf.Floor(Time.time * 4) % 1 == 0) dustParticles.Play(false);
+            else dustParticles.Stop(false);
         }
     }
 

@@ -21,6 +21,7 @@ public class EnemyData : EntityData
     {
         Destroy(gameObject);
         GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        bones.transform.localScale = gameObject.transform.localScale / 2f;
         SpawnBones();
         ActiveEnemyManager.activeEnemies--;
         ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().capCount += 0.75f;

@@ -20,10 +20,7 @@ public class EnemyActions : EntityActions
     {
         if ((data as EnemyData).target != null)
         {
-            if ((data as EnemyData).BonesCurrent >= 1)
-            {
-                Aim((data as EnemyData).target);
-            }
+            Aim((data as EnemyData).target);
         }
     }
 
@@ -47,12 +44,11 @@ public class EnemyActions : EntityActions
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
-        if (shoot)
+        if (shoot && (data as EnemyData).isLockedOn)
         {
             foreach (GameObject gun in arm)
             {
                 GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
-                newBullet.transform.localScale = this.gameObject.transform.localScale;
                 newBullet.GetComponent<Bullet>().SetBulletOwner(1);
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
                 Destroy(newBullet, bulletLife);

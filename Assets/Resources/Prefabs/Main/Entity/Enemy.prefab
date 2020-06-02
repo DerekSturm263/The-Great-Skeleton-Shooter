@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2130294785987538405}
   - component: {fileID: 8937474614377239782}
-  - component: {fileID: 1487081389}
   - component: {fileID: 1767651259416096274}
   - component: {fileID: 7912269010350114910}
   - component: {fileID: 3038728390320637049}
@@ -63,22 +62,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!58 &1487081389
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130294785987538406}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 10
 --- !u!114 &1767651259416096274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +81,7 @@ MonoBehaviour:
     type: 3}
   loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
     type: 3}
+  childrenSpriteRenderers: []
   bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
   boneDrops: 5
   target: {fileID: 0}
@@ -137,7 +121,7 @@ MonoBehaviour:
   armPivot:
   - {fileID: 607174053103385468}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
-  bulletLife: 0.5
+  bulletLife: 0.75
   bulletForce: 10
   bulletRate: 1
   shoot: 0
@@ -5032,7 +5016,7 @@ GameObject:
   - component: {fileID: 5359492955593913876}
   m_Layer: 11
   m_Name: Arm Pivot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -77,29 +77,35 @@ public class TitleUI : MonoBehaviour
 
     private void UpdateSelectionPosition()
     {
-        RectTransform rT = buttonSelectionHighlight.GetComponent<RectTransform>();
-        
-        if (eventSystem.currentSelectedGameObject == none)
+        try
         {
-            rT.position = new Vector2(-10f, -10f);
-            rT.sizeDelta = new Vector2(0f, 0f);
-        }
-        else
-        {
-            RectTransform rT2 = eventSystem.currentSelectedGameObject.GetComponent<RectTransform>();
-            rT.position = rT2.position;
-            rT.sizeDelta = rT2.sizeDelta;
-        }
+            RectTransform rT = buttonSelectionHighlight.GetComponent<RectTransform>();
+
+            if (eventSystem.currentSelectedGameObject == none)
+            {
+                rT.position = new Vector2(-10f, -10f);
+                rT.sizeDelta = new Vector2(0f, 0f);
+            }
+            else
+            {
+                RectTransform rT2 = eventSystem.currentSelectedGameObject.GetComponent<RectTransform>();
+                rT.position = rT2.position;
+                rT.sizeDelta = rT2.sizeDelta;
+            }
+        } catch { }
     }
 
     private void LateUpdate()
     {
-        CanvasGroup buttonParent = eventSystem.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<CanvasGroup>();
-
-        if (buttonParent != null && buttonParent.GetComponent<CanvasGroup>() != null)
+        try
         {
-            buttonSelectionHighlight.GetComponent<CanvasGroup>().alpha = buttonParent.alpha;
-        }
+            CanvasGroup buttonParent = eventSystem.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<CanvasGroup>();
+
+            if (buttonParent != null && buttonParent.GetComponent<CanvasGroup>() != null)
+            {
+                buttonSelectionHighlight.GetComponent<CanvasGroup>().alpha = buttonParent.alpha;
+            }
+        } catch { }
     }
 
     private void EnableAnimators()

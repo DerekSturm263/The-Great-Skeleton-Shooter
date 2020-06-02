@@ -58,7 +58,7 @@ public class PlayerActions : EntityActions
 
 
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
-        if (Input.GetAxis("Scroll") >=0.1 || Input.GetAxis("Scroll") <= -0.1)
+        if ((Input.GetAxis("Scroll") >=0.1 || Input.GetAxis("Scroll") <= -0.1) && carriedWeapon != null)
         {
             carriedWeapon.SetActive(false);
             activeWeaponFromList++;
@@ -133,6 +133,8 @@ public class PlayerActions : EntityActions
                 foreach (GameObject gun in arm)
                 {
                     GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                    newBullet.transform.rotation = gun.transform.rotation;
+                    carriedWeapon.GetComponent<ParticleSystem>().Play();
                     newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 
                     if (gravEffect)
@@ -177,6 +179,8 @@ public class PlayerActions : EntityActions
             foreach (GameObject gun in arm)
             {
                 GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                newBullet.transform.rotation = gun.transform.rotation;
+                carriedWeapon.GetComponent<ParticleSystem>().Play();
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 
                 if (gravEffect)
