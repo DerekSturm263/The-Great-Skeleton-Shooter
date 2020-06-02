@@ -57,7 +57,7 @@ public class PlayerActions : EntityActions
 
 
         Vector2 aimingVect = new Vector2(Input.GetAxis((data as PlayerData).controls[3]), Input.GetAxis((data as PlayerData).controls[4]));
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetAxis("Scroll") >=0.1 || Input.GetAxis("Scroll") <= -0.1)
         {
             carriedWeapon.SetActive(false);
             activeWeaponFromList++;
