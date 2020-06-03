@@ -20,6 +20,7 @@ public class CrateData : MonoBehaviour
         foreach (GameObject g in contents)
         {
             SpawnItem(g);
+            if (g.CompareTag("Ally")) g.GetComponent<AllyData>().canMove = true;
         }
 
         Destroy(this.gameObject);

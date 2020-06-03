@@ -18,11 +18,17 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        if (ZoneCaptureScript.currentZone != null)
+        if (ZoneCaptureScript.lastZoneCaptured != null)
         {
-            player.transform.position = ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().respawnPoint.transform.position;
+            player.transform.position = ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().respawnPoint.transform.position;
             ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().Reset();
+            ZoneCaptureScript.lastZoneCaptured.SetActive(true);
+            ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().Reset();
 
+            foreach (GameObject flag in ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().associatedFlags)
+            {
+                flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Uncaptured);
+            }
             foreach (GameObject flag in ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().associatedFlags)
             {
                 flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Uncaptured);

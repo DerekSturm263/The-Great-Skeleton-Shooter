@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 7802259110253783445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.42, y: 0.42, z: 1}
   m_Children:
   - {fileID: 7402118826376205976}
   m_Father: {fileID: 0}
@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2: {fileID: 0}
-  BonesMax: 10
-  BonesCurrent: 10
+  BonesMax: 14
+  BonesCurrent: 14
   deathParticles: {fileID: 9069963587402409237, guid: ad72fe1682472d847a30a5bbdf7095ef,
     type: 3}
   loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,

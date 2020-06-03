@@ -18,7 +18,7 @@ public class AllyData : EntityData
             Die();
     }
 
-    private void Die()
+    public void Die()
     {
         GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
         bones.transform.localScale = gameObject.transform.localScale / 2f;

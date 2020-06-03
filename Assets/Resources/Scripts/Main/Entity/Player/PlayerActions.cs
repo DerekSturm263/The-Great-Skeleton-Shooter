@@ -34,6 +34,8 @@ public class PlayerActions : EntityActions
 
     private GameObject thisSummoningParticles;
 
+    public static List<GameObject> allies;
+
     private void Awake()
     {
         carriedWeapon.SetActive(false);
@@ -258,6 +260,7 @@ public class PlayerActions : EntityActions
                     newAlly.GetComponent<AllyData>().BonesMax = (uint) ((float) summoningBones / 1.5f);
                     newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
                     newAlly.GetComponent<AllyMove>().summoner = gameObject;
+                    allies.Add(newAlly);
 
                     Destroy(thisSummoningParticles);
 
@@ -280,8 +283,8 @@ public class PlayerActions : EntityActions
         {
             data.AddBone(2);
 
-            Destroy(collision.gameObject);
             Instantiate(boneCollecting, collision.gameObject.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
         }
     }
 }
