@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class PlayerActions : EntityActions
 {
     private GameObject summonSpot;
+    private Image timerCircle;
+
     public float fireTimer, fireTimeMax, boneFadeSpeed;
     public bool fireActive = false, fullAuto = false;
     public Image boneUI;
@@ -18,8 +20,9 @@ public class PlayerActions : EntityActions
     //This is used only for setting weapon positions
     public GameObject armPivotForWeaponPlacement;
 
-    public float activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife;
+    public float activeWeaponshotRate = 0f, activeWeaponShotForce, activeWeaponShotLife;
     public bool activeWeaponAutoBool, activeWeaponGravEffect;
+    public uint activeWeaponDamage;
 
     public int activeWeaponFromList = 0;
 
@@ -45,6 +48,7 @@ public class PlayerActions : EntityActions
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
         rb = GetComponent<Rigidbody2D>();
         freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
+        timerCircle = summonSpot.transform.GetChild(0).GetComponent<Image>();
     }
     
     private void Update()
@@ -77,9 +81,10 @@ public class PlayerActions : EntityActions
             activeWeaponShotLife = carriedWeapon.GetComponent<WeaponTemplateScript>().shotLife;
             activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
             activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
-        }
+            activeWeaponDamage = carriedWeapon.GetComponent<WeaponTemplateScript>().damage;
 
-        Debug.Log("I have removed the part where it takes you back to the title scene when you die because we are going to replace that with another thing.");
+            summonSpot.transform.localScale = new Vector2(activeWeaponDamage / 4f + 0.75f, activeWeaponDamage / 4f + 0.75f);
+        }
 
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (carriedWeapon != null)
@@ -95,6 +100,14 @@ public class PlayerActions : EntityActions
         }
         StartSummoningAlly(Input.GetButtonDown((data as PlayerData).controls[6]));
         SummonAlly(Input.GetButton((data as PlayerData).controls[6]));
+
+        if (fireTimer < activeWeaponshotRate)
+        {
+            fireTimer += Time.deltaTime;
+        }
+
+        if (carriedWeapon != null) timerCircle.fillAmount = (fireTimer < activeWeaponshotRate) ? (fireTimer / activeWeaponshotRate) : 1f;
+        else timerCircle.fillAmount = 0f;
     }
 
     // Called when the player moves the mouse or reticle.
@@ -122,26 +135,31 @@ public class PlayerActions : EntityActions
     {
         if (input)
         {
-            if (!fireActive)
+            if (fireTimer >= activeWeaponshotRate)
             {
-                fireActive = true;
                 if (data.BonesCurrent <= 1)
                     return;
+
+                fireTimer = firingRate;
+
                 foreach (GameObject gun in arm)
                 {
                     GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
                     newBullet.transform.SetParent(freezeOnPause);
                     newBullet.transform.rotation = gun.transform.rotation;
+                    newBullet.GetComponent<Bullet>().damage = activeWeaponDamage;
                     carriedWeapon.GetComponent<ParticleSystem>().Play();
                     newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 
                     if (gravEffect)
                     {
                         newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale / 32;
+                        data.RemoveBone(1);
                     }
-                    else if (!gravEffect)
+                    else
                     {
                         newBullet.GetComponent<Rigidbody2D>().gravityScale = newBullet.GetComponent<Rigidbody2D>().gravityScale * 0;
+                        data.RemoveBone(2);
                     }
 
                     newBullet.GetComponent<Bullet>().SetBulletOwner(0);
@@ -152,17 +170,6 @@ public class PlayerActions : EntityActions
                     }
 
                     Destroy(newBullet, fireLife);
-                    data.RemoveBone(1);
-                }
-            }else if (fireActive)
-            {
-                if (fireTimer < fireTimeMax)
-                {
-                    fireTimer += Time.deltaTime;
-                }else if (fireTimer >= fireTimeMax)
-                {
-                    fireTimer = 0;
-                    fireActive = false;
                 }
             }
         }
@@ -174,11 +181,13 @@ public class PlayerActions : EntityActions
         {
             if (data.BonesCurrent <= 1)
                 return;
+
             foreach (GameObject gun in arm)
             {
                 GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
                 newBullet.transform.SetParent(freezeOnPause);
                 newBullet.transform.rotation = gun.transform.rotation;
+                newBullet.GetComponent<Bullet>().damage = activeWeaponDamage;
                 carriedWeapon.GetComponent<ParticleSystem>().Play();
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 
@@ -192,11 +201,6 @@ public class PlayerActions : EntityActions
                 }
 
                 newBullet.GetComponent<Bullet>().SetBulletOwner(0);
-
-                foreach (GameObject pivot in armPivot)
-                {
-                    //newBullet.transform.rotation = pivot.transform.rotation;
-                }
 
                 Destroy(newBullet, fireLife);
                 data.RemoveBone(1);

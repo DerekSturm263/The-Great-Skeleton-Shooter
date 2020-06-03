@@ -126,14 +126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Rocket Launcher
-  autoBool: 0
+  autoBool: 1
   gravEffect: 0
   shotRate: 1
   shotForce: 5
-  shotLife: 2
+  shotLife: 3
   endofbarrel: {fileID: 0}
   collectionParticles: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
     type: 3}
+  damage: 5
 --- !u!198 &8253284829138028338
 ParticleSystem:
   m_ObjectHideFlags: 0

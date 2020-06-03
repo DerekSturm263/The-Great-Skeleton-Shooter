@@ -22,8 +22,24 @@ public class AllyMove : EntityMove
 
     private void Update()
     {
+        if ((data as AllyData).target == null)
+            isLockedOn = false;
+
         if ((data as AllyData).canMove)
         {
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+            {
+                foreach (GameObject g in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    if (Vector2.Distance(transform.position, g.transform.position) < 15f)
+                    {
+                        isLockedOn = true;
+                        (data as AllyData).isLockedOn = true;
+                        (data as AllyData).target = g;
+                    }
+                }
+            }
+
             if (isLockedOn)
             {
                 // Determines whether the target is to the left or right.

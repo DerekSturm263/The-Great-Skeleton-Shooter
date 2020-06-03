@@ -22,6 +22,7 @@ public class AllyData : EntityData
     {
         GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
         bones.transform.localScale = gameObject.transform.localScale / 2f;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerActions>().allies.Remove(gameObject);
         Destroy(gameObject);
     }
 }

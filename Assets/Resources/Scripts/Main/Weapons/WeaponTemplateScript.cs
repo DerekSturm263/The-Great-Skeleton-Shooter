@@ -9,6 +9,7 @@ public class WeaponTemplateScript : MonoBehaviour
     public float shotRate, shotForce, shotLife;
     public GameObject endofbarrel;
     public GameObject collectionParticles;
+    public uint damage;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,6 +32,7 @@ public class WeaponTemplateScript : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerActions>().activeWeaponShotLife = shotLife;
                 collision.gameObject.GetComponent<PlayerActions>().activeWeaponAutoBool = autoBool;
                 collision.gameObject.GetComponent<PlayerActions>().activeWeaponGravEffect = gravEffect;
+                collision.gameObject.GetComponent<PlayerActions>().activeWeaponDamage = damage;
         }
     }
 }

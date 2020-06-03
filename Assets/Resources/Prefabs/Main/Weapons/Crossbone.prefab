@@ -155,14 +155,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Crossbone
-  autoBool: 0
+  autoBool: 1
   gravEffect: 1
-  shotRate: 1
+  shotRate: 0.25
   shotForce: 10
   shotLife: 0.5
   endofbarrel: {fileID: 0}
   collectionParticles: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
     type: 3}
+  damage: 1
 --- !u!198 &3190615520935824063
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class EnemySpawning : MonoBehaviour
                     newEnemy.transform.SetParent(freezeOnPause);
                     newEnemy.GetComponent<EnemyData>().BonesMax = (uint)(AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength / 2f);
                     newEnemy.GetComponent<EnemyData>().BonesCurrent = newEnemy.GetComponent<EnemyData>().BonesMax;
-                    newEnemy.transform.localScale = new Vector2(AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength, AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength) / 20f;
+                    newEnemy.transform.localScale = new Vector3(AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength, AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength, AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength) / 20f;
 
                     newEnemy.GetComponent<EnemyData>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                     newEnemy.GetComponent<EnemyData>().isLockedOn = true;

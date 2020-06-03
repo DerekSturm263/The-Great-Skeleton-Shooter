@@ -7,6 +7,7 @@ public class EnemyMove : EntityMove
     public bool isLockedOn;
     private float targetDirection;
     private GameObject player;
+    private PlayerActions playerActions;
 
     private void Awake()
     {
@@ -19,14 +20,32 @@ public class EnemyMove : EntityMove
     {
         player = GameObject.FindGameObjectWithTag("Player");
         (data as EnemyData).target = player;
+        playerActions = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerActions>();
     }
 
     private void Update()
     {
+        if ((data as EnemyData).target == null)
+            isLockedOn = false;
+
         if (Vector2.Distance(transform.position, player.transform.position) < 15f)
         {
             isLockedOn = true;
             (data as EnemyData).isLockedOn = true;
+            (data as EnemyData).target = player;
+        }
+
+        if (playerActions.allies.Count > 0)
+        {
+            foreach (GameObject g in playerActions.allies)
+            {
+                if (Vector2.Distance(transform.position, g.transform.position) < 15f && g.GetComponent<AllyData>().canMove)
+                {
+                    isLockedOn = true;
+                    (data as EnemyData).isLockedOn = true;
+                    (data as EnemyData).target = g;
+                }
+            }
         }
 
         if (isLockedOn)
