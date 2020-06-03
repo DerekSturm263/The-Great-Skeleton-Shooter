@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7736766607071438333}
   - component: {fileID: 7736766607071438332}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Healhbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

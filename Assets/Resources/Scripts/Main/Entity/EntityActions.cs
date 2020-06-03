@@ -5,6 +5,7 @@ using UnityEngine;
 public class EntityActions : MonoBehaviour
 {
     protected EntityData data;
+    protected Transform freezeOnPause;
 
     public enum State
     {

@@ -6,6 +6,12 @@ public class CrateData : MonoBehaviour
 {
     public GameObject[] contents;
     public GameObject breakingParticles;
+    protected Transform freezeOnPause;
+
+    private void Awake()
+    {
+        freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
+    }
 
     public void Break()
     {
@@ -22,6 +28,7 @@ public class CrateData : MonoBehaviour
     private void SpawnItem(GameObject g)
     {
         GameObject newItem = Instantiate(g, gameObject.transform.position, gameObject.transform.rotation);
+        newItem.transform.SetParent(freezeOnPause);
 
         if (newItem.GetComponent<Rigidbody2D>() != null)
         {

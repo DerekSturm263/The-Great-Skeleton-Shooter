@@ -30,11 +30,13 @@ public class GameController : MonoBehaviour
     public static void SetMusic(bool music)
     {
         hasMusic = music;
+        MusicPlayer.ChangeVolume(Convert.ToInt32(music));
     }
 
     public static void SetSoundEffects(bool soundEffect)
     {
         hasSoundEffects = soundEffect;
+        SoundPlayer.ChangeVolume(Convert.ToInt32(soundEffect));
     }
 
     public static void SetGraphics(GraphicsType newGraphicsType)

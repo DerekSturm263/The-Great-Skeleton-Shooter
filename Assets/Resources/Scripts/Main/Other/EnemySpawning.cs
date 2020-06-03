@@ -8,6 +8,13 @@ public class EnemySpawning : MonoBehaviour
     public float spawnRate, spawnTimer, spawnTimerMax;
     public bool forceSpawn, spawnable;
 
+    protected Transform freezeOnPause;
+
+    private void Awake()
+    {
+        freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
+    }
+
     private void Update()
     {
         if (AssociatedCapZone != null)
@@ -16,10 +23,13 @@ public class EnemySpawning : MonoBehaviour
             {
                 if (spawnTimer == 0)
                 {
-                    GameObject newEnemy = GameObject.Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+                    GameObject newEnemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+                    newEnemy.transform.SetParent(freezeOnPause);
+
                     newEnemy.GetComponent<EnemyData>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                     newEnemy.GetComponent<EnemyData>().isLockedOn = true;
                     newEnemy.GetComponent<EnemyMove>().isLockedOn = true;
+
                     AssociatedCapZone.GetComponent<ZoneCaptureScript>().AssociatedEnemies.Add(newEnemy);
                     spawnTimer += Time.deltaTime * spawnRate;
                     ActiveEnemyManager.activeEnemies++;

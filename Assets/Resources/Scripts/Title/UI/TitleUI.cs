@@ -1,10 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System;
 
 public class TitleUI : MonoBehaviour
 {
@@ -42,14 +39,13 @@ public class TitleUI : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
         {
             GameObject gC = Instantiate(gameController);
+            MusicPlayer.Initialize();
+            SoundPlayer.Initialize();
 
             GameController.SetFullscreen(Screen.fullScreen);
             GameController.SetMusic(true);
             GameController.SetSoundEffects(true);
             GameController.SetGraphics(GameController.GraphicsType.Fancy);
-
-            MusicPlayer.Initialize();
-            SoundPlayer.Initialize();
 
             DontDestroyOnLoad(gC);
             DontDestroyOnLoad(GameObject.Find("Music Player"));
@@ -125,8 +121,8 @@ public class TitleUI : MonoBehaviour
 
     private IEnumerator EnablePopUp(GameObject g)
     {
-        g.GetComponent<Animator>().SetBool("fadeOut", false);
         g.SetActive(true);
+        g.GetComponent<Animator>().SetBool("fadeOut", false);
 
         yield return null;
     }
@@ -292,6 +288,8 @@ public class TitleUI : MonoBehaviour
         StartCoroutine(DisablePopUp(quitConfirm));
         eventSystem.SetSelectedGameObject(buttons[4]);
     }
+
+
 
     private IEnumerator MultiplayerButtonYes()
     {

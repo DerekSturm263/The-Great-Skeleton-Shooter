@@ -17,6 +17,8 @@ TagManager:
   - P1Aim
   - ZoneCaptureUI
   - Crate
+  - Credit
+  - FreezeOnPause
   layers:
   - Default
   - TransparentFX

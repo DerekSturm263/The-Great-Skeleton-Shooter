@@ -15,7 +15,10 @@ public class ZoneCaptureScript : MonoBehaviour
     public bool capturing, captured;
     public GameObject playerForSpawner;
     private GameObject[] Players;
+
     public List<GameObject> AssociatedEnemies;
+    public List<GameObject> associatedFlags;
+
     public bool loadTitleOnCap;
     public Material zoneCaptureMaterial;
     SpriteRenderer getMat;
@@ -58,6 +61,11 @@ public class ZoneCaptureScript : MonoBehaviour
             foreach (GameObject enemy in AssociatedEnemies)
             {
                 enemy.GetComponent<EnemyData>().Die();
+            }
+
+            foreach (GameObject flag in associatedFlags)
+            {
+                flag.GetComponent<FlagState>().SetState(FlagState.CaptureState.Captured);
             }
 
             foreach (GameObject player in Players)

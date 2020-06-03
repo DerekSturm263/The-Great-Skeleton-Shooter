@@ -42,6 +42,7 @@ public class PlayerActions : EntityActions
         data = GetComponent<PlayerData>();
         summonSpot = GameObject.FindGameObjectWithTag("SummonSpot");
         rb = GetComponent<Rigidbody2D>();
+        freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
     }
     
     private void Update()
@@ -76,14 +77,8 @@ public class PlayerActions : EntityActions
             activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
         }
 
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Title");
-        }
-        if ((data as PlayerData).BonesCurrent <= 0)
-        {
-            SceneManager.LoadScene("Title");
-        }
+        Debug.Log("I have removed the part where it takes you back to the title scene when you die because we are going to replace that with another thing.");
+
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (carriedWeapon != null)
         {
@@ -133,6 +128,7 @@ public class PlayerActions : EntityActions
                 foreach (GameObject gun in arm)
                 {
                     GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                    newBullet.transform.SetParent(freezeOnPause);
                     newBullet.transform.rotation = gun.transform.rotation;
                     carriedWeapon.GetComponent<ParticleSystem>().Play();
                     newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
@@ -179,6 +175,7 @@ public class PlayerActions : EntityActions
             foreach (GameObject gun in arm)
             {
                 GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);
+                newBullet.transform.SetParent(freezeOnPause);
                 newBullet.transform.rotation = gun.transform.rotation;
                 carriedWeapon.GetComponent<ParticleSystem>().Play();
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
@@ -212,6 +209,7 @@ public class PlayerActions : EntityActions
         {
             canSummon = true;
             newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
+            newAlly.transform.SetParent(freezeOnPause);
             newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             summoningBones = 1;
             thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);

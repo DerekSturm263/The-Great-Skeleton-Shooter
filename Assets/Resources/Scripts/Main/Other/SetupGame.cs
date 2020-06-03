@@ -11,21 +11,28 @@ public class SetupGame : MonoBehaviour
     public GameObject fancyGraphics;
     public GameObject fastGraphics;
 
+    private Transform freezeOnPause;
+
     private void Awake()
     {
+        freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
+
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
             Instantiate(gameController);
+
         PlayerData.totalPlayerCount = 1;
 
         #region Create Players
 
         // Creates player one.
-        Instantiate(player, playerStartPos, Quaternion.identity);
+        GameObject newPlayer = Instantiate(player, playerStartPos, Quaternion.identity);
+        newPlayer.transform.SetParent(freezeOnPause);
 
         if (GameController.playerCount == GameController.PlayerCount.Multiplayer)
         {
             // Creates player two.
-            Instantiate(player, playerStartPos, Quaternion.identity);
+            GameObject newPlayer2 = Instantiate(player, playerStartPos, Quaternion.identity);
+            newPlayer2.transform.SetParent(freezeOnPause);
         }
 
         #endregion
