@@ -177,22 +177,18 @@ public class PauseUI : MonoBehaviour
         isPaused = false;
         isPausing = true;
 
-        if (pauseMenu.activeSelf)
-        {
-            StartCoroutine(DisablePopUp(pauseMenu));
-
-            foreach (Transform gameObject in freezeOnPause)
-            {
-                if (gameObject.GetComponent<Rigidbody2D>() != null) gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                if (gameObject.GetComponent<EntityData>() != null) gameObject.GetComponent<EntityData>().enabled = true;
-                if (gameObject.GetComponent<EntityMove>() != null) gameObject.GetComponent<EntityMove>().enabled = true;
-                if (gameObject.GetComponent<EntityActions>() != null) gameObject.GetComponent<EntityActions>().enabled = true;
-            }
-        }
-
+        if (pauseMenu.activeSelf) StartCoroutine(DisablePopUp(pauseMenu));
         else if (options.activeSelf) StartCoroutine(DisablePopUp(options));
         else if (creditsConfirm.activeSelf) StartCoroutine(DisablePopUp(creditsConfirm));
         else if (titleConfirm.activeSelf) StartCoroutine(DisablePopUp(titleConfirm));
+
+        foreach (Transform gameObject in freezeOnPause)
+        {
+            if (gameObject.GetComponent<Rigidbody2D>() != null) gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            if (gameObject.GetComponent<EntityData>() != null) gameObject.GetComponent<EntityData>().enabled = true;
+            if (gameObject.GetComponent<EntityMove>() != null) gameObject.GetComponent<EntityMove>().enabled = true;
+            if (gameObject.GetComponent<EntityActions>() != null) gameObject.GetComponent<EntityActions>().enabled = true;
+        }
 
         yield return new WaitForSeconds(waitTime / 3f);
         isPausing = false;
