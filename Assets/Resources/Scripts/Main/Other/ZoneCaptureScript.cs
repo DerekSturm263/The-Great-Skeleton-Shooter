@@ -7,22 +7,33 @@ public class ZoneCaptureScript : MonoBehaviour
 {
     public static GameObject currentZone;
     public static float numCaptured;
+    public static GameObject lastZoneCaptured;
 
     private Animator zoneCaptureUI;
-    public int PlayersIn = 0;
-    public float capCount, capRate, capLimit, capPercent;
+    [HideInInspector] public int PlayersIn = 0;
+    [HideInInspector] public float capCount;
+    [HideInInspector] public float capLimit = 5;
+    [HideInInspector] public float capPercent;
     public GameObject zoneDoor;
-    public bool capturing, captured;
-    public GameObject playerForSpawner;
-    private GameObject[] Players;
+    [HideInInspector] public bool capturing, captured;
+    [HideInInspector] public GameObject playerForSpawner;
+    [HideInInspector] private GameObject[] Players;
 
-    public List<GameObject> AssociatedEnemies;
+    [HideInInspector] public List<GameObject> AssociatedEnemies;
     public List<GameObject> associatedFlags;
     public GameObject respawnPoint;
 
-    public bool loadTitleOnCap;
     public Material zoneCaptureMaterial;
-    SpriteRenderer getMat;
+    private SpriteRenderer getMat;
+    [HideInInspector] public uint currentEnemies;
+
+    [Header("Difficulty Settings")]
+    public float capRate;
+    public float enemyStrength;
+    public uint maxEnemies;
+    public float enemyCaptureBoost;
+    public float spawnRate;
+    public uint bonesRestore;
 
     private void Start()
     {
@@ -57,6 +68,7 @@ public class ZoneCaptureScript : MonoBehaviour
         }
         if (captured)
         {
+            lastZoneCaptured = gameObject;
             AssociatedEnemies.RemoveAll((x) => x == null);
 
             foreach (GameObject enemy in AssociatedEnemies)
@@ -71,13 +83,9 @@ public class ZoneCaptureScript : MonoBehaviour
 
             foreach (GameObject player in Players)
             {
-                uint newHealths = player.GetComponent<PlayerData>().BonesCurrent + (player.GetComponent<PlayerData>().BonesMax / 2);
-                if (newHealths > player.GetComponent<PlayerData>().BonesMax)
-                {
-                    newHealths = player.GetComponent<PlayerData>().BonesMax;
-                }
-                player.GetComponent<PlayerData>().BonesCurrent = newHealths;
+                player.GetComponent<PlayerData>().AddBone(bonesRestore);
             }
+
             zoneCaptureUI.SetBool("disappear", true);
             gameObject.SetActive(false);
             Debug.Log("Captured!");
@@ -107,8 +115,6 @@ public class ZoneCaptureScript : MonoBehaviour
     {
         PlayersIn = 0;
         capCount = 0;
-        capRate = 0.2f;
-        capLimit = 5f;
         capPercent = 0f;
         capturing = false;
         captured = false;

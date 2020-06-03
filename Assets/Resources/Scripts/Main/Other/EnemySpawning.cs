@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawning : MonoBehaviour
 {
     public GameObject EnemyPrefab, AssociatedCapZone;
-    public float spawnRate, spawnTimer, spawnTimerMax;
+    public float spawnTimer, spawnTimerMax;
     public bool forceSpawn, spawnable;
 
     protected Transform freezeOnPause;
@@ -19,35 +19,34 @@ public class EnemySpawning : MonoBehaviour
     {
         if (AssociatedCapZone != null)
         {
-            if (AssociatedCapZone.GetComponent<ZoneCaptureScript>().PlayersIn >= 1 && spawnable || forceSpawn && spawnable)
+            if (AssociatedCapZone.GetComponent<ZoneCaptureScript>().PlayersIn >= 1 &&
+                AssociatedCapZone.GetComponent<ZoneCaptureScript>().currentEnemies < AssociatedCapZone.GetComponent<ZoneCaptureScript>().maxEnemies || forceSpawn && spawnable)
             {
                 if (spawnTimer == 0)
                 {
                     GameObject newEnemy = Instantiate(EnemyPrefab, transform.position, Quaternion.identity);
+                    AssociatedCapZone.GetComponent<ZoneCaptureScript>().currentEnemies++;
                     newEnemy.transform.SetParent(freezeOnPause);
+                    newEnemy.GetComponent<EnemyData>().BonesMax = (uint)(AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength / 2f);
+                    newEnemy.GetComponent<EnemyData>().BonesCurrent = newEnemy.GetComponent<EnemyData>().BonesMax;
+                    newEnemy.transform.localScale = new Vector2(AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength, AssociatedCapZone.GetComponent<ZoneCaptureScript>().enemyStrength) / 20f;
 
                     newEnemy.GetComponent<EnemyData>().target = AssociatedCapZone.GetComponent<ZoneCaptureScript>().playerForSpawner;
                     newEnemy.GetComponent<EnemyData>().isLockedOn = true;
                     newEnemy.GetComponent<EnemyMove>().isLockedOn = true;
 
                     AssociatedCapZone.GetComponent<ZoneCaptureScript>().AssociatedEnemies.Add(newEnemy);
-                    spawnTimer += Time.deltaTime * spawnRate;
-                    ActiveEnemyManager.activeEnemies++;
+                    spawnTimer += Time.deltaTime * AssociatedCapZone.GetComponent<ZoneCaptureScript>().spawnRate;
                 }
                 else if (spawnTimer < spawnTimerMax)
                 {
-                    spawnTimer += Time.deltaTime * spawnRate;
+                    spawnTimer += Time.deltaTime * AssociatedCapZone.GetComponent<ZoneCaptureScript>().spawnRate;
                 }
                 else if (spawnTimer >= spawnTimerMax)
                 {
                     spawnTimer = 0;
                 }
             }
-
-            if (ActiveEnemyManager.activeEnemies >= ActiveEnemyManager.sceneEnemyMax)
-                spawnable = false;
-            else if (ActiveEnemyManager.activeEnemies < ActiveEnemyManager.sceneEnemyMax)
-                spawnable = true;
         }
     }
 }

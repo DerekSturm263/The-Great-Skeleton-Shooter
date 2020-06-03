@@ -15,6 +15,11 @@ public class AllyMove : EntityMove
         dustParticles = GetComponent<ParticleSystem>();
     }
 
+    private void OnEnable()
+    {
+        summoner = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Update()
     {
         if ((data as AllyData).canMove)

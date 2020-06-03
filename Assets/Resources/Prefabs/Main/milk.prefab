@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RestoreValue: 50
+  boneCollecting: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
+    type: 3}
 --- !u!198 &1534034406709603529
 ParticleSystem:
   m_ObjectHideFlags: 0
