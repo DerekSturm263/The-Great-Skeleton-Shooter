@@ -90,8 +90,15 @@ public class PlayerData : EntityData
     {
         GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
         bones.transform.localScale = gameObject.transform.localScale / 2f;
-        PlayerActions.allies.RemoveAll((x) => x == null);
-        PlayerActions.allies.ForEach((x) => x.GetComponent<AllyData>().Die());
+
+        if (GetComponent<PlayerActions>().allies.Count > 0)
+        {
+            try
+            {
+                GetComponent<PlayerActions>().allies.RemoveAll((x) => x == null);
+            } catch { }
+            GetComponent<PlayerActions>().allies.ForEach((x) => x.GetComponent<AllyData>().Die());
+        }
 
         playerManager.GetComponent<PlayerManager>().RespawnPlayer();
         gameObject.SetActive(false);

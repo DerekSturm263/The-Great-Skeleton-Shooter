@@ -18,9 +18,8 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        if (ZoneCaptureScript.lastZoneCaptured != null)
+        if (ZoneCaptureScript.lastZoneCaptured != null || ZoneCaptureScript.currentZone != null)
         {
-            player.transform.position = ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().respawnPoint.transform.position;
             ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().Reset();
             ZoneCaptureScript.lastZoneCaptured.SetActive(true);
             ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().Reset();
@@ -34,14 +33,15 @@ public class PlayerManager : MonoBehaviour
                 flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Uncaptured);
             }
         }
-        else
-        {
-            player.transform.position = new Vector2(-10f, -4f);
-        }
 
         if (ZoneCaptureScript.numCaptured > 0) ZoneCaptureScript.numCaptured--;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+
+        player.transform.position = (ZoneCaptureScript.lastZoneCaptured != null) ?
+            ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().respawnPoint.transform.position :
+            player.transform.position = new Vector2(-10f, -4f);
+
         player.SetActive(true);
     }
 }

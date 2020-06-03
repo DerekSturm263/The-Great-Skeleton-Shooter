@@ -34,7 +34,7 @@ public class PlayerActions : EntityActions
 
     private GameObject thisSummoningParticles;
 
-    public static List<GameObject> allies;
+    public List<GameObject> allies;
 
     private void Awake()
     {
