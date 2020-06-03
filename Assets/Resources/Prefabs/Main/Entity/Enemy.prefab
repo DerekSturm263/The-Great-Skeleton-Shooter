@@ -37,7 +37,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5359492955593913876}
-  - {fileID: 5370969008465118421}
+  - {fileID: 8291070424059338011}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,9 +81,8 @@ MonoBehaviour:
     type: 3}
   loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
     type: 3}
-  childrenSpriteRenderers: []
   bone: {fileID: 4160829293273905485, guid: 0f857bc7e407483468ac10775fab335e, type: 3}
-  boneDrops: 10
+  boneDrops: 5
   target: {fileID: 0}
   isLockedOn: 0
 --- !u!114 &7912269010350114910
@@ -119,7 +118,7 @@ MonoBehaviour:
   arm:
   - {fileID: 2130294786488361267}
   armPivot:
-  - {fileID: 607174053103385468}
+  - {fileID: 8291070424059338167}
   bullet: {fileID: 3487773396399349774, guid: ecd78f2da0fa86a408071274b391058d, type: 3}
   bulletLife: 0.75
   bulletForce: 10
@@ -153,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1caebe7ad8fad4c98e9a86b67ef28b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 4787892678675714733}
+  anim: {fileID: 8291070424059337422}
   rb: {fileID: 8937474614377239782}
   player: {fileID: 2130294785987538406}
   groundLayer:
@@ -5688,19 +5687,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85b67bad4ae33241a7dcc1ecd762a58, type: 3}
---- !u!4 &5370969008465118421 stripped
+--- !u!4 &8291070424059338011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145087661071129213, guid: c85b67bad4ae33241a7dcc1ecd762a58,
     type: 3}
   m_PrefabInstance: {fileID: 8291070424059338408}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4787892678675714733 stripped
+--- !u!95 &8291070424059337422 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3566234737978969093, guid: c85b67bad4ae33241a7dcc1ecd762a58,
     type: 3}
   m_PrefabInstance: {fileID: 8291070424059338408}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &607174053103385468 stripped
+--- !u!1 &8291070424059338167 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8890898459318707668, guid: c85b67bad4ae33241a7dcc1ecd762a58,
     type: 3}

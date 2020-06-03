@@ -278,7 +278,7 @@ public class PlayerActions : EntityActions
     {
         if (collision.CompareTag("Bone"))
         {
-            data.AddBone(1);
+            data.AddBone(2);
 
             Destroy(collision.gameObject);
             Instantiate(boneCollecting, collision.gameObject.transform.position, Quaternion.identity);
