@@ -19,6 +19,7 @@ TagManager:
   - Crate
   - Credit
   - FreezeOnPause
+  - PlayerManager
   layers:
   - Default
   - TransparentFX

@@ -18,6 +18,7 @@ public class ZoneCaptureScript : MonoBehaviour
 
     public List<GameObject> AssociatedEnemies;
     public List<GameObject> associatedFlags;
+    public GameObject respawnPoint;
 
     public bool loadTitleOnCap;
     public Material zoneCaptureMaterial;
@@ -36,7 +37,7 @@ public class ZoneCaptureScript : MonoBehaviour
         getMat.material.SetFloat("Fill", capPercent);
         if (PlayersIn > 0)
         {
-            currentZone = this.gameObject;
+            currentZone = gameObject;
             capturing = true;
             capPercent = (capCount / capLimit);
         }
@@ -65,7 +66,7 @@ public class ZoneCaptureScript : MonoBehaviour
 
             foreach (GameObject flag in associatedFlags)
             {
-                flag.GetComponent<FlagState>().SetState(FlagState.CaptureState.Captured);
+                flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Captured);
             }
 
             foreach (GameObject player in Players)
@@ -100,5 +101,16 @@ public class ZoneCaptureScript : MonoBehaviour
             PlayersIn--;
             playerForSpawner = null;
         }
+    }
+
+    public void Reset()
+    {
+        PlayersIn = 0;
+        capCount = 0;
+        capRate = 0.2f;
+        capLimit = 5f;
+        capPercent = 0f;
+        capturing = false;
+        captured = false;
     }
 }

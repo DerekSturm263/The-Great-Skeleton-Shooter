@@ -9,7 +9,6 @@ public class PlayerData : EntityData
     [HideInInspector] public uint playerNum = 0;
     public static uint totalPlayerCount = 1;
     
-
     [Space(10f)]
     public string[] controls = new string[7];
 
@@ -24,8 +23,11 @@ public class PlayerData : EntityData
     [Space(10f)]
     public GameObject ally;
 
+    public GameObject playerManager;
+
     private void Awake()
     {
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager");
         BonesCurrent = BonesMax;
 
         if (GameController.playerCount == GameController.PlayerCount.Singleplayer)
@@ -71,6 +73,26 @@ public class PlayerData : EntityData
         Debug.Log("players: " + totalPlayerCount);
         Debug.Log(playerNum);
         gameObject.name = playerNum.ToString();
+    }
+
+    private void OnEnable()
+    {
+        BonesCurrent = BonesMax;
+    }
+
+    private void Update()
+    {
+        if (BonesCurrent <= 0 || BonesCurrent > BonesMax)
+            Die();
+    }
+
+    public void Die()
+    {
+        GameObject bones = Instantiate(deathParticles, gameObject.transform.position, gameObject.transform.rotation);
+        bones.transform.localScale = gameObject.transform.localScale / 2f;
+
+        playerManager.GetComponent<PlayerManager>().RespawnPlayer();
+        gameObject.SetActive(false);
     }
 
     public static GameObject Player(uint num)

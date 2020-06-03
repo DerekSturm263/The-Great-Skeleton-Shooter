@@ -64,7 +64,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6412212083283827699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
+  m_LocalPosition: {x: -10, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486974903116046352}
@@ -127,7 +127,6 @@ MonoBehaviour:
     type: 3}
   loseBoneParticle: {fileID: 3230921302985026946, guid: c1be4e20cca53af43b770e5841a7857e,
     type: 3}
-  childrenSpriteRenderers: []
   playerNum: 0
   controls:
   - 
@@ -138,6 +137,7 @@ MonoBehaviour:
   - 
   - 
   ally: {fileID: 7802259110253783445, guid: fb1c41d7a6b17b945ae0139ab594e7a8, type: 3}
+  playerManager: {fileID: 0}
 --- !u!114 &6412212083283827701
 MonoBehaviour:
   m_ObjectHideFlags: 0

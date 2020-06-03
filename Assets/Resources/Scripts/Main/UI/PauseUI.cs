@@ -66,6 +66,8 @@ public class PauseUI : MonoBehaviour
             if (gameObject.GetComponent<EntityData>() != null) gameObject.GetComponent<EntityData>().enabled = false;
             if (gameObject.GetComponent<EntityMove>() != null) gameObject.GetComponent<EntityMove>().enabled = false;
             if (gameObject.GetComponent<EntityActions>() != null) gameObject.GetComponent<EntityActions>().enabled = false;
+            if (gameObject.GetComponent<ZoneCaptureScript>() != null) gameObject.GetComponent<ZoneCaptureScript>().enabled = false;
+            if (gameObject.GetComponent<EnemySpawning>() != null) gameObject.GetComponent<EnemySpawning>().enabled = false;
         }
 
         isPausing = false;
@@ -188,6 +190,8 @@ public class PauseUI : MonoBehaviour
             if (gameObject.GetComponent<EntityData>() != null) gameObject.GetComponent<EntityData>().enabled = true;
             if (gameObject.GetComponent<EntityMove>() != null) gameObject.GetComponent<EntityMove>().enabled = true;
             if (gameObject.GetComponent<EntityActions>() != null) gameObject.GetComponent<EntityActions>().enabled = true;
+            if (gameObject.GetComponent<ZoneCaptureScript>() != null) gameObject.GetComponent<ZoneCaptureScript>().enabled = true;
+            if (gameObject.GetComponent<EnemySpawning>() != null) gameObject.GetComponent<EnemySpawning>().enabled = true;
         }
 
         yield return new WaitForSeconds(waitTime / 3f);
