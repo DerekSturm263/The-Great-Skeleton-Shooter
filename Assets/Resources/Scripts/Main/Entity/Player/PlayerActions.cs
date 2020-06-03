@@ -85,7 +85,7 @@ public class PlayerActions : EntityActions
             activeWeaponDamage = carriedWeapon.GetComponent<WeaponTemplateScript>().damage;
             activeAmmoSize = carriedWeapon.GetComponent<WeaponTemplateScript>().ammoSize;
 
-            summonSpot.transform.localScale = new Vector2(activeWeaponDamage / 4f + 0.75f, activeWeaponDamage / 4f + 0.75f);
+            summonSpot.transform.localScale = new Vector2(activeWeaponDamage / 5f + 0.8f, activeWeaponDamage / 5f + 0.8f);
         }
 
         Aim(Camera.main.ScreenToWorldPoint(Input.mousePosition));
