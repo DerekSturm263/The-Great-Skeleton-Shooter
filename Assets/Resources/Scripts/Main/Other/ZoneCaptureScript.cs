@@ -118,5 +118,6 @@ public class ZoneCaptureScript : MonoBehaviour
         capPercent = 0f;
         capturing = false;
         captured = false;
+        playerForSpawner = null;
     }
 }

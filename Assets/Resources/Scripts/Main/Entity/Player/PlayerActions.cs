@@ -23,6 +23,7 @@ public class PlayerActions : EntityActions
     public float activeWeaponshotRate = 0f, activeWeaponShotForce, activeWeaponShotLife;
     public bool activeWeaponAutoBool, activeWeaponGravEffect;
     public uint activeWeaponDamage;
+    public float activeAmmoSize;
 
     public int activeWeaponFromList = 0;
 
@@ -82,6 +83,7 @@ public class PlayerActions : EntityActions
             activeWeaponAutoBool = carriedWeapon.GetComponent<WeaponTemplateScript>().autoBool;
             activeWeaponGravEffect = carriedWeapon.GetComponent<WeaponTemplateScript>().gravEffect;
             activeWeaponDamage = carriedWeapon.GetComponent<WeaponTemplateScript>().damage;
+            activeAmmoSize = carriedWeapon.GetComponent<WeaponTemplateScript>().ammoSize;
 
             summonSpot.transform.localScale = new Vector2(activeWeaponDamage / 4f + 0.75f, activeWeaponDamage / 4f + 0.75f);
         }
@@ -91,7 +93,7 @@ public class PlayerActions : EntityActions
         {
             if (activeWeaponAutoBool)
             {
-                ShootAuto(Input.GetButton((data as PlayerData).controls[5]), activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
+                ShootAuto(Input.GetButtonDown((data as PlayerData).controls[5]), activeWeaponshotRate, activeWeaponShotForce, activeWeaponShotLife, activeWeaponGravEffect);
             }
             else
             {
@@ -140,7 +142,7 @@ public class PlayerActions : EntityActions
                 if (data.BonesCurrent <= 1)
                     return;
 
-                fireTimer = firingRate;
+                fireTimer = 0f;
 
                 foreach (GameObject gun in arm)
                 {
@@ -148,6 +150,7 @@ public class PlayerActions : EntityActions
                     newBullet.transform.SetParent(freezeOnPause);
                     newBullet.transform.rotation = gun.transform.rotation;
                     newBullet.GetComponent<Bullet>().damage = activeWeaponDamage;
+                    newBullet.transform.localScale = new Vector2(activeAmmoSize, activeAmmoSize);
                     carriedWeapon.GetComponent<ParticleSystem>().Play();
                     newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * fireForce);
 

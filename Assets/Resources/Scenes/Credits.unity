@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 160209731}
   - component: {fileID: 160209732}
   - component: {fileID: 160209736}
+  - component: {fileID: 160209737}
   m_Layer: 5
   m_Name: Back - Button
   m_TagString: Untagged
@@ -377,9 +378,26 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1284879581
+  m_SortingLayerID: 989745275
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &160209737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160209729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &160406236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1030,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1284879581
+  m_SortingLayerID: 989745275
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &541023641
@@ -1446,6 +1464,7 @@ GameObject:
   - component: {fileID: 708254933}
   - component: {fileID: 708254932}
   - component: {fileID: 708254934}
+  - component: {fileID: 708254935}
   m_Layer: 5
   m_Name: Credits Buttons - Layout
   m_TagString: Untagged
@@ -1539,9 +1558,26 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1284879581
+  m_SortingLayerID: 989745275
   m_SortingOrder: 2
   m_TargetDisplay: 0
+--- !u!114 &708254935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708254930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &786485960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1991,7 +2027,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1284879581
+  m_SortingLayerID: 989745275
   m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1040379088

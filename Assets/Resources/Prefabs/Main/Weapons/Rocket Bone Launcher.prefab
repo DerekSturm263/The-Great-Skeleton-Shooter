@@ -135,6 +135,7 @@ MonoBehaviour:
   collectionParticles: {fileID: 6659088997339302589, guid: e512c259525ad5b41a54ecb53d1d4c98,
     type: 3}
   damage: 5
+  ammoSize: 1.5
 --- !u!198 &8253284829138028338
 ParticleSystem:
   m_ObjectHideFlags: 0
