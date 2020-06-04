@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -660810253
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -9158349384845336690, guid: 3fd89b3c1df2c884aba4df59e05b7c61,
     type: 3}
@@ -128,6 +128,7 @@ MonoBehaviour:
   weaponName: Rocket Launcher
   autoBool: 1
   gravEffect: 0
+  isRocket: 1
   shotRate: 1
   shotForce: 5
   shotLife: 3
@@ -4900,7 +4901,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -623582613
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

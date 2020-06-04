@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public bool isRocket;
+    public float rocketForce;
     public enum BulletOwner
     {
         Player, Enemy, Ally
@@ -28,7 +30,6 @@ public class Bullet : MonoBehaviour
             case BulletOwner.Enemy:
                 if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
                 {
-
                     collision.gameObject.GetComponent<PlayerActions>().Ouch();
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(damage);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
@@ -42,6 +43,10 @@ public class Bullet : MonoBehaviour
             case BulletOwner.Player:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
+                    if (isRocket)
+                    {
+
+                    }
                     collision.gameObject.GetComponent<EnemyActions>().Ouch();
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(damage);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
