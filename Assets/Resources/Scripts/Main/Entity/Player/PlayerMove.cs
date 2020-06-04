@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : EntityMove
 {
+    public float actualJumpHeight, actualJumpSeed;
     private void Awake()
     {
+        jumpHeight = actualJumpHeight;
+        jumpSpeed = actualJumpSeed;
         data = GetComponent<PlayerData>();
         (data as PlayerData).rb2 = GetComponent<Rigidbody2D>();
         dustParticles = GetComponent<ParticleSystem>();

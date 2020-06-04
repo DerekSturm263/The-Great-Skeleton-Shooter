@@ -413,6 +413,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 16384
+  actualJumpHeight: 5
+  actualJumpSeed: 1.25
 --- !u!114 &6412212083283827705
 MonoBehaviour:
   m_ObjectHideFlags: 0
