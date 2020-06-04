@@ -90,7 +90,7 @@ public class PauseUI : MonoBehaviour
         if (Input.GetButtonDown("Pause") && !isPausing && !isFading && !VictoryUI.hasDisplayedMessage)
         {
             if (!isPaused) Pause();
-            else OnResumeButton();
+            else  OnResumeButton();
         }
 
         if (!isPaused && !VictoryUI.hasDisplayedMessage)
