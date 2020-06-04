@@ -15,8 +15,6 @@ public class VictoryUI : MonoBehaviour
     private GameObject lastSelected;
     public float waitTime;
 
-    private GameObject none;
-
     public static bool hasDisplayedMessage = false;
 
     private Transform freezeOnPause;
@@ -24,7 +22,6 @@ public class VictoryUI : MonoBehaviour
     private void Awake()
     {
         eventSystem = EventSystem.current;
-        none = new GameObject();
         freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
     }
 
