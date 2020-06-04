@@ -58,6 +58,7 @@ public class PauseUI : MonoBehaviour
         isPausing = true;
 
         StartCoroutine(EnablePopUp(pauseMenu));
+        eventSystem.SetSelectedGameObject(buttons[0]);
 
         foreach (Transform gameObject in freezeOnPause)
         {
@@ -91,9 +92,6 @@ public class PauseUI : MonoBehaviour
             if (!isPaused) Pause();
             else  OnResumeButton();
         }
-
-        if (!isPaused && VictoryUI.hasDisplayedMessage)
-            eventSystem.SetSelectedGameObject(none);
     }
 
     private void UpdateSelectionPosition()
@@ -138,9 +136,7 @@ public class PauseUI : MonoBehaviour
         g.SetActive(true);
         g.GetComponent<Animator>().SetBool("fadeOut", false);
 
-        yield return new WaitForSeconds(0.5f);
-
-        eventSystem.SetSelectedGameObject(buttons[0]);
+        yield return null;
     }
 
     private IEnumerator DisablePopUp(GameObject g)
@@ -196,6 +192,7 @@ public class PauseUI : MonoBehaviour
             if (gameObject.GetComponent<EnemySpawning>() != null) gameObject.GetComponent<EnemySpawning>().enabled = true;
         }
 
+        eventSystem.SetSelectedGameObject(none);
         yield return new WaitForSeconds(waitTime / 3f);
         isPausing = false;
     }
