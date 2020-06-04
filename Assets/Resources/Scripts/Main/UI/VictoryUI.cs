@@ -26,6 +26,7 @@ public class VictoryUI : MonoBehaviour
 
     private void DisplayMessage()
     {
+        hasDisplayedMessage = true;
         StartCoroutine(EnablePopUp(victoryPopUp));
         eventSystem.SetSelectedGameObject(buttons[0]);
 
@@ -46,7 +47,6 @@ public class VictoryUI : MonoBehaviour
 
         if (ZoneCaptureScript.numCaptured == 8 && !hasDisplayedMessage)
         {
-            hasDisplayedMessage = true;
             DisplayMessage();
         }
     }
