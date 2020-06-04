@@ -17,8 +17,9 @@ public abstract class EntityMove : MonoBehaviour
 
     protected float moveSpeed;
 
-    public static float jumpHeight = 15f;
-    public static float jumpSpeed = 1.5f;
+    public static float jumpHeight = 7.5f;
+    public static float maxJumpHeight = 15f;
+    public static float jumpSpeed = 1.25f;
 
     protected float jumpVel;
 
@@ -29,6 +30,8 @@ public abstract class EntityMove : MonoBehaviour
     [SerializeField] protected LayerMask groundLayer;
 
     protected ParticleSystem dustParticles;
+
+    private bool canJump;
 
     #region Movement
 
@@ -64,14 +67,19 @@ public abstract class EntityMove : MonoBehaviour
     // Used to make the GameObject jump.
     protected void Jump(bool input)
     {
+        if (IsGrounded())
+            canJump = true;
+        else
+            StartCoroutine(DisableJump());
+
         if (input)
         {
-            if (IsGrounded())
+            if (canJump)
             {
                 jumpVel = jumpHeight;
                 data.rb2.velocity = new Vector2(data.rb2.velocity.x, jumpVel);
             }
-            else if (!IsGrounded() && jumpVel >= 8f)
+            else if (!IsGrounded() && jumpVel < maxJumpHeight && data.rb2.velocity.y > 0f)
             {
                 jumpVel /= jumpSpeed;
                 data.rb2.velocity = new Vector2(data.rb2.velocity.x, jumpVel);
@@ -93,6 +101,12 @@ public abstract class EntityMove : MonoBehaviour
     {
         hitInfo = Physics2D.BoxCast((Vector2)transform.position - new Vector2(0f, boxSize.y + 0.51f), boxSize, 0f, Vector2.down, boxSize.y, groundLayer);
         return hitInfo;
+    }
+
+    private IEnumerator DisableJump()
+    {
+        yield return new WaitForSeconds(0.15f);
+        canJump = false;
     }
 
     #endregion

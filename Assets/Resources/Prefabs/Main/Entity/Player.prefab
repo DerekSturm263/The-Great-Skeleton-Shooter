@@ -86,7 +86,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -189,6 +189,8 @@ MonoBehaviour:
   activeWeaponShotLife: 0.5
   activeWeaponAutoBool: 0
   activeWeaponGravEffect: 1
+  activeWeaponDamage: 0
+  activeAmmoSize: 0
   activeWeaponFromList: 0
   newAlly: {fileID: 0}
   summoningBones: 0
@@ -202,6 +204,7 @@ MonoBehaviour:
   canSummonParticles: {fileID: 8691121080366760900, guid: a39025ea4fab87e43ae6ea72fa7082a1,
     type: 3}
   canSummon: 0
+  allies: []
 --- !u!114 &1105765326088254904
 MonoBehaviour:
   m_ObjectHideFlags: 0
