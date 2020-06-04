@@ -7,6 +7,7 @@ public class CrateData : MonoBehaviour
     public GameObject[] contents;
     public GameObject breakingParticles;
     protected Transform freezeOnPause;
+    public AudioSource boomb;
 
     private void Awake()
     {
@@ -24,7 +25,10 @@ public class CrateData : MonoBehaviour
 
         Destroy(gameObject);
     }
-
+    public void boom()
+    {
+        boomb.Play();
+    }
     private void SpawnItem(GameObject g)
     {
         GameObject newItem = Instantiate(g, gameObject.transform.position, gameObject.transform.rotation);

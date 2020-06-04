@@ -28,8 +28,8 @@ public class Bullet : MonoBehaviour
             case BulletOwner.Enemy:
                 if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ally"))
                 {
-                    
 
+                    collision.gameObject.GetComponent<PlayerActions>().Ouch();
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(damage);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
@@ -42,17 +42,19 @@ public class Bullet : MonoBehaviour
             case BulletOwner.Player:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
-                    
+                    collision.gameObject.GetComponent<EnemyActions>().Ouch();
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(damage);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
-                    //whyIsThePartWhereTHePlayerCastsDamageNotAVoidInsideOfThePlayerClass.Play();
+                    
                 }
                 else if (collision.gameObject.CompareTag("Crate"))
                 {
+                    collision.gameObject.GetComponent<CrateData>().boom();
                     collision.gameObject.GetComponent<CrateData>().Break();
                     Destroy(gameObject);
+                    
                 }
                 
                 break;
@@ -60,13 +62,13 @@ public class Bullet : MonoBehaviour
             case BulletOwner.Ally:
                 if (collision.gameObject.CompareTag("Enemy"))
                 {
-                   
 
+                    collision.gameObject.GetComponent<EnemyActions>().Ouch();
                     collision.gameObject.GetComponent<EntityData>().RemoveBone(damage);
                     GameObject bones = Instantiate(collision.gameObject.GetComponent<EntityData>().loseBoneParticle, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
                     bones.transform.localScale = collision.gameObject.transform.localScale / 2f;
                     Destroy(gameObject);
-                    //whyIsThePartWhereTHePlayerCastsDamageNotAVoidInsideOfThePlayerClass.Play();
+                    whyIsThePartWhereTHePlayerCastsDamageNotAVoidInsideOfThePlayerClass.Play();
                 }
                 
                 break;

@@ -6,6 +6,7 @@ public class AllyActions : EntityActions
 {
     private AllyMove move;
     public AudioSource shootSound;
+    public AudioSource DamageSound;
     private void Awake()
     {
         data = GetComponent<AllyData>();
@@ -36,7 +37,10 @@ public class AllyActions : EntityActions
 
         armPivot[0].transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(pos.y - armPivot[0].transform.position.y, pos.x - armPivot[0].transform.position.x));
     }
-
+    public void Ouch()
+    {
+        DamageSound.Play();
+    }
     private void Shoot()
     {
         if (!move.isLockedOn || !(data as AllyData).canMove)

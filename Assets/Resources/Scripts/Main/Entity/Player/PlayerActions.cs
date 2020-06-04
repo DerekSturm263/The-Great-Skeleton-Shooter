@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,8 @@ public class PlayerActions : EntityActions
     public AudioSource shootSound;
     public AudioSource summiningSound;
     public AudioSource SummonedSound;
+    public AudioSource DamageSound;
+    public AudioSource dieded;
 
     private void Awake()
     {
@@ -226,9 +229,13 @@ public class PlayerActions : EntityActions
             newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             summoningBones = 1;
             thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);
+            summiningSound.Play();
         }
     }
-
+    public void Ouch()
+    {
+        DamageSound.Play();
+    }
     // Called when the player holds the summon button.
     private void SummonAlly(bool input)
     {
@@ -246,7 +253,7 @@ public class PlayerActions : EntityActions
             newAlly.transform.position = summonSpot.transform.position;
             newAlly.transform.localScale = new Vector2(summoningBones, summoningBones) / 50f;
             thisSummoningParticles.transform.position = newAlly.transform.position;
-
+            
             summoning = true;
         }
         else if (input && (data as PlayerData).BonesCurrent == 1)
@@ -263,7 +270,7 @@ public class PlayerActions : EntityActions
             if (summoning && canSummon)
             {
                 summoning = false;
-
+                SummonedSound.Play();
                 if (summoningBones > 20)
                 {
                     newAlly.GetComponent<AllyData>().canMove = true;
@@ -282,6 +289,7 @@ public class PlayerActions : EntityActions
                     Destroy(newAlly);
                     Destroy(thisSummoningParticles);
                     (data as PlayerData).BonesCurrent += summoningBones - 1;
+                    summiningSound.Stop();
                 }
             }
         }

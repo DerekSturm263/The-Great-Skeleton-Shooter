@@ -6,6 +6,7 @@ public class EnemyActions : EntityActions
 {
     public bool shoot;
     public AudioSource shootSound;
+    public AudioSource DamageSound;
 
     private void Awake()
     {
@@ -42,7 +43,10 @@ public class EnemyActions : EntityActions
 
         shoot = true;
     }
-
+    public void Ouch()
+    {
+        DamageSound.Play();
+    }
     // Called twice every second to try and fire at the player
     private void Shoot()
     {
