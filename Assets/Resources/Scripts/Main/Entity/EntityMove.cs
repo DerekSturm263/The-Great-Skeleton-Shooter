@@ -17,9 +17,8 @@ public abstract class EntityMove : MonoBehaviour
 
     protected float moveSpeed;
 
-    public static float jumpHeight = 7.5f;
-    public static float maxJumpHeight = 15f;
-    public static float jumpSpeed = 1.25f;
+    public static float jumpHeight = 5f;
+    public static float jumpSpeed = 1.5f;
 
     protected float jumpVel;
 
@@ -76,19 +75,15 @@ public abstract class EntityMove : MonoBehaviour
         {
             if (canJump)
             {
+                canJump = false;
                 jumpVel = jumpHeight;
-                data.rb2.velocity = new Vector2(data.rb2.velocity.x, jumpVel);
+                data.rb2.AddForce(new Vector2(0f, jumpVel), ForceMode2D.Impulse);
             }
-            else if (!IsGrounded() && jumpVel < maxJumpHeight && data.rb2.velocity.y > 0f)
+            else if (!canJump && jumpVel > 0.1f)
             {
                 jumpVel /= jumpSpeed;
-                data.rb2.velocity = new Vector2(data.rb2.velocity.x, jumpVel);
+                data.rb2.AddForce(new Vector2(0f, jumpVel), ForceMode2D.Impulse);
             }
-            else
-            {
-                jumpVel = 0f;
-            }
-
         }
         else
         {
