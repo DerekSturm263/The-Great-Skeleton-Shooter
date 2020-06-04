@@ -1202,7 +1202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &331278985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1218,10 +1218,10 @@ RectTransform:
   m_Father: {fileID: 1861099688}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -153.70786}
+  m_SizeDelta: {x: 500, y: 102.4719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &331278986
 MonoBehaviour:
@@ -4917,7 +4917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '  Singleplayer'
+  m_text: '  Begin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4986,7 +4986,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1333404992}
-    characterCount: 14
+    characterCount: 7
     spriteCount: 0
     spaceCount: 2
     wordCount: 2
@@ -5309,7 +5309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 331278986}
+    m_SelectOnUp: {fileID: 2015764159}
     m_SelectOnDown: {fileID: 863385919}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -6729,7 +6729,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 1340667023}
-    m_SelectOnDown: {fileID: 331278986}
+    m_SelectOnDown: {fileID: 1487123226}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 3
