@@ -45,7 +45,7 @@ public class PlayerActions : EntityActions
     public AudioSource summiningSound;
     public AudioSource SummonedSound;
     public AudioSource DamageSound;
-    public AudioSource dieded;
+    
 
     private void Awake()
     {

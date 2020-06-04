@@ -24,7 +24,7 @@ public class PlayerData : EntityData
     public GameObject ally;
 
     public GameObject playerManager;
-
+    public AudioSource deathsound;
     private void Awake()
     {
         playerManager = GameObject.FindGameObjectWithTag("PlayerManager");
@@ -99,7 +99,7 @@ public class PlayerData : EntityData
             } catch { }
             GetComponent<PlayerActions>().allies.ForEach((x) => x.GetComponent<AllyData>().Die());
         }
-
+        deathsound.Play();
         playerManager.GetComponent<PlayerManager>().RespawnPlayer();
         gameObject.SetActive(false);
     }
