@@ -46,7 +46,7 @@ public class VictoryUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) DisplayMessage();
+        if (Input.GetKeyDown(KeyCode.E)) DisplayMessage();
 
         if (ZoneCaptureScript.numCaptured == 8 && !hasDisplayedMessage)
         {
