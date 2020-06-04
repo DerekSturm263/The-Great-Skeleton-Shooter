@@ -12,7 +12,6 @@ public class VictoryUI : MonoBehaviour
     public GameObject victoryPopUp;
     public GameObject[] buttons = new GameObject[2];
 
-    private GameObject lastSelected;
     public float waitTime;
 
     public static bool hasDisplayedMessage = false;
