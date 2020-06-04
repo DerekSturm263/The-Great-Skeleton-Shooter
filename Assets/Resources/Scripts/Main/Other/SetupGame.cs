@@ -12,9 +12,13 @@ public class SetupGame : MonoBehaviour
     public GameObject fastGraphics;
 
     private Transform freezeOnPause;
-
+    private void Start()
+    {
+        MusicPlayer.Play("thegreatskeleteonshooter.ogg");
+    }
     private void Awake()
     {
+        
         freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
 
         if (GameObject.FindGameObjectsWithTag("GameController").Length == 0)
