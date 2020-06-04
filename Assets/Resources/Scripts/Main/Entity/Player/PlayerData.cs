@@ -99,7 +99,7 @@ public class PlayerData : EntityData
             } catch { }
             GetComponent<PlayerActions>().allies.ForEach((x) => x.GetComponent<AllyData>().Die());
         }
-        deathsound.Play();
+        deathsound.Play();  
         playerManager.GetComponent<PlayerManager>().RespawnPlayer();
         gameObject.SetActive(false);
     }
