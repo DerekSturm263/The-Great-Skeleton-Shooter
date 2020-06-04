@@ -439,6 +439,7 @@ MonoBehaviour:
   fireTimer: 0
   fireTimeMax: 0.05
   boneFadeSpeed: 0
+  rocketBlastForce: 3
   fireActive: 0
   fullAuto: 0
   boneUI: {fileID: 0}
@@ -450,6 +451,7 @@ MonoBehaviour:
   activeWeaponShotLife: 0.5
   activeWeaponAutoBool: 0
   activeWeaponGravEffect: 1
+  activeWeaponIsRocket: 0
   activeWeaponDamage: 0
   activeAmmoSize: 0
   activeWeaponFromList: 0
