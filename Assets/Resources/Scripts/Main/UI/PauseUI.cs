@@ -12,7 +12,7 @@ public class PauseUI : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject[] buttons = new GameObject[4];
 
-    [SerializeField] private bool isPaused;
+    [SerializeField] private static bool isPaused;
     private bool isPausing;
     private bool isFading;
 
@@ -78,25 +78,23 @@ public class PauseUI : MonoBehaviour
         #region Selection Handler
 
         // Make it so you can't deselect UI elements and cause any errors.
-        if (pauseMenu.activeSelf)
-        {
-            if (eventSystem.currentSelectedGameObject != null)
-                lastSelected = eventSystem.currentSelectedGameObject;
-            else
-                eventSystem.SetSelectedGameObject(lastSelected);
+        if (eventSystem.currentSelectedGameObject != null)
+            lastSelected = eventSystem.currentSelectedGameObject;
+        else
+            eventSystem.SetSelectedGameObject(lastSelected);
 
-            UpdateSelectionPosition();
-        }
+        UpdateSelectionPosition();
 
         #endregion
 
-        if (Input.GetButtonDown("Pause") && !isPausing && !isFading)
+        if (Input.GetButtonDown("Pause") && !isPausing && !isFading && !VictoryUI.hasDisplayedMessage)
         {
             if (!isPaused) Pause();
             else OnResumeButton();
         }
 
-        if (!isPaused) eventSystem.SetSelectedGameObject(none);
+        if (!isPaused && !VictoryUI.hasDisplayedMessage)
+            eventSystem.SetSelectedGameObject(none);
     }
 
     private void UpdateSelectionPosition()

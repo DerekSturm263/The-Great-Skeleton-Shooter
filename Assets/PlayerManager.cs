@@ -18,23 +18,26 @@ public class PlayerManager : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        if (ZoneCaptureScript.lastZoneCaptured != null || ZoneCaptureScript.currentZone != null)
+        if (ZoneCaptureScript.lastZoneCaptured != null)
         {
-            ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().Reset();
-            ZoneCaptureScript.lastZoneCaptured.SetActive(true);
             ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().Reset();
+            ZoneCaptureScript.numCaptured--;
 
             foreach (GameObject flag in ZoneCaptureScript.lastZoneCaptured.GetComponent<ZoneCaptureScript>().associatedFlags)
             {
                 flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Uncaptured);
             }
+        }
+
+        if (ZoneCaptureScript.currentZone != null)
+        {
+            ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().Reset();
+
             foreach (GameObject flag in ZoneCaptureScript.currentZone.GetComponent<ZoneCaptureScript>().associatedFlags)
             {
                 flag.GetComponentInChildren<FlagState>().SetState(FlagState.CaptureState.Uncaptured);
             }
         }
-
-        if (ZoneCaptureScript.numCaptured > 0) ZoneCaptureScript.numCaptured--;
 
         yield return new WaitForSeconds(1.5f);
 

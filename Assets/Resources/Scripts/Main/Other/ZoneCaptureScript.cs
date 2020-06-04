@@ -46,6 +46,7 @@ public class ZoneCaptureScript : MonoBehaviour
     private void Update()
     {
         getMat.material.SetFloat("Fill", capPercent);
+
         if (PlayersIn > 0)
         {
             currentZone = gameObject;
@@ -66,6 +67,7 @@ public class ZoneCaptureScript : MonoBehaviour
                 captured = true;
             }
         }
+
         if (captured)
         {
             lastZoneCaptured = gameObject;
@@ -113,11 +115,14 @@ public class ZoneCaptureScript : MonoBehaviour
 
     public void Reset()
     {
+        gameObject.SetActive(true);
         PlayersIn = 0;
-        capCount = 0;
+        capCount = 0f;
         capPercent = 0f;
         capturing = false;
         captured = false;
         playerForSpawner = null;
+
+        if (zoneDoor != null) zoneDoor.SetActive(true);
     }
 }

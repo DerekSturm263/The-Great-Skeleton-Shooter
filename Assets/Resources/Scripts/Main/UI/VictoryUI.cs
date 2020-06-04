@@ -17,7 +17,7 @@ public class VictoryUI : MonoBehaviour
 
     private GameObject none;
 
-    public bool hasDisplayedMessage = false;
+    public static bool hasDisplayedMessage = false;
 
     private Transform freezeOnPause;
 
@@ -26,65 +26,6 @@ public class VictoryUI : MonoBehaviour
         eventSystem = EventSystem.current;
         none = new GameObject();
         freezeOnPause = GameObject.FindGameObjectWithTag("FreezeOnPause").GetComponent<Transform>();
-    }
-
-    private void Update()
-    {
-        #region Selection Handler
-
-        // Make it so you can't deselect UI elements and cause any errors.
-        if (victoryPopUp.activeSelf)
-        {
-            if (eventSystem.currentSelectedGameObject != null)
-                lastSelected = eventSystem.currentSelectedGameObject;
-            else
-                eventSystem.SetSelectedGameObject(lastSelected);
-
-            UpdateSelectionPosition();
-        }
-
-        #endregion
-
-        if (ZoneCaptureScript.numCaptured == 8 && !hasDisplayedMessage)
-        {
-            hasDisplayedMessage = true;
-            DisplayMessage();
-        }
-    }
-
-    private void UpdateSelectionPosition()
-    {
-        try
-        {
-            RectTransform rT = buttonSelectionHighlight.GetComponent<RectTransform>();
-
-            if (eventSystem.currentSelectedGameObject == none)
-            {
-                rT.position = new Vector2(-100f, -100f);
-                rT.sizeDelta = new Vector2(0f, 0f);
-            }
-            else
-            {
-                RectTransform rT2 = eventSystem.currentSelectedGameObject.GetComponent<RectTransform>();
-                rT.position = rT2.position;
-                rT.sizeDelta = rT2.sizeDelta;
-            }
-        }
-        catch { }
-    }
-
-    private void LateUpdate()
-    {
-        try
-        {
-            CanvasGroup buttonParent = eventSystem.currentSelectedGameObject.transform.parent.transform.parent.GetComponent<CanvasGroup>();
-
-            if (buttonParent != null && buttonParent.GetComponent<CanvasGroup>() != null)
-            {
-                buttonSelectionHighlight.GetComponent<CanvasGroup>().alpha = buttonParent.alpha;
-            }
-        }
-        catch { }
     }
 
     private void DisplayMessage()
@@ -103,7 +44,16 @@ public class VictoryUI : MonoBehaviour
         }
     }
 
-    #region PopUp Methods
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) DisplayMessage();
+
+        if (ZoneCaptureScript.numCaptured == 8 && !hasDisplayedMessage)
+        {
+            hasDisplayedMessage = true;
+            DisplayMessage();
+        }
+    }
 
     private IEnumerator EnablePopUp(GameObject g)
     {
@@ -121,8 +71,6 @@ public class VictoryUI : MonoBehaviour
 
         g.SetActive(false);
     }
-
-    #endregion
 
     #region Victory Button Methods
 
