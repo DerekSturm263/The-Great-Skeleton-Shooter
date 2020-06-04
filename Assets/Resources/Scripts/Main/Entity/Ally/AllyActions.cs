@@ -5,7 +5,7 @@ using UnityEngine;
 public class AllyActions : EntityActions
 {
     private AllyMove move;
-
+    public AudioSource shootSound;
     private void Awake()
     {
         data = GetComponent<AllyData>();
@@ -44,6 +44,7 @@ public class AllyActions : EntityActions
 
         foreach (GameObject gun in arm)
         {
+            shootSound.Play();
             GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * gun.transform.localScale.x, Quaternion.identity);
             newBullet.transform.SetParent(freezeOnPause);
             newBullet.transform.localScale = gameObject.transform.localScale * 2f;

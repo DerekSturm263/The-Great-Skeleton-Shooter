@@ -40,6 +40,10 @@ public class PlayerActions : EntityActions
 
     public List<GameObject> allies;
 
+    public AudioSource shootSound;
+    public AudioSource summiningSound;
+    public AudioSource SummonedSound;
+
     private void Awake()
     {
         carriedWeapon.SetActive(false);
@@ -143,7 +147,7 @@ public class PlayerActions : EntityActions
                     return;
 
                 fireTimer = 0f;
-
+                shootSound.Play();
                 foreach (GameObject gun in arm)
                 {
                     GameObject newBullet = Instantiate(bullet, gun.transform.position + gun.transform.right * 0.25f, Quaternion.identity);

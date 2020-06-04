@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyActions : EntityActions
 {
     public bool shoot;
+    public AudioSource shootSound;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class EnemyActions : EntityActions
                 newBullet.GetComponent<Bullet>().SetBulletOwner(1);
                 newBullet.GetComponent<Rigidbody2D>().AddForce(gun.transform.right * bulletForce);
                 Destroy(newBullet, bulletLife);
+                shootSound.Play();
             }
 
             shoot = false;
