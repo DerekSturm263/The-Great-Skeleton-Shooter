@@ -55,7 +55,7 @@ public class AllyMove : EntityMove
                     Move(targetDirection, true);
 
                 Run(false);
-                Jump((data as AllyData).target.transform.position.y + 7.5f > transform.position.y);
+                Jump((data as AllyData).target.transform.position.y - 3f > transform.position.y);
             }
             else
             {
@@ -72,8 +72,7 @@ public class AllyMove : EntityMove
                     Move(targetDirection, true);
 
                 Run(false);
-                Jump(summoner.transform.position.y + 7.5f > transform.position.y);
-                Debug.Log(gameObject.name + " " + (summoner.transform.position.y + 7.5f > transform.position.y));
+                Jump(summoner.transform.position.y - 3f > transform.position.y);
             }
         }
     }

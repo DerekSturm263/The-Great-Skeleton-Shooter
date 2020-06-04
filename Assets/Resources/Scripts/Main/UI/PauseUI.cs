@@ -78,12 +78,15 @@ public class PauseUI : MonoBehaviour
         #region Selection Handler
 
         // Make it so you can't deselect UI elements and cause any errors.
-        if (eventSystem.currentSelectedGameObject != null)
-            lastSelected = eventSystem.currentSelectedGameObject;
-        else
-            eventSystem.SetSelectedGameObject(lastSelected);
+        if (pauseMenu.activeSelf)
+        {
+            if (eventSystem.currentSelectedGameObject != null)
+                lastSelected = eventSystem.currentSelectedGameObject;
+            else
+                eventSystem.SetSelectedGameObject(lastSelected);
 
-        UpdateSelectionPosition();
+            UpdateSelectionPosition();
+        }
 
         #endregion
 

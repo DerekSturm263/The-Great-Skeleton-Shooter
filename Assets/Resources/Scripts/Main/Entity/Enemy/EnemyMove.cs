@@ -63,8 +63,7 @@ public class EnemyMove : EntityMove
                 Move(targetDirection, true);
 
             Run(false);
-            Jump((data as EnemyData).target.transform.position.y + 7.5f > transform.position.y);
-            Debug.Log(gameObject.name + " " + ((data as EnemyData).target.transform.position.y + 7.5f > transform.position.y));
+            Jump((data as EnemyData).target.transform.position.y - 6f > transform.position.y);
         }
     }
 }

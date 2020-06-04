@@ -29,7 +29,8 @@ public class CrateData : MonoBehaviour
     {
         GameObject newItem = Instantiate(g, gameObject.transform.position, gameObject.transform.rotation);
         newItem.transform.SetParent(freezeOnPause);
-        if (newItem.CompareTag("Ally")) g.GetComponent<AllyData>().canMove = true;
+
+        if (newItem.CompareTag("Ally")) newItem.GetComponent<AllyData>().canMove = true;
 
         if (newItem.GetComponent<Rigidbody2D>() != null)
         {

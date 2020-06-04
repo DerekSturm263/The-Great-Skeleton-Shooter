@@ -69,6 +69,7 @@ public class ZoneCaptureScript : MonoBehaviour
         if (captured)
         {
             lastZoneCaptured = gameObject;
+            numCaptured++;
             AssociatedEnemies.RemoveAll((x) => x == null);
 
             foreach (GameObject enemy in AssociatedEnemies)
@@ -89,7 +90,6 @@ public class ZoneCaptureScript : MonoBehaviour
             zoneCaptureUI.SetBool("disappear", true);
             gameObject.SetActive(false);
             Debug.Log("Captured!");
-            numCaptured++;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

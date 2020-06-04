@@ -24,7 +24,8 @@ public abstract class EntityMove : MonoBehaviour
 
     // Boxcast variables
     protected RaycastHit2D hitInfo;
-    protected Vector2 boxSize = new Vector2(0.5f, 0.01f);
+    [SerializeField] protected Vector2 boxSize;
+    [SerializeField] protected Vector2 boxOffset;
     [Space(10f)]
     [SerializeField] protected LayerMask groundLayer;
 
@@ -66,6 +67,8 @@ public abstract class EntityMove : MonoBehaviour
     // Used to make the GameObject jump.
     protected void Jump(bool input)
     {
+        Debug.Log(IsGrounded());
+
         if (IsGrounded())
             canJump = true;
         else
@@ -94,7 +97,7 @@ public abstract class EntityMove : MonoBehaviour
     // Used to check if the player is grounded.
     protected bool IsGrounded()
     {
-        hitInfo = Physics2D.BoxCast((Vector2)transform.position - new Vector2(0f, boxSize.y + 0.51f), boxSize, 0f, Vector2.down, boxSize.y, groundLayer);
+        hitInfo = Physics2D.BoxCast((Vector2) transform.position - new Vector2(boxOffset.x, boxOffset.y), boxSize, 0f, Vector2.down, boxSize.y, groundLayer);
         return hitInfo;
     }
 
