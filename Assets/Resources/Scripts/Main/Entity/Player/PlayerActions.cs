@@ -227,6 +227,7 @@ public class PlayerActions : EntityActions
             newAlly = Instantiate((data as PlayerData).ally, summonSpot.transform.position, Quaternion.identity);
             newAlly.transform.SetParent(freezeOnPause);
             newAlly.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            newAlly.GetComponent<CapsuleCollider2D>().enabled = false;
             summoningBones = 1;
             thisSummoningParticles = Instantiate(summoningParticles, summonSpot.transform.position, Quaternion.identity);
             summiningSound.Play();
@@ -278,6 +279,8 @@ public class PlayerActions : EntityActions
                     newAlly.GetComponent<AllyData>().BonesMax = (uint) ((float) summoningBones / 1.5f);
                     newAlly.GetComponent<AllyData>().BonesCurrent = newAlly.GetComponent<AllyData>().BonesMax;
                     newAlly.GetComponent<AllyMove>().summoner = gameObject;
+                    newAlly.GetComponent<CapsuleCollider2D>().enabled = true;
+
                     allies.Add(newAlly);
 
                     Destroy(thisSummoningParticles);
